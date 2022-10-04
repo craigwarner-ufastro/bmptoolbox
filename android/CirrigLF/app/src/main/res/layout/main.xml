@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background" >
+
+    <ViewFlipper
+        android:id="@+id/profileFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/RadioGroup_navControl">
+
+        <include layout="@layout/main_valve_screen" />
+
+        <include layout="@layout/content_main" />
+
+ <!--       <include layout="@layout/calendar_weather_screen"/> removed CW 3/29/18 -->
+        <!--Be careful when i take this out.  a lot of association -->
+        <!--<include layout="@layout/settings_screen" />-->
+
+    </ViewFlipper>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/medium_grey"
+        android:layout_above="@+id/RadioGroup_navControl" />
+
+    <RadioGroup
+        android:id="@+id/RadioGroup_navControl"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@drawable/nav_bg_gradient"
+        >
+
+        <RadioButton
+            style="@style/nav_button"
+            android:id="@+id/Button_Irrig"
+            android:drawableTop="@drawable/irrig_icon_selector"
+            android:text="Irrigation"
+            android:checked="true"
+            />
+
+        <RadioButton
+            style="@style/nav_button"
+            android:id="@+id/Button_Calendar_Weather"
+            android:drawableTop="@drawable/weather_icon_selector"
+            android:layout_marginTop="9dp"
+            android:text="Daily Weather"
+            />
+
+    </RadioGroup>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+   />
+
+
+</RelativeLayout>

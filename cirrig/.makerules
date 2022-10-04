@@ -1,0 +1,238 @@
+# RCS: 
+# $Name:  $ $Id: .makerules,v 1.2 2010/03/10 21:42:14 warner Exp $
+#
+
+SHELL := /bin/tcsh -f
+
+.POSIX:
+
+.IGNORE:
+
+.EXPORT_ALL_VARIABLES:
+
+.PHONY: all showmacros init clean rcsinit rcscheckin rcscurrent rcsrelease \
+        depend jar lib exe pubheader publib pubexe pubjar
+
+#  Macros:
+
+ifndef JDATE
+  JDATE := $(shell date "+%Y-%j-%H-%M-%S")
+endif
+
+#this def is used only for older gcc2.95:
+
+ifndef SGISTL
+  SGISTL := sgistl3.3
+endif
+
+ifndef GCCID
+  GCCID := $(shell $(RCSDEV)/.gccv)
+endif
+
+# just look at the major version #
+GCCIDM := $(shell echo $(GCCID) | cut -d'.' -f1)
+
+# where are the compiler libs?
+# flamingos1a (sol8i) /usr/bin/which causes infinite regression?
+#GCCLIB := $(shell /usr/bin/which gcc | sed 's^/bin/gcc^/lib^') 
+GCCLIB := $(shell which gcc | sed 's^/bin/gcc^/lib^') 
+
+# where are the compiler incs?
+GCCINC := $(shell echo $(GCCLIB) | sed 's/lib/include/') 
+
+ifndef STL
+ifeq ($(GCCIDM),gcc3)
+# use gnu stl, which is now a modified version of sgi's
+  STL := gnu
+else
+	ifeq ($(GCCIDM),gcc4)
+	# use gnu stl, which is now a modified version of sgi's
+	  STL := gnu
+	else
+	# use original sgi stl
+	  STL := sgi
+	endif
+endif
+endif
+ 
+CC := gcc
+CXX := g++
+RM := rm -f
+ARCH := ar
+COFLAGS += -q
+
+ifndef USER
+  USER := $(user)
+endif
+
+ifndef BMPINSTALL
+  BMPINSTALL := /usr/local/uf$(USER)
+endif
+
+UNAME := $(shell uname)
+
+ifeq ($(UNAME),SunOS)
+  OS := SOLARIS
+endif
+ifeq ($(UNAME),Linux)
+  OS := LINUX
+endif
+
+INSTALL_PERL := $(BMPINSTALL)/perl
+INSTALL_ETC := $(BMPINSTALL)/etc
+INSTALL_HDR := $(BMPINSTALL)/include
+
+# shared (dynamic) libraries are the default:
+INSTALL_LIB := $(BMPINSTALL)/lib
+EXTERN_LIB :=  $(BMPINSTALL)/extern/lib
+
+# dynamic linked binaries are the default:
+INSTALL_EXE := $(BMPINSTALL)/bin
+# and its synomim
+INSTALL_BIN := $(BMPINSTALL)/bin
+# static libraries:
+INSTALL_SLIB := $(BMPINSTALL)/slib
+# static linked binaries:
+INSTALL_SBIN := $(BMPINSTALL)/sbin
+
+ifeq ($(CC),gcc) 
+  COMPILER_ID := $(GCCID)
+else
+  COMPILER_ID := $(CCID)
+endif
+ifeq ($(CXX),gcc) 
+  COMPILER_ID := $(GCCID)
+else
+  COMPILER_ID := $(CCID)
+endif
+ifeq ($(CXX),g++) 
+  COMPILER_ID := $(GCCID)
+else
+  COMPILER_ID := $(CCID)
+endif
+
+HOSTNAME := $(shell hostname | cut -d'.' -f1)
+
+ifndef HOST_OS
+  OSVERSION := $(shell uname -r)
+  HOST_OS := $(UNAME)$(OSVERSION)
+endif
+
+ifndef OS_VERSION
+  OS_VERSION := $(shell echo $(HOST_OS) | sed 's/[\.\-]/_/g')
+endif
+
+TARGET := $(HOSTNAME).$(HOST_OS).$(COMPILER_ID)
+STARGET := $(TARGET)/sbin
+
+UFINC := -I../libUFServices++ -I../libUFSerial++ -I../libUFProtocol++ -I../libUF++ -I../libUF 
+
+ifeq ($(STL), sgi)
+  EXTINC := -I$(INSTALL_HDR)/sgistl -I$(GCCINC)
+  STLFLAGS := -D__STL_USE_SGI_ALLOCATORS
+else
+#  EXTINC := -I/usr/local/include/g++-3 $(EXTINC)
+#  EXTINC := -I/usr/local/include/g++-v3 $(EXTINC)
+#  STLFLAGS := -D__GTHREAD_MUTEX_INIT -D__STL_LIMITED_DEFAULT_TEMPLATES
+#  STLFLAGS := -D__GTHREAD_MUTEX_INIT -D__STL_USE_SGI_ALLOCATORS
+  EXTINC := -I$(GCCINC)
+  STLFLAGS := 
+endif
+
+EXTINC += -I$(BMPINSTALL)/extern/include
+
+ifeq ($(CXX),CC)
+  EXTINC += -I/opt/SUNWspro/include/CC -I/opt/SUNWspro/include/std
+endif
+
+INCL := -I./ -I$(INSTALL_HDR) $(UFINC) $(EXTINC)
+
+# sgi stl will use mutex in Alloc.h when _PTHREADS is defined:
+PFLAGS := -D_POSIX_PTHREAD_SEMANTICS -D_PTHREADS
+
+#CFLAGS += -g -O0 -Wno-deprecated -Wall -shared -fPIC -D$(OS) -DSYSV -D_REENTRANT -D__EXTENSIONS__ $(STLFLAGS) $(PFLAGS) $(INCL)
+
+#CFLAGS += -ansi -pipe -g -O0 -Wno-deprecated -Wall -shared  -D$(OS) -D$(OS_VERSION) -DSYSV -D_REENTRANT -D__EXTENSIONS__ $(STLFLAGS) $(PFLAGS) $(INCL)
+
+CFLAGS += -pipe -g -O0 -Wno-deprecated -Wall -shared -fPIC -D$(OS) -D$(OS_VERSION) -DSYSV -D_REENTRANT -D__EXTENSIONS__ $(STLFLAGS) $(PFLAGS) $(INCL)
+
+CXXFLAGS += $(CFLAGS)
+
+# these can/should be edited within specific Makefiles: 
+ifeq ($(OS),LINUX)
+  LD := $(PURIFY) g++
+  LDSO := ld -shared
+  LDSYSLIB++ :=	-lstdc++
+  LDSYSLIB := -lrt -lpthread -lm
+  LDSYSFLAGS := --whole-archive -L./$(TARGET) -L$(INSTALL_LIB) -L$(EXTERN_LIB) -L$(GCCLIB) 
+  SLDSYSFLAGS := --whole-archive -L./$(STARGET) -L$(INSTALL_SLIB) -L$(EXTERN_LIB) -L$(GCCLIB) 
+else
+  PFLAGS += -D_POSIX_SEMAPHORES -D_POSIX_SHARED_MEMORY_OBJECTS -D_POSIX_ASYNCHRONOUS_IO 
+  LD := $(PURIFY) gcc
+  LDSO := gcc -G
+  LDSYSLIB++ := -lstdc++ 
+  LDSYSLIB := -lrt -lpthread -lsocket -lnsl -lgen -lm
+  LDSYSFLAGS := --whole-archive -z allextract -z muldefs -z nodefs -L$(TARGET) -L$(INSTALL_LIB) -L$(EXTERN_LIB) -L$(GCCLIB) -L/usr/lib
+  SLDSYSFLAGS := --whole-archive -z allextract -z muldefs -z nodefs -L$(STARGET) -L$(INSTALL_SLIB) -L$(EXTERN_LIB)  -L$(GCCLIB) -L/usr/lib
+endif
+
+LDFLAGS := $(LDSYSFLAGS)
+SLDFLAGS := $(SLDSYSFLAGS)
+
+# nominal (maximal) link order for C++ apps (& *.so):
+LDLIB++ := -lUFServices++ -lUFSerial++ -lUFProtocol++ -lUF++ $(LDSYSLIB++) $(LDSYSLIB)
+
+# nominal (maximal) link order for C apps (& *.so):
+LDLIB := -lUFSerial -lUFClient -LUFLog $(LDSYSLIB)
+
+# Rules:
+
+$(TARGET)/%.d: %.c
+	@if( ! -e $(TARGET)/ ) /bin/mkdir -p $(STARGET)
+	$(CC) -MM $(CFLAGS) $< > $@
+
+$(TARGET)/%.d: %.C
+	@if( ! -e $(TARGET)/ ) /bin/mkdir -p $(STARGET)
+	$(CXX) -MM $(CXXFLAGS) $< > $@
+
+$(TARGET)/%.d: %.cc
+	@if( ! -e $(TARGET)/ ) /bin/mkdir -p $(STARGET)
+	$(CXX) -MM $(CXXFLAGS) $< > $@
+
+$(TARGET)/%.d: %.cpp
+	@if( ! -e $(TARGET)/ ) /bin/mkdir -p $(STARGET)
+	$(CXX) -MM $(CXXFLAGS) $< > $@
+
+$(TARGET)/%.d: %.cxx
+	@if( ! -e $(TARGET)/ ) /bin/mkdir -p $(STARGET)
+	$(CXX) -MM $(CXXFLAGS) $< > $@
+
+$(TARGET)/%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(TARGET)/%.o: %.C
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(TARGET)/%.o: %.cc
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(TARGET)/%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(TARGET)/%.o: %.cxx
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(TARGET)/%.so: $(STARGET)/%.a
+	$(LDSO) $(LDFLAGS) -o $@ $(STARGET)/$*.a $(LDLIB++) $(LDLIB)
+
+$(STARGET)/%.a: $(TARGET)/%.o
+	if( ! -e $(STARGET)/ ) /bin/mkdir -p $(STARGET)
+	$(ARCH) $(ARFLAGS) $@ $<
+	$(RM) $<
+
+$(JTARGET)/%.class: %.java
+	javac -d $(JTARGET) $<
+
+$(JTARGET)/%.jar: $(JTARGET)/%.class
+	jar cvf $@ $<
+

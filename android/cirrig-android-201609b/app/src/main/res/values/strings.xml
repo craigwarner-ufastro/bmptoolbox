@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">C-Irrig</string>
+    <string name="splash">Splash Screen</string>
+    <string name="app_splash_title">ET‐Based Irrigation Scheduling Tool for Container Nurseries in Florida</string>
+    <string name="menu_about">About</string>
+
+    <string name="button_label_container1">Container #1</string>
+    <string name="button_label_container3">Container #3</string>
+    <string name="cirrig_copyright">©2018 University of Florida</string>
+
+</resources>

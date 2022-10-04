@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_Valves_Main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/Location_Time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:paddingBottom="4dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TableLayout
+                android:id="@+id/TableLayoutValvesMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Location_Time"
+                android:stretchColumns="*"
+                android:shrinkColumns="*">
+
+                <TableRow
+                    android:id="@+id/TableRowValvesHead"
+                    style="@style/row"
+                    android:layout_width="match_parent">
+
+                    <TextView
+                        style="@style/valve_cell_header"
+                        android:id="@+id/TextView_Valves"
+                        android:text="Valve"
+                        />
+
+                    <TextView
+                        android:id="@+id/TextView_Plant"
+                        style="@style/valve_cell_header"
+                        android:text="Plant" />
+
+                    <TextView
+                        android:id="@+id/TextView_Irr"
+                        style="@style/valve_cell_header"
+                        android:text="Irr\nMode" />
+
+                    <TextView
+                        android:id="@+id/TextView_Num_Plants"
+                        style="@style/valve_cell_header"
+                        android:text="Num\nPlants" />
+
+                    <TextView
+                        android:id="@+id/TextView_Last"
+                        style="@style/valve_cell_header"
+                        android:text="Last" />
+
+                    <TextView
+                        android:id="@+id/TextView_ToDo"
+                        style="@style/valve_cell_header"
+                        android:text="To Do" />
+
+                    <TextView
+                        android:id="@+id/TextView_Edit"
+                        style="@style/valve_cell_header"
+                        android:text="Edit" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRowValves1"
+                    style="@style/row">
+
+                    <TextView
+                        android:id="@+id/TextView_Valves_Row1"
+                        style="@style/valve_cell_odd"
+                        android:layout_height="match_parent"/>
+
+                    <TextView
+                        android:id="@+id/TextView_Plant_Row1"
+                        style="@style/valve_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_Irr_Row1"
+                        style="@style/valve_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_Num_Plants_Row1"
+                        style="@style/valve_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_Last_Row1"
+                        style="@style/valve_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_ToDo_Row1"
+                        style="@style/valve_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_Edit_Row1"
+                        style="@style/valve_cell_odd"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRowValves2"
+                    style="@style/row">
+
+                    <TextView
+                        android:id="@+id/TextView_Valves_Row2"
+                        style="@style/valve_cell_even"
+                        android:layout_height="match_parent"/>
+
+                    <TextView
+                        android:id="@+id/TextView_Plant_Row2"
+                        style="@style/valve_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_Irr_Row2"
+                        style="@style/valve_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_Num_Plants_Row2"
+                        style="@style/valve_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_Last_Row2"
+                        style="@style/valve_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_ToDo_Row2"
+                        style="@style/valve_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_Edit_Row2"
+                        style="@style/valve_cell_even" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRowValves3"
+                    style="@style/row">
+
+                    <TextView
+                        android:id="@+id/TextView_Valves_Row3"
+                        style="@style/valve_cell_odd"
+                        android:layout_height="match_parent"/>
+
+                    <TextView
+                        android:id="@+id/TextView_Plant_Row3"
+                        style="@style/valve_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_Irr_Row3"
+                        style="@style/valve_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_Num_Plants_Row3"
+                        style="@style/valve_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_Last_Row3"
+                        style="@style/valve_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_ToDo_Row3"
+                        style="@style/valve_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_Edit_Row3"
+                        style="@style/valve_cell_odd"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRowValves4"
+                    style="@style/row">
+
+                    <TextView
+                        android:id="@+id/TextView_Valves_Row4"
+                        style="@style/valve_cell_even"
+                        android:layout_height="match_parent"/>
+
+                    <TextView
+                        android:id="@+id/TextView_Plant_Row4"
+                        style="@style/valve_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_Irr_Row4"
+                        style="@style/valve_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_Num_Plants_Row4"
+                        style="@style/valve_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_Last_Row4"
+                        style="@style/valve_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_ToDo_Row4"
+                        style="@style/valve_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_Edit_Row4"
+                        style="@style/valve_cell_even" />
+                </TableRow>
+
+            </TableLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

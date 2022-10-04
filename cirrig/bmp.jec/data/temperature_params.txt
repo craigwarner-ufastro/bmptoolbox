@@ -1,0 +1,35 @@
+; Temperature Control Parameters
+;
+; Comment lines may be added anywhere unless explicity stated otherwise.
+; Placing a semicolon in the beginning of a line will completely comment out
+; the entire line
+;
+; Number of Temperature Sensors
+8
+; There should be 8 sensors, 4 corresponding to the MOS Dewar, and 4 
+; corresponding to the Camera.  The order below will determine the order
+; that the sensors are placed in the temperature panel (and will be grouped
+; accordingly)
+;[Temperature Sensor Name] [EPICS Record Name] [Hot Threshold] [Cold Threshold] 
+; Four MOS Dewar sensors first 
+MOSColdHead	             sad:TEMP_CH1        280              14	
+MOSBench2	             sad:TEMP_CH2        280              14         
+MOSBench3	             sad:TEMP_CH3        280              14         
+MOSBench4	             sad:TEMP_CH4        280              55         
+; Now Four Camera sensors
+CamColdHead 	             sad:TEMP_CH5	     280             107         
+CamBench2 	             sad:TEMP_CH6	     280             107         
+CamBench3 	             sad:TEMP_CH7	     280             107          
+CamBench4 	             sad:TEMP_CH8	     280             107          
+;Vacuum Pressure	             sad:LS218Kelvin6	     1.e-4	     1.3e-6	    0	    000  
+;
+;spare                      ec:tempMonG.VALD    280             177
+;spare                      ec:tempMonG.VALE    280             250
+;spare                      ec:tempMonG.VALF    280              35
+;spare                      ec:tempMonG.VALG    280              85
+;spare                      ec:tempMonG.VALH    280              65
+;
+;Graph Parameters -- 
+;MinX MaxX MinY MaxY xTick xLabel yTick yLabel period maxDataPoints
+ 0.0  600.0 0.0 100.0 60.0  120.0  10.0   20.0   5     2000
+;

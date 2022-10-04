@@ -1,0 +1,129 @@
+From cwarner@astro.ufl.edu Wed Dec 12 16:38:20 2012
+Date: Wed, 12 Dec 2012 16:38:20 -0500 (EST)
+From: Craig Warner <cwarner@astro.ufl.edu>
+To: "Million,Jeff B" <jmillion@ufl.edu>
+Cc: "Yeager,Thomas H" <yeagert@ufl.edu>
+Subject: RE: C-Irrig program change
+
+Hi Jeff,
+Yes, I can meet up with you maybe Fri or Mon.  I might even be able to 
+stop by your office on Fri.
+
+I think that since it sounds like we'll eventually want more than one PLC, 
+we should change the agent now to allow that.
+
+It also sounds like you want my option 3 -- a script that automatically 
+stores the cirrig inputs and outputs to a database table every day for 
+every zone regardless of whether that zone is selected to be automated for 
+irrigation purposes.  I'm assuming that you would just want the 
+"Infrequently changing inputs" not "Fixed inputs" to be stored?  As well 
+as of course the outputs displayed on the table on the cirrig page.
+
+As far as actual vs scheduled irrigation, I'll think about that, perhaps 
+after an irrigation, the PLC agent can send a command back to the CCrop 
+agent to tell it the actual irrigation time and have it update a table?
+
+Craig
+
+On Wed, 12 Dec 2012, Million,Jeff B wrote:
+
+> Thanks Craig,
+>
+> Sounds like we need to get together again and hash some of this out.
+>
+> My first thought was once you set up a zone in C-Irrig, a daily history 
+> would be maintained regardless of whether it was automated or not.  I 
+> guess if automated, 'actual' irrigation may be different than 
+> 'scheduled' if manually overridden. So, a history based on plc run time 
+> or equivalent irrigation depth might be useful. If the irrigation system 
+> wasn't working for some reason and we were reading realtime flowmeter 
+> output, a log of flowmeters would tell us how much water was really 
+> being applied on a daily basis.
+>
+> For the three project sites we are involved with right now, there will 
+> only be 1 PLC and 1 weather station per site. But we need to be able to 
+> control multiple zones per PLC. 1) UF, 1 PLC and 1 zone - but may want 
+> to increase to 4-5 zones in the future 2) SWN, Salmon's Wholesale 
+> Nursery in Dunellon, 1 PLC and 1 zone - no plans to add more zones 3) 
+> SBI, Saunders Brothers Industry in Virginia, 1 PLC and 3-4 zones.
+>
+> I was thinking something like the current version of CCROP GUI, the 
+> C-Irrig GUI would control 1 PLC (In the future we would want to be able 
+> to control multiple PLCs) but have separate pages for each irrigation 
+> zone. For each of these zone pages you would select the zone created on 
+> the web page from which the daily irrigation data would be obtained. On 
+> automated page on CIRR, you could select the time for CIRR calcs to be 
+> run each day and on the GUI enter the run times for each zone.
+>
+> In commercial settings, each nursery would likely have its unique 
+> programming needs. For example, at Saunders Bros in VA, they might 
+> irrigate a total of 120 zones running a max of 5 zones at one time. In 
+> their case, they would like to be able to list all 120 zones and sort by 
+> priority. In this case programming would be needed to start priority 
+> zones 1-5 at some given time in the morning. When the first of the five 
+> zones finishes, then the 6th zone in the priority listing would 
+> automatically start, and so on until all zones are finished. In this 
+> case, you might have 12 PLCs each controlling 10 zones but any given PLC 
+> and zone might be turned on at any given time depending upon the 
+> priority. I say all this just so you get an idea of what the ultimate 
+> usage might be. Right now setting individual start times for each zone 
+> should work fine for our small projects.
+>
+> Can you meet before the 19th? Thanks, Jeff
+>
+> -----Original Message-----
+> From: Craig Warner [mailto:cwarner@astro.ufl.edu]
+> Sent: Wednesday, December 12, 2012 1:44 PM
+> To: Million,Jeff B
+> Subject: Re: C-Irrig program change
+>
+> Hi Jeff,
+> Yes, the view weather is now fully functional with a default last 7 days but the calendars will let you select any date range.
+>
+> I was actually going to ask you about the zone history / automatically running cirrig stuff.  I forgot exactly what we had decided on the zone history.  Our options to save the zone inputs/outputs are:
+> 1) When an automated run is set up and performed using the CCrop agent.
+> 2) Manually from the webpage at any point
+> 3) A script that runs every day at a certain time regardless of whether any automated runs are set up for that zone.
+>
+> or any combination of the 3.
+>
+> Next that brings me to automating cirrig for use with PLCs.  The idea is to be able to choose cirrig instead of realtime to calculate the irrigation amount.  But with cirrig we have introduced zones, which makes it more complex since in realtime we only had one run that could be automated.  The ccrop agent runs the driver program on that run every morning and updates the runs table with the current day of year and all the irrigation results.
+>
+> The PLC agent, which we are running on the server as well but is meant to be able to be run on another machine that does not have access to that database but does have access to the PLC, will then send the username and password and a GET_IRRIGATION command to the ccrop agent at the specified time and once it gets the irrigation amount, it will start the local PLC.
+>
+> But what about the case where one user has more than one zone?  For instance, you now have UF and SWN.  And we've talked about the case where you can have multiple zones, each with its own plc, in the same location.
+>
+> My thoughts are we need to change things so that we can allow:
+> A) multiple cirrig zones or real-time runs to be run automatically for the same user.
+> B) change PLC agent to allow multiple PLCs to be accessed.  Each will have to be assigned to a zone or a real-time run.  So when the PLC agent asks the CCrop agent for irrigation, it will have to send username, password, and zone number (or run name).
+> C) multiple PLC agents can be run at multiple locations.  This should work already but I just wanted to list it here as a reminder.
+>
+> So for instance let's say you have two zones, each with a PLC, at the nursery, plus your one here.  You enable all 3 zones to have the cirrig calculations performed automatically and saved to a database at 5am every morning.  You have two copies of the PLC agent running, one on our server, one on a machine that can see the two PLCs at the nursery.  You can run the PLC GUI from anywhere for the UF zone, but it will have to be on a computer that can see the machine where the PLC agent is running at the nursery for the other two.  If that machine has a public IP address, it can be anywhere too.  You configure both GUIs and assign the zones to the PLCs.  At say 6am, both PLC agents connect to the CCrop agent, get the irrigation values for the proper zones, and send the commands to the proper PLCs.
+>
+> This is getting long so I'm gonna send another e-mail with the cirrig formula stuff.  But finally, just a heads-up on my schedule: I'll be here and able to work on stuff till the 19th.  Then I'll be skiing in CO the 20th-24th and home for a few days after that.  I'll be back here the 28th-29th and since UF will be closed, I'll have plenty of time to work on stuff then too.
+>
+> Craig
+>
+> On Wed, 12 Dec 2012, Million,Jeff B wrote:
+>
+>>
+>> Hey Craig,
+>>
+>>  
+>>
+>> I have some changes for the CIrrig calculations.  Can you give me a
+>> link to the current program so I can see how the changes would fit in?  
+>> Or, should I just send you my latest formula and let you make the changes?
+>>
+>>  
+>>
+>> I saw that you changed the weather output to be the last 7 days –
+>> that’s nice. Think about some options for viewing daily zone history.
+>>
+>>  
+>>
+>> Thanks, Jeff
+>>
+>>
+>>
+>

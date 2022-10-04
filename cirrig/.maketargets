@@ -1,0 +1,159 @@
+# RCS: 
+# $Name:  $ $Id: .maketargets,v 1.1 2010/03/03 17:46:59 warner Exp $
+#
+# This can be used/included by low level Makefiles for standard target defs
+#
+
+ifndef JDATE
+  JDATE = $(shell date "+%Y-%j-%H-%M-%S")
+endif
+
+ifndef CWD
+  CWD = $(shell pwd)
+endif
+
+showmacros:
+	-@echo JDATE= $(JDATE)
+	-@echo RCSMASTER= $(RCSMASTER)
+	-@echo LDLIB++= $(LDLIB++)
+	-@echo LDLIB= $(LDLIB)
+	-@echo JAR= $(JAR)
+	-@echo LIB= $(LIB)
+	-@echo EXE= $(EXE)
+	-@echo TARGET= $(TARGET)
+	-@echo STARGET= $(STARGET)
+	-@echo COMPILER_ID= $(COMPILER_ID)
+	-@echo OS= $(OS)
+	-@echo OS_VERSION= $(OS_VERSION)
+	-@echo RCSLIST = $(RCSLIST)
+	-@echo PUBHDR = $(PUBHDR)
+	-@echo PUBLIB = $(PUBLIB)
+	-@echo PUBSLIB = $(PUBSLIB)
+	-@echo PUBEXE = $(PUBEXE) = PUBBIN = $(PUBBIN)
+	-@echo PUBSBIN = $(PUBSBIN)
+	-@echo BMPINSTALL = $(BMPINSTALL)
+	-@echo INSTALL_HDR = $(INSTALL_HDR)
+	-@echo INSTALL_LIB = $(INSTALL_LIB)
+	-@echo INSTALL_BIN = $(INSTALL_BIN)
+
+install: pubheader publib pubexe
+	@echo install complete.
+
+pubheader: $(PUBHDR)
+	@if ( -e $(INSTALL_HDR)/ ) chmod -R u+w $(INSTALL_HDR)/
+	if ( "$(PUBHDR)" != "" ) cp -f -p $(PUBHDR) $(INSTALL_HDR)
+	@echo installed public headers.
+
+publib: dynlib
+	@if ( -e $(INSTALL_LIB)/ ) chmod -R u+w $(INSTALL_LIB)/
+	if ( "$(PUBLIB)" != "" ) cp -f -p $(PUBLIB) $(INSTALL_LIB)
+	@echo installed public dynamic libraries.
+
+pubexe: $(PUBEXE)
+	@if ( -e $(INSTALL_BIN)/ ) chmod -R u+w $(INSTALL_BIN)/
+	if ( "$(PUBEXE)" != "" ) cp -f -p $(PUBEXE) $(INSTALL_BIN)
+	if ( "$(SCRIPTS)" != "" ) cp -f -p $(SCRIPTS) $(INSTALL_BIN)
+	@echo installed public dynamic executable binaries.
+
+pubslib: slib
+	@if ( -e $(INSTALL_SLIB)/ ) chmod -R u+w $(INSTALL_SLIB)/
+	if ( "$(PUBSLIB)" != "" ) cp -f -p $(PUBSLIB) $(INSTALL_SLIB)
+	@echo installed public static libraries.
+
+pubsbin: $(PUBSBIN)
+	@if ( -e $(INSTALL_SBIN)/ ) chmod -R u+w $(INSTALL_SBIN)/
+	if ( "$(PUBSBIN)" != "" ) cp -f -p $(PUBSBIN) $(INSTALL_SBIN)
+	if ( "$(SCRIPTS)" != "" ) cp -f -p $(SCRIPTS) $(INSTALL_SBIN)
+	@echo installed public static executable binaries.
+
+perl: $(PMODULES) $(PSCRIPTS) 
+	@if ( -e $(INSTALL_PERL)/ ) chmod -R u+w $(INSTALL_PERL)/
+	if ( "$(PSCRIPTS)" != "" ) cp -f -p $(PSCRIPTS) $(INSTALL_PERL)
+	if ( "$(PMODULES)" != "" ) cp -f -p $(PMODULES) $(INSTALL_PERL)
+	@echo installed perl modules and scripts: $(PMODULES) $(PSCRIPTS)
+
+clean:
+	@if ( -e $(TARGET)/.depend ) mv $(TARGET)/.depend ./.depend.$(TARGET)
+	$(RM) -r $(TARGET) 
+	if ( -e ./.depend.$(TARGET) ) mkdir -p $(STARGET)
+	@if ( -e ./.depend.$(TARGET) ) mv ./.depend.$(TARGET) $(TARGET)/.depend
+
+clearpub:
+	@if ( ! -e $(BMPINSTALL)/ ) rm -rf $(BMPINSTALL)
+
+cleanpub: clearpub initpub
+	@
+
+cleanall: cleanpub
+	@
+ 
+initpub:
+	@if ( ! -e $(INSTALL_LIB)/ )  mkdir -p $(INSTALL_LIB)
+	@if ( ! -e $(INSTALL_SLIB)/ ) mkdir -p $(INSTALL_SLIB)
+	@if ( ! -e $(INSTALL_BIN)/ )  mkdir -p $(INSTALL_BIN)
+	@if ( ! -e $(INSTALL_SBIN)/ ) mkdir -p $(INSTALL_SBIN)
+	@if ( ! -e $(INSTALL_HDR)/ )  mkdir -p $(INSTALL_HDR)
+	@if ( ! -e $(INSTALL_ETC)/ )  mkdir -p $(INSTALL_ETC)
+
+initdev: initdep
+	@co $(RCSLIST)
+
+init: initpub initdev
+	@echo initialization done
+
+sync: rcssync init
+	@echo sync: $(CWD) checkin and checkout complete
+
+rcsinit:
+	@$(foreach i, $(RCSLIST), if( -e ./RCS/$i,v ) mv ./RCS/$i,v ./RCS/.$i$(JDATE),v; ) 
+	ci -l0.0 -N"Init" -s"Developmental" -m"initial checkin" -t-"initial checkin" $(RCSLIST)
+
+rcssync:
+	ci -u -sDevelopmental -m"synchronous checkin" $(RCSLIST)
+
+syncdiff:
+#	$(foreach i, $(RCSLIST), rcsdiff $i >& /dev/null ; if( $$? != 0 ) co $i ; )
+	$(foreach i, $(shell \ls RCS/*,v), rcsdiff $i >& /dev/null ; if( $$? != 0 ) co $i; )
+
+# rudimentary system implementation cycle: develop, test, install, release:
+
+# develop:
+rcscheckin:
+	ci -l -sDevelopmental -m"incremental checkin" $(RCSLIST)
+
+# unit test:
+rcstest:
+	ci -u -sTestable -m"current & testable" $(RCSLIST)
+	rcs -nTest: $(RCSLIST)
+
+# integrated test:
+rcsinstall:
+	ci -u -sInstalled -m"current & installed" $(RCSLIST)
+	rcs -nInstall: $(RCSLIST)
+
+# official release (deployment):
+rcsrelease:
+	ci -u -sRelease -m"tested & released" $(RCSLIST)
+	rcs -N"$(UFRELEASE)": $(RCSLIST)
+#       $(foreach i, $(RCSLIST), rlog -t $i;)
+#       ident $(TARGET)/*.so
+
+releaseco: init rcsrelease
+	rcsclean; co -r$(UFRELEASE) $(RCSLIST)
+
+release: releaseco
+	@echo installed release $(UFRELEASE)
+
+initdep:
+	-@mkdir -p $(STARGET); 
+	@touch $(TARGET)/.depend
+
+depend: initdep $(LIBSRC) $(EXESRC) $(TARGET)/.depend
+	@echo new dependency file generated
+#	makedepend -f $(TARGET)/.depend -- $(CXXFLAGS) -- $(LIBSRC)
+
+$(TARGET)/.depend: $(RCSLIST) $(HDR) $(DEP)
+	-@cat $(DEP) >! $(TARGET)/.depend 
+
+include $(TARGET)/.depend
+

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <ScrollView
+        android:id="@+id/ScrollView_TipDialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="82dp">
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_TipDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            tools:context=".MainActivity">
+
+            <LinearLayout
+                android:id="@+id/tipDialogLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/tipDialogLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingRight="24dp">
+
+                    <TextView
+                        android:id="@+id/TextView_AddTips_ID_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:text="ID"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/font_size_medium" />
+
+                    <TextView
+                        android:id="@+id/TextView_AddTips_ID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/float_cell_bg"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tipDialogLayout3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingRight="24dp">
+
+                    <TextView
+                        android:id="@+id/TextView_AddTips_Name_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:text="Name"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/font_size_medium" />
+
+                    <TextView
+                        android:id="@+id/TextView_AddTips_Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/float_cell_bg"
+                        android:text="Test Unit"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/tipDialogLayout4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/TextView_AddTips_Desc_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:text="Description"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/font_size_medium" />
+
+                    <TextView
+                        android:id="@+id/TextView_AddTips_Desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/float_cell_bg"
+                        android:text="This is a description"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_small" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tipDialogLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tipDialogLayout1"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/TextView_AddTips_Date"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:gravity="left|fill_vertical"
+                    android:text="Date: "
+                    android:textSize="@dimen/font_size_large" />
+
+                <EditText
+                    android:id="@+id/EditText_AddTips_Date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[Click to Select]"
+                    android:textSize="@dimen/font_size_large" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tipDialogLayout6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tipDialogLayout5"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/TextView_AddTips_Counter1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_size_large"
+                    android:text="Tip 1: " />
+
+                <EditText
+                    android:id="@+id/EditText_AddTips_Counter1"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:textSize="@dimen/font_size_large"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/TextView_AddTips_Counter2"
+                    android:textSize="@dimen/font_size_large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tip 2: " />
+
+                <EditText
+                    android:id="@+id/EditText_AddTips_Counter2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:textSize="@dimen/font_size_large"
+                    android:text="" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tipDialogLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tipDialogLayout6"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/TextView_AddTips_Counter3"
+                    android:textSize="@dimen/font_size_large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tip 3: " />
+
+                <EditText
+                    android:id="@+id/EditText_AddTips_Counter3"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_size_large"
+                    android:digits="0123456789"
+                    android:text="" />
+
+
+                <TextView
+                    android:id="@+id/TextView_AddTips_Counter4"
+                    android:textSize="@dimen/font_size_large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tip 4: " />
+
+                <EditText
+                    android:id="@+id/EditText_AddTips_Counter4"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_size_large"
+                    android:digits="0123456789"
+                    android:text="" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,11 @@
+DONE IntegratedComboBox mark issues
+DONE Minutes - 0x invalid
+Change IP
+DONE Update free outlets on add, remove outlet
+DONE Remove outlet button
+DONE Enable outlet checkbox
+Update zone list
+DONE Allow multiple groups - maybe change to IntegratedCombo
+DONE Add Zone Group actionListener check name, number
+DONE Group Number keyListener nums only
+DONE Stop updating records on poll in agent if unchanged. 

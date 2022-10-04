@@ -1,0 +1,4 @@
+ RUN:  data/cwarner/test6              
+ 
+  YR DOY DAY   Rain   Irr    ET Drain  Roff NLoad
+2010  51 366  103.5 102.9 103.9  97.3 103.0  64.1

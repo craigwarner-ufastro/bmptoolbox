@@ -1,0 +1,16 @@
+Sun May 23 21:35:59 EDT 2021 Error: Unknown command: GET_FREE_COUNTERS CjecFrame, processResponse, CjecFrame.java, 461
+
+Sun May 23 21:36:00 EDT 2021 Error: Unknown command: GET_FREE_COUNTERS CjecFrame, processResponse, CjecFrame.java, 461
+
+Sun May 23 21:36:03 EDT 2021 Error: Unknown command: GET_FREE_COUNTERS CjecFrame, processResponse, CjecFrame.java, 461
+
+Sun May 23 21:36:03 EDT 2021 Error: Unknown command: GET_FREE_COUNTERS CjecFrame, processResponse, CjecFrame.java, 461
+
+Sun May 23 21:39:04 EDT 2021 Error: Disconnected from CirrigPlcAgent StatusThread, run, StatusThread.java, 144
+
+Sun May 23 21:39:15 EDT 2021 Error: Not connected to CirrigPlcAgent. CjecFrame$3, run, CjecFrame.java, 344
+
+Mon May 24 00:52:40 EDT 2021 Error talking to CCROP Agent: java.net.ConnectException: Connection timed out CjecFrame, processResponse, CjecFrame.java, 461
+
+Mon May 24 00:57:53 EDT 2021 Error: Disconnected from CirrigPlcAgent StatusThread, run, StatusThread.java, 144
+

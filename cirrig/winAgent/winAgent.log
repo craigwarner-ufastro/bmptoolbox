@@ -1,0 +1,312 @@
+Creating new Win Server agent...
+$Name:  $ $Id: WinAgent.java,v 1.10 2011/10/27 17:29:49 warner Exp $
+ufWinAgent.WinAgent> server port = 56007
+ufWinAgent.WinAgent::exec> starting service
+ufWinAgent.WinAgent> starting Listening thread for client connections...
+ufWinAgent.WinAgent$ListenThread.run> server port = 56007
+ufWinAgent.WinAgent$ListenThread.run> accepting new connection...
+ufWinAgent.WinAgent$WinClientThread> time = Jan 06 15:10:25 LT
+ufWinAgent.WinAgent$WinClientThread> new connection from: 192.168.1.105:1
+ufWinAgent.WinAgent$ListenThread.run> connection accepted.
+ufWinAgent.WinAgent$WinClientThread.run> waiting for requests from: 192.168.1.105:1
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:1)::_handleRequest>Jan 06 15:10:25 LT
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:1)::_handleRequest> request: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:1)::handleAction> Received action request bundle: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:1)::handleAction> contains 1 requests.
+ufWinAgent.WinAgent::run Jan 06 15:10:25 LT> Received requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:1)
+ufWinAgent.WinAgent::action> Received new request.
+	Client Thread: ufWinAgent.WinAgent$WinClientThread(192.168.1.105:1)
+	Request Name: ufWinAgent.WinClient: actionRequest
+	Request Size: 1
+	Request 1: STOP_AGENT::bmptoolbox
+ufWinAgent.WinAgent::action> Running jps to find pid of weather gui.
+	3612 sun.tools.jps.Jps -lm
+	2652 ufWinAgent.jar -winserver -log winagent.log
+ufWinAgent.WinAgent::run> Successfully executed requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:1)
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:1)::_handleRequest>Jan 06 15:10:30 LT
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:1)::_handleRequest> request: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:1)::handleAction> Received action request bundle: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:1)::handleAction> contains 1 requests.
+ufWinAgent.WinAgent::run Jan 06 15:10:30 LT> Received requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:1)
+ufWinAgent.WinAgent::action> Received new request.
+	Client Thread: ufWinAgent.WinAgent$WinClientThread(192.168.1.105:1)
+	Request Name: ufWinAgent.WinClient: actionRequest
+	Request Size: 1
+	Request 1: START_AGENT::bmptoolbox -host 192.168.1.105 -host 192.168.1.109 -jar bmptoolbox
+ufWinAgent.WinAgent::run> Successfully executed requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:1)
+ufWinAgent.WinAgent::action> Running bmptoolbox -host 192.168.1.105 -host 192.168.1.109 -jar bmptoolbox
+ufWinAgent.WinAgent$ListenThread.run> accepting new connection...
+ufWinAgent.WinAgent$WinClientThread> time = Jan 06 15:11:11 LT
+ufWinAgent.WinAgent$WinClientThread> new connection from: 192.168.1.105:2
+ufWinAgent.WinAgent$ListenThread.run> connection accepted.
+ufWinAgent.WinAgent$WinClientThread.run> waiting for requests from: 192.168.1.105:2
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:2)::_handleRequest>Jan 06 15:11:11 LT
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:2)::_handleRequest> request: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:2)::handleAction> Received action request bundle: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:2)::handleAction> contains 1 requests.
+ufWinAgent.WinAgent::run Jan 06 15:11:11 LT> Received requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:2)
+ufWinAgent.WinAgent::action> Received new request.
+	Client Thread: ufWinAgent.WinAgent$WinClientThread(192.168.1.105:2)
+	Request Name: ufWinAgent.WinClient: actionRequest
+	Request Size: 1
+	Request 1: STOP_AGENT::bmpjec_local
+ufWinAgent.WinAgent::action> Running jps to find pid of weather gui.
+	1012 ..\bin\BMPToolbox.jar -log bmpagent.log
+	2652 ufWinAgent.jar -winserver -log winagent.log
+	2152 sun.tools.jps.Jps -lm
+ufWinAgent.WinAgent::run> Successfully executed requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:2)
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:2)::_handleRequest>Jan 06 15:11:17 LT
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:2)::_handleRequest> request: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:2)::handleAction> Received action request bundle: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:2)::handleAction> contains 1 requests.
+ufWinAgent.WinAgent::run Jan 06 15:11:17 LT> Received requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:2)
+ufWinAgent.WinAgent::action> Received new request.
+	Client Thread: ufWinAgent.WinAgent$WinClientThread(192.168.1.105:2)
+	Request Name: ufWinAgent.WinClient: actionRequest
+	Request Size: 1
+	Request 1: START_AGENT::bmpjec_local -host 192.168.1.105 -host 192.168.1.109 -jar bmpjec_local
+ufWinAgent.WinAgent::run> Successfully executed requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:2)
+ufWinAgent.WinAgent::action> Running bmpjec_local -host 192.168.1.105 -host 192.168.1.109 -jar bmpjec_local
+ufWinAgent.WinAgent$ListenThread.run> accepting new connection...
+ufWinAgent.WinAgent$WinClientThread> time = Jan 06 15:16:11 LT
+ufWinAgent.WinAgent$WinClientThread> new connection from: 192.168.1.105:3
+ufWinAgent.WinAgent$ListenThread.run> connection accepted.
+ufWinAgent.WinAgent$WinClientThread.run> waiting for requests from: 192.168.1.105:3
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:3)::_handleRequest>Jan 06 15:16:11 LT
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:3)::_handleRequest> request: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:3)::handleAction> Received action request bundle: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:3)::handleAction> contains 1 requests.
+ufWinAgent.WinAgent::run Jan 06 15:16:12 LT> Received requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:3)
+ufWinAgent.WinAgent::action> Received new request.
+	Client Thread: ufWinAgent.WinAgent$WinClientThread(192.168.1.105:3)
+	Request Name: ufWinAgent.WinClient: actionRequest
+	Request Size: 1
+	Request 1: STOP_AGENT::bmptoolbox
+ufWinAgent.WinAgent::action> Running jps to find pid of weather gui.
+	2836 sun.tools.jps.Jps -lm
+	724 ..\bmpjec\bmpjec.jar -host localhost -log bmpjec.log
+	1012 ..\bin\BMPToolbox.jar -log bmpagent.log
+	2652 ufWinAgent.jar -winserver -log winagent.log
+ufWinAgent.WinAgent::run> Successfully executed requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:3)
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:3)::_handleRequest>Jan 06 15:16:17 LT
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:3)::_handleRequest> request: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:3)::handleAction> Received action request bundle: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:3)::handleAction> contains 1 requests.
+ufWinAgent.WinAgent::run Jan 06 15:16:17 LT> Received requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:3)
+ufWinAgent.WinAgent::action> Received new request.
+	Client Thread: ufWinAgent.WinAgent$WinClientThread(192.168.1.105:3)
+	Request Name: ufWinAgent.WinClient: actionRequest
+	Request Size: 1
+	Request 1: START_AGENT::bmptoolbox -host 192.168.1.105 -host 192.168.1.109 -jar bmptoolbox
+ufWinAgent.WinAgent::run> Successfully executed requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:3)
+ufWinAgent.WinAgent::action> Running bmptoolbox -host 192.168.1.105 -host 192.168.1.109 -jar bmptoolbox
+ufWinAgent.WinAgent::action> WARNING: start terminated abnormally with 1
+ufWinAgent.WinAgent$ListenThread.run> accepting new connection...
+ufWinAgent.WinAgent$WinClientThread> time = Jan 06 15:16:39 LT
+ufWinAgent.WinAgent$WinClientThread> new connection from: 192.168.1.105:4
+ufWinAgent.WinAgent$ListenThread.run> connection accepted.
+ufWinAgent.WinAgent$WinClientThread.run> waiting for requests from: 192.168.1.105:4
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:4)::_handleRequest>Jan 06 15:16:39 LT
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:4)::_handleRequest> request: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:4)::handleAction> Received action request bundle: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:4)::handleAction> contains 1 requests.
+ufWinAgent.WinAgent::run Jan 06 15:16:39 LT> Received requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:4)
+ufWinAgent.WinAgent::action> Received new request.
+	Client Thread: ufWinAgent.WinAgent$WinClientThread(192.168.1.105:4)
+	Request Name: ufWinAgent.WinClient: actionRequest
+	Request Size: 1
+	Request 1: STOP_AGENT::bmptoolbox
+ufWinAgent.WinAgent::action> Running jps to find pid of weather gui.
+	1188 sun.tools.jps.Jps -lm
+	724 ..\bmpjec\bmpjec.jar -host localhost -log bmpjec.log
+	1012 ..\bin\BMPToolbox.jar -log bmpagent.log
+	2652 ufWinAgent.jar -winserver -log winagent.log
+ufWinAgent.WinAgent::run> Successfully executed requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:4)
+ufWinAgent.WinAgent$ListenThread.run> accepting new connection...
+ufWinAgent.WinAgent$WinClientThread> time = Jan 06 15:16:46 LT
+ufWinAgent.WinAgent$WinClientThread> new connection from: 192.168.1.105:5
+ufWinAgent.WinAgent$ListenThread.run> connection accepted.
+ufWinAgent.WinAgent$ListenThread.run> accepting new connection...
+ufWinAgent.WinAgent$WinClientThread.run> waiting for requests from: 192.168.1.105:5
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:5)::_handleRequest>Jan 06 15:16:46 LT
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:5)::_handleRequest> request: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:5)::handleAction> Received action request bundle: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:5)::handleAction> contains 1 requests.
+ufWinAgent.WinAgent::run Jan 06 15:16:46 LT> Received requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:5)
+ufWinAgent.WinAgent::action> Received new request.
+	Client Thread: ufWinAgent.WinAgent$WinClientThread(192.168.1.105:5)
+	Request Name: ufWinAgent.WinClient: actionRequest
+	Request Size: 1
+	Request 1: STOP_AGENT::bmpjec
+ufWinAgent.WinAgent::action> Running jps to find pid of weather gui.
+	936 sun.tools.jps.Jps -lm
+	724 ..\bmpjec\bmpjec.jar -host localhost -log bmpjec.log
+	1012 ..\bin\BMPToolbox.jar -log bmpagent.log
+	2652 ufWinAgent.jar -winserver -log winagent.log
+ufWinAgent.WinAgent::action> Running taskkill to stop weather gui.
+ufWinAgent.WinAgent$WinClientThread> time = Jan 06 15:16:50 LT
+ufWinAgent.WinAgent$WinClientThread> new connection from: 192.168.1.105:6
+ufWinAgent.WinAgent$ListenThread.run> connection accepted.
+ufWinAgent.WinAgent$WinClientThread.run> waiting for requests from: 192.168.1.105:6
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:6)::_handleRequest>Jan 06 15:16:50 LT
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:6)::_handleRequest> request: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:6)::handleAction> Received action request bundle: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:6)::handleAction> contains 1 requests.
+ufWinAgent.WinAgent::run Jan 06 15:16:51 LT> Received requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:6)
+ufWinAgent.WinAgent::action> Received new request.
+	Client Thread: ufWinAgent.WinAgent$WinClientThread(192.168.1.105:6)
+	Request Name: ufWinAgent.WinClient: actionRequest
+	Request Size: 1
+	Request 1: STOP_AGENT::bmptoolbox
+ufWinAgent.WinAgent::action> Running jps to find pid of weather gui.
+	3488 sun.tools.jps.Jps -lm
+	724 ..\bmpjec\bmpjec.jar -host localhost -log bmpjec.log
+	1012 ..\bin\BMPToolbox.jar -log bmpagent.log
+	2652 ufWinAgent.jar -winserver -log winagent.log
+ufWinAgent.WinAgent::run> Successfully executed requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:6)
+	stop> SUCCESS: The process with PID 724 (child process of PID 3276) has been terminated.
+ufWinAgent.WinAgent::action> stop successful.
+ufWinAgent.WinAgent::run> Successfully executed requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:5)
+ufWinAgent.WinAgent::action> WARNING: start terminated abnormally with 1
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:6)::_handleRequest>Jan 06 15:16:54 LT
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:6)::_handleRequest> request: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:6)::handleAction> Received action request bundle: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:6)::handleAction> contains 1 requests.
+ufWinAgent.WinAgent::run Jan 06 15:16:54 LT> Received requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:6)
+ufWinAgent.WinAgent::action> Received new request.
+	Client Thread: ufWinAgent.WinAgent$WinClientThread(192.168.1.105:6)
+	Request Name: ufWinAgent.WinClient: actionRequest
+	Request Size: 1
+	Request 1: START_AGENT::bmptoolbox -host 192.168.1.105 -host 192.168.1.109 -jar bmptoolbox
+ufWinAgent.WinAgent::run> Successfully executed requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:6)
+ufWinAgent.WinAgent::action> Running bmptoolbox -host 192.168.1.105 -host 192.168.1.109 -jar bmptoolbox
+ufWinAgent.WinAgent::action> WARNING: start terminated abnormally with 1
+ufWinAgent.WinAgent$ListenThread.run> accepting new connection...
+ufWinAgent.WinAgent$WinClientThread> time = Jan 06 15:17:10 LT
+ufWinAgent.WinAgent$WinClientThread> new connection from: 192.168.1.105:7
+ufWinAgent.WinAgent$ListenThread.run> connection accepted.
+ufWinAgent.WinAgent$WinClientThread.run> waiting for requests from: 192.168.1.105:7
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:7)::_handleRequest>Jan 06 15:17:10 LT
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:7)::_handleRequest> request: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:7)::handleAction> Received action request bundle: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:7)::handleAction> contains 1 requests.
+ufWinAgent.WinAgent::run Jan 06 15:17:10 LT> Received requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:7)
+ufWinAgent.WinAgent::action> Received new request.
+	Client Thread: ufWinAgent.WinAgent$WinClientThread(192.168.1.105:7)
+	Request Name: ufWinAgent.WinClient: actionRequest
+	Request Size: 1
+	Request 1: LIST_TASKS::LIST_TASKS
+ufWinAgent.WinAgent::action> Running tasklist...
+	
+	Image Name                     PID Session Name        Session#    Mem Usage
+	========================= ======== ================ =========== ============
+	System Idle Process              0 Services                   0         24 K
+	System                           4 Services                   0        712 K
+	smss.exe                       272 Services                   0        616 K
+	csrss.exe                      364 Services                   0      2,824 K
+	csrss.exe                      416 Console                    1      4,448 K
+	winlogon.exe                   440 Console                    1      4,264 K
+	wininit.exe                    448 Services                   0      2,872 K
+	services.exe                   512 Services                   0      5,580 K
+	lsass.exe                      520 Services                   0      8,244 K
+	lsm.exe                        532 Services                   0      2,588 K
+	svchost.exe                    636 Services                   0      5,856 K
+	svchost.exe                    700 Services                   0      5,324 K
+	svchost.exe                    748 Services                   0     14,824 K
+	svchost.exe                    836 Services                   0     62,020 K
+	svchost.exe                    880 Services                   0     12,032 K
+	svchost.exe                    904 Services                   0    576,420 K
+	svchost.exe                   1080 Services                   0     11,280 K
+	spoolsv.exe                   1216 Services                   0      6,524 K
+	svchost.exe                   1244 Services                   0      9,696 K
+	svchost.exe                   1296 Services                   0     11,124 K
+	FrameworkService.exe          1424 Services                   0      2,456 K
+	VsTskMgr.exe                  1476 Services                   0      2,332 K
+	taskhost.exe                  1536 Console                    1      8,828 K
+	dwm.exe                       1604 Console                    1      4,140 K
+	mfevtps.exe                   1648 Services                   0      5,536 K
+	mfeann.exe                    1700 Services                   0      5,556 K
+	conhost.exe                   1756 Services                   0      2,096 K
+	naPrdMgr.exe                  1784 Services                   0      1,600 K
+	explorer.exe                  1848 Console                    1     65,792 K
+	WmiApSrv.exe                  1896 Services                   0      3,348 K
+	mcshield.exe                  2000 Services                   0     50,076 K
+	UdaterUI.exe                   320 Console                    1      3,348 K
+	ISUSPM.exe                    2164 Console                    1      4,436 K
+	WeatherLink 6.0.0.exe         2428 Console                    1     11,020 K
+	McTray.exe                    2608 Console                    1        260 K
+	shstat.exe                    2828 Console                    1        660 K
+	SearchIndexer.exe             2900 Services                   0     18,292 K
+	wmpnetwk.exe                  2356 Services                   0      7,996 K
+	svchost.exe                   2412 Services                   0     11,136 K
+	wuauclt.exe                   2692 Console                    1      5,084 K
+	mcupdate.exe                  3028 Services                   0      6,844 K
+	McScript_InUse.exe            4048 Services                   0     13,648 K
+	conhost.exe                   3968 Services                   0      2,372 K
+	cmd.exe                       3732 Console                    1      2,544 K
+	conhost.exe                   1172 Console                    1      4,488 K
+	cmd.exe                       3828 Console                    1      2,532 K
+	conhost.exe                   3208 Console                    1      4,160 K
+	javaw.exe                     2652 Console                    1     15,676 K
+	cmd.exe                       3380 Console                    1      2,472 K
+	conhost.exe                    312 Console                    1      2,692 K
+	javaw.exe                     1012 Console                    1     26,604 K
+	notepad.exe                   3244 Console                    1      5,428 K
+	SearchProtocolHost.exe        2156 Services                   0      6,180 K
+	SearchFilterHost.exe           604 Services                   0      4,736 K
+	WmiPrvSE.exe                  1840 Services                   0      5,264 K
+	tasklist.exe                  2732 Console                    1      4,200 K
+	conhost.exe                   3252 Console                    1      2,652 K
+ufWinAgent.WinAgent::action> EOF
+ufWinAgent.WinAgent::run> Successfully executed requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:7)
+ufWinAgent.WinAgent$ListenThread.run> accepting new connection...
+ufWinAgent.WinAgent$WinClientThread> time = Jan 06 15:17:25 LT
+ufWinAgent.WinAgent$WinClientThread> new connection from: 192.168.1.105:8
+ufWinAgent.WinAgent$ListenThread.run> connection accepted.
+ufWinAgent.WinAgent$WinClientThread.run> waiting for requests from: 192.168.1.105:8
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:8)::_handleRequest>Jan 06 15:17:25 LT
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:8)::_handleRequest> request: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:8)::handleAction> Received action request bundle: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:8)::handleAction> contains 1 requests.
+ufWinAgent.WinAgent::run Jan 06 15:17:25 LT> Received requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:8)
+ufWinAgent.WinAgent::action> Received new request.
+	Client Thread: ufWinAgent.WinAgent$WinClientThread(192.168.1.105:8)
+	Request Name: ufWinAgent.WinClient: actionRequest
+	Request Size: 1
+	Request 1: STOP_AGENT::bmptoolbox
+ufWinAgent.WinAgent::action> Running jps to find pid of weather gui.
+	1012 ..\bin\BMPToolbox.jar -log bmpagent.log
+	2652 ufWinAgent.jar -winserver -log winagent.log
+	2824 sun.tools.jps.Jps -lm
+ufWinAgent.WinAgent::run> Successfully executed requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:8)
+ufWinAgent.WinAgent$ListenThread.run> accepting new connection...
+ufWinAgent.WinAgent$WinClientThread> time = Jan 06 15:17:52 LT
+ufWinAgent.WinAgent$WinClientThread> new connection from: 192.168.1.105:9
+ufWinAgent.WinAgent$ListenThread.run> connection accepted.
+ufWinAgent.WinAgent$WinClientThread.run> waiting for requests from: 192.168.1.105:9
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:9)::_handleRequest>Jan 06 15:17:52 LT
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:9)::_handleRequest> request: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:9)::handleAction> Received action request bundle: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:9)::handleAction> contains 1 requests.
+ufWinAgent.WinAgent::run Jan 06 15:17:52 LT> Received requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:9)
+ufWinAgent.WinAgent::action> Received new request.
+	Client Thread: ufWinAgent.WinAgent$WinClientThread(192.168.1.105:9)
+	Request Name: ufWinAgent.WinClient: actionRequest
+	Request Size: 1
+	Request 1: GET_FILE::C:\Users\nursery\bin\winAgent.log
+ufWinAgent.WinAgent::run> FAILED to execute requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:9)
+ufWinAgent.WinAgent$ListenThread.run> accepting new connection...
+ufWinAgent.WinAgent$WinClientThread> time = Jan 06 15:18:17 LT
+ufWinAgent.WinAgent$WinClientThread> new connection from: 192.168.1.105:10
+ufWinAgent.WinAgent$ListenThread.run> connection accepted.
+ufWinAgent.WinAgent$WinClientThread.run> waiting for requests from: 192.168.1.105:10
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:10)::_handleRequest>Jan 06 15:18:17 LT
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:10)::_handleRequest> request: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:10)::handleAction> Received action request bundle: ufWinAgent.WinClient: actionRequest
+ufWinAgent.WinAgent$WinClientThread(192.168.1.105:10)::handleAction> contains 1 requests.
+ufWinAgent.WinAgent::run Jan 06 15:18:17 LT> Received requests from ufWinAgent.WinAgent$WinClientThread(192.168.1.105:10)
+ufWinAgent.WinAgent::action> Received new request.
+	Client Thread: ufWinAgent.WinAgent$WinClientThread(192.168.1.105:10)
+	Request Name: ufWinAgent.WinClient: actionRequest
+	Request Size: 1
+	Request 1: GET_FILE::C:\Users\nursery\bmpinstall\bin\winAgent.log

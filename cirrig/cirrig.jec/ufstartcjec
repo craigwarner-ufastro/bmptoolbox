@@ -1,0 +1,11 @@
+#!/bin/tcsh
+unlimit
+limit coredumpsize 0
+
+source $BMPINSTALL/.ufcshrc
+if ( ! -e $HOME/bmplogs) mkdir -p $HOME/bmplogs
+set logdate = `date "+%Y-%m-%d.%H:%M"`
+
+java -Xms64m -Xmx512m -Djdd.data_path=${BMPINSTALL}/cjec/ -jar ${BMPINSTALL}/cjec/cjec.jar -log $HOME/bmplogs/log.cjec.${logdate} $argv[1-] >& $HOME/bmplogs/log.cjec.${logdate} & 
+
+exit

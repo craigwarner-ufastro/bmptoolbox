@@ -1,0 +1,2 @@
+Main-Class: Weewx.ufWeewx
+Class-Path: Weewx.jar ../lib/Scheduler.jar ../lib/sqlite-jdbc-3.8.10.1.jar ../lib/javaUFProtocol.jar ../lib/javaUFLib.jar ../lib/javaMMTLib.jar

@@ -1,0 +1,7 @@
+#!/bin/tcsh
+# rcsId = $Name:  $ $Id: ufbmprestart,v 1.1 2010/04/22 20:48:15 warner Exp $
+
+echo ufbmpstop $argv[1-]
+$BMPINSTALL/bin/ufbmpstop $argv[1-]
+echo ufbmpstart $argv[1-]
+$BMPINSTALL/bin/ufbmpstart $argv[1-]

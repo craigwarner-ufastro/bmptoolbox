@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <ScrollView
+        android:id="@+id/ScrollView_ArduinoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_ArduinoView"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="100dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            tools:context=".MainActivity"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <TextView
+                android:id="@+id/UnitLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_very_large"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:text="Unit Calcs"
+                />
+
+
+            <LinearLayout
+                android:id="@+id/UnitLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/UnitLabel"
+                android:paddingBottom="@dimen/unit_view_padding"
+                >
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="24dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_ID_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ID"
+                        android:textSize="@dimen/font_size_medium"
+                        android:textColor="@color/grey"
+                        android:background="@color/very_light_grey"
+                        />
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_ID"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large"
+                        android:background="@color/float_cell_bg"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="24dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_Name_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:textSize="@dimen/font_size_medium"
+                        android:textColor="@color/grey"
+                        android:background="@color/very_light_grey"
+                        />
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_Name"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large"
+                        android:background="@color/float_cell_bg"
+                        android:text="Test Unit" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_Desc_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Description"
+                        android:textSize="@dimen/font_size_medium"
+                        android:textColor="@color/grey"
+                        android:background="@color/very_light_grey"
+                        />
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_Desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:maxLines="2"
+                        android:text="This is a description"
+                        android:textSize="@dimen/font_size_small"
+                        android:textColor="@color/black"
+                        android:background="@color/float_cell_bg"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/UnitLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/UnitLayout1"
+                android:paddingBottom="@dimen/unit_view_padding"
+                >
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingRight="24dp"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_Date_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:textSize="@dimen/font_size_medium"
+                        android:textColor="@color/grey"
+                        android:background="@color/very_light_grey"
+                        />
+
+                    <Spinner
+                        android:id="@+id/Spinner_Unit_Date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/cell_bg_header_odd"
+                        android:entries="@array/dateStrings"
+                        android:entryValues="@array/dateStrings"
+                        android:key="date"
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="24dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_Type_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Type"
+                        android:textSize="@dimen/font_size_medium"
+                        android:textColor="@color/grey"
+                        android:background="@color/very_light_grey"
+                        />
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_Type"
+                        android:text="Micro"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large"
+                        android:background="@color/float_cell_bg"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/UnitLayout2b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/UnitLayout2"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/unit_view_padding">
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutIrrRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:paddingRight="24dp">
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_IrrRate_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/very_light_grey"
+                        android:text="Irr Rate"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/font_size_medium" />
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_IrrRate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/float_cell_bg"
+                        android:text="0 GPH"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutDiam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_Diam_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/very_light_grey"
+                        android:text="Diam (in)"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/font_size_medium" />
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_Diam"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/float_cell_bg"
+                        android:text="10"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/UnitLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/UnitLayout2b"
+                android:paddingBottom="@dimen/unit_view_padding"
+                >
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutTip1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="24dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <CheckBox
+                        android:id="@+id/TextView_Unit_Tip1_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tip 1"
+                        android:textSize="@dimen/font_size_medium"
+                        android:textColor="@color/grey"
+                        android:background="@color/very_light_grey"
+                        android:checked="true"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_Tip1"
+                        android:text="5"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large"
+                        android:background="@color/float_cell_bg"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutTip2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="24dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <CheckBox
+                        android:id="@+id/TextView_Unit_Tip2_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tip 2"
+                        android:textSize="@dimen/font_size_medium"
+                        android:textColor="@color/grey"
+                        android:background="@color/very_light_grey"
+                        android:checked="true"
+                        />
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_Tip2"
+                        android:text="5"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large"
+                        android:background="@color/float_cell_bg"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutTip3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="24dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <CheckBox
+                        android:id="@+id/TextView_Unit_Tip3_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tip 3"
+                        android:textSize="@dimen/font_size_medium"
+                        android:textColor="@color/grey"
+                        android:background="@color/very_light_grey"
+                        android:checked="true"
+                        />
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_Tip3"
+                        android:text="5"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large"
+                        android:background="@color/float_cell_bg"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/UnitLayout3b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/UnitLayout3"
+                android:paddingBottom="@dimen/unit_view_padding"
+                >
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutTip4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingRight="24dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <CheckBox
+                        android:id="@+id/TextView_Unit_Tip4_Label"
+                        android:layout_width="108dp"
+                        android:layout_height="48dp"
+                        android:background="@color/very_light_grey"
+                        android:checked="true"
+                        android:text="Tip 4"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/font_size_medium" />
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_Tip4"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large"
+                        android:background="@color/float_cell_bg"
+                        android:layout_height="wrap_content"
+                        android:layout_width="108dp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutTipAvg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingRight="24dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_TipAvg_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:background="@color/very_light_grey"
+                        android:gravity="center"
+                        android:text="AVERAGE"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/font_size_large" />
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_TipAvg"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large"
+                        android:background="@color/float_cell_bg"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/UnitLayout3c"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_below="@id/UnitLayout3b"
+                android:paddingBottom="@dimen/unit_view_padding"
+                >
+
+                <TextView
+                    android:id="@+id/TextView_RT_Selector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:background="@color/very_light_grey"
+                    android:gravity="center"
+                    android:text="Select RT:"
+                    android:textColor="@color/grey"
+                    android:layout_marginRight="16dp"
+                    android:textSize="@dimen/font_size_large" />
+
+
+                <Spinner
+                    android:id="@+id/Spinner_RT_Select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@color/cell_bg_header_odd"
+                    android:entries="@array/rtStrings"
+                    android:entryValues="@array/rtVals"
+                    android:key="rtSelect"
+                    android:defaultValue="0"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:textSize="24sp"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/UnitLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/UnitLayout3c"
+                android:paddingBottom="@dimen/unit_view_padding"
+                >
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutLFTPct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="24dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_LFTPct_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="LF T (%)"
+                        android:textSize="@dimen/font_size_medium"
+                        android:textColor="@color/grey"
+                        android:background="@color/very_light_grey"
+                        />
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_LFTPct"
+                        android:text="5"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large"
+                        android:background="@color/float_cell_bg"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutLFPct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="24dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_LFPct_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="LF (%)"
+                        android:textSize="@dimen/font_size_medium"
+                        android:textColor="@color/grey"
+                        android:background="@color/very_light_grey"
+                        />
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_LFPct"
+                        android:text="5"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large"
+                        android:background="@color/float_cell_bg"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutRT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="24dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_RT_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="RT (min)"
+                        android:textSize="@dimen/font_size_medium"
+                        android:textColor="@color/grey"
+                        android:background="@color/very_light_grey"
+                        />
+
+                    <EditText
+                        android:id="@+id/TextView_Unit_RT"
+                        android:text="5"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large"
+                        android:background="@color/float_cell_bg"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:bufferType="editable"
+                        android:enabled="false"
+                        android:digits="0123456789."
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/UnitLayoutRTT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="24dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_RTT_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="RTT (min)"
+                        android:textSize="@dimen/font_size_medium"
+                        android:textColor="@color/grey"
+                        android:background="@color/very_light_grey"
+                        />
+
+                    <TextView
+                        android:id="@+id/TextView_Unit_RTT"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large"
+                        android:background="@color/float_cell_bg"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/UnitLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/UnitLayout4"
+                android:paddingBottom="@dimen/unit_view_padding"
+                >
+
+                <Button
+                    android:id="@+id/buttonSaveLF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="Save LF" />
+
+                <Button
+                    android:id="@+id/buttonDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="Delete Unit" />
+                <Button
+                    android:id="@+id/buttonEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="Edit Unit" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

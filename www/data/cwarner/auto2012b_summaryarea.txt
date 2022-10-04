@@ -1,0 +1,9 @@
+ RUN:  data/cwarner/auto2012b          
+ 
+YR	DOY	DAY	Rain	Irr	ET	Drain	Roff	NLoad	PLoad
+2011	10	61	5.7	13.1	13.6	3.8	5.5	5.5	0.4
+Min	10	61	5.7	13.1	13.6	3.8	5.5	5.5	0.4
+Mean	10	61	5.7	13.1	13.6	3.8	5.5	5.5	0.4
+Median	10	61	5.7	13.1	13.6	3.8	5.5	5.5	0.4
+StdDev	0	0	0	0	0	0	0	0	0
+Max	10	61	5.7	13.1	13.6	3.8	5.5	5.5	0.4

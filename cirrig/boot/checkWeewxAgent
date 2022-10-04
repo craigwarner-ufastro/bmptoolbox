@@ -1,0 +1,26 @@
+#!/bin/tcsh
+# rcsId = $Name:  $ $Id: checkWeewxAgent,v 1.8 2011/05/02 20:41:06 warner Exp $
+
+#parse args
+set options = ""
+set logdate = `date "+%Y-%m-%d.%H:%M"`
+
+sleep 20
+
+set pid = `pgrep -f weewxd`
+if ("$pid" == "") then
+  exit(0)
+endif
+
+set pid = `pgrep -f ufWeewx`
+if ("$pid" == "") then
+  set pid = `pgrep ntpdate`
+  if ("$pid" == "") then
+    echo  updating clock
+    sudo ntpdate -u ntp.ubuntu.com
+  endif
+
+  echo  starting  ufWeewx  $options
+  $BMPINSTALL/bin/ufWeewx $options -log $HOME/bmplogs/log.ufWeewx.${logdate} >& $HOME/bmplogs/log.ufWeewx.${logdate} &
+  sleep 3
+endif

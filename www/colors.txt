@@ -1,0 +1,18 @@
+white	White
+black	Black
+blue	Blue
+dark blue	Dark Blue
+%237777ff	Light Blue
+%23ccffff	Ice Blue
+cyan	Cyan
+green	Green
+dark green	Dark Green
+%2377ff77	Light Green
+yellow	Yellow
+red	Red
+dark red	Dark Red
+%23ff7777	Light Red
+orange	Orange
+magenta	Magenta
+grey	Grey
+light grey	Light Grey

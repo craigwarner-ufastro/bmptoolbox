@@ -1,0 +1,3 @@
+ Run: data/cwarner/test_mar11         
+ 
+  YR DOY DAY   Rain  Irrig     ET  Drain Runoff Nloss  NConc    HT    TW  P_Area NupCum

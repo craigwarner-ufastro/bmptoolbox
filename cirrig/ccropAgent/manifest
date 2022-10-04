@@ -1,0 +1,2 @@
+Main-Class: CCROP.ufCCrop
+Class-Path: CCROP.jar ../lib/Scheduler.jar ../lib/mysql-connector-java-5.1.15-bin.jar ../lib/javaUFProtocol.jar ../lib/javaUFLib.jar ../lib/javaMMTLib.jar

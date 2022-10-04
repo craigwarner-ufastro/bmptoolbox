@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferencesScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="false"
+    >
+
+    <LinearLayout
+        android:id="@+id/TableLayoutSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+
+        <!-- Container Diameter -->
+
+        <LinearLayout style="@style/settings_row" >
+
+            <TextView
+                style="@style/settings_title"
+                android:id="@+id/TextView_Settings_UnitType"
+                android:text="@string/settings_label_unit_type"
+                />
+
+            <ListPreference
+                android:title="@string/settings_label_unit_type"
+                android:key="unitType"
+                android:defaultValue="0"
+                android:entries="@array/unitTypeStrings"
+                android:entryValues="@array/unitTypeVals" />
+
+
+        </LinearLayout>
+
+        <!-- Spacing -->
+
+        <LinearLayout style="@style/settings_row" >
+
+            <TextView
+                style="@style/settings_title"
+                android:id="@+id/TextView_Settings_IrrigRate"
+                android:text="@string/settings_label_irrig_rate"
+                />
+
+            <TextView
+                style="@style/settings_field"
+                android:id="@+id/TextView_IrrigRate"
+                />
+
+
+        </LinearLayout>
+
+        <!-- Spacing Arrangement -->
+
+        <LinearLayout style="@style/settings_row" >
+
+            <TextView
+                style="@style/settings_title"
+                android:id="@+id/TextView_Settings_TargetLF"
+                android:text="@string/settings_label_targetLF"
+                />
+
+            <TextView
+                style="@style/settings_field"
+                android:id="@+id/TextView_TargetLF"
+                />
+
+
+        </LinearLayout>
+
+        <!-- Plant Canopy Density -->
+
+        <LinearLayout style="@style/settings_row" >
+
+            <TextView
+                style="@style/settings_title"
+                android:id="@+id/TextView_Settings_Runtime"
+                android:text="@string/settings_label_runtime"
+                />
+
+            <TextView
+                style="@style/settings_field"
+                android:id="@+id/TextView_Runtime"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
+
+</PreferencesScreen>

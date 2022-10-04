@@ -1,0 +1,6 @@
+    INET=`/home/pi/bmpinstall/bin/checkInternetConnection`
+    if [ $INET != 'ok' ]; then
+        echo "FAIL: no internet connection"
+        return 2
+    fi
+    echo "PASS: internet is connected; assuming ntp has set time"

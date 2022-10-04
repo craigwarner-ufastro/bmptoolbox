@@ -1,0 +1,12 @@
+Fertilizer rate (lb N/cu yd),1.00,1.50,2.00,2.50
+Plant height (inch),18.01,18.06,18.11,18.11
+Time to finish (weeks),29.33,21.46,19.46,18.77
+Rain (inch),30.78,22.44,20.45,19.69
+Irrigation (inch),82.14,60.11,54.51,52.58
+Runoff (gal/ container),29.19,19.31,17.30,16.59
+Runoff N (g/ container),0.57,0.67,0.85,1.09
+N loss (% of applied),40.67,31.54,30.04,30.72
+N applied (g/container),1.42,2.13,2.84,3.55
+Runoff N conc. (ppm),5.45,9.11,12.93,17.32
+Fertilizer cost ($/1000 containers),23.54,35.31,47.09,58.86
+Irrigation cost ($/1000 containers),3.00,1.98,1.74,1.65

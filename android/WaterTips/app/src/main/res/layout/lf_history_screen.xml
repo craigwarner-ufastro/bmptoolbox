@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ConstraintLayoutLFHistory"
+    tools:context=".ui.home.HomeFragment">
+
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_LFHistory"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            tools:context=".MainActivity"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+        <TextView
+            android:id="@+id/LFLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_very_large"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:text="LF History"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/LFLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/LFLabel">
+
+            <LinearLayout
+                android:id="@+id/LFLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="24dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/TextView_LF_ID_Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID"
+                    android:textSize="@dimen/font_size_medium"
+                    android:textColor="@color/grey"
+                    android:background="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/TextView_LF_ID"
+                    android:text="1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_size_large"
+                    android:background="@color/float_cell_bg"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LFLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="24dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/TextView_LF_Name_Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textSize="@dimen/font_size_medium"
+                    android:textColor="@color/grey"
+                    android:background="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/TextView_LF_Name"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_size_large"
+                    android:background="@color/float_cell_bg"
+                    android:text="Test Unit" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/LFLayout4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/TextView_LF_Desc_Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textSize="@dimen/font_size_medium"
+                    android:textColor="@color/grey"
+                    android:background="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/TextView_LF_Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="This is a description"
+                    android:textSize="@dimen/font_size_small"
+                    android:textColor="@color/black"
+                    android:background="@color/float_cell_bg"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+            <ScrollView
+                android:id="@+id/ScrollView_LFHistory"
+                android:layout_below="@id/LFLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+
+        <TableLayout
+            android:id="@+id/tableLFHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:stretchColumns="*"
+            >
+
+            <TableRow
+                android:id="@+id/TableRowLFHead"
+                style="@style/row"
+                android:layout_width="match_parent">
+
+                <TextView
+                    android:id="@+id/TextView_LF_Date"
+                    style="@style/lf_cell_header_odd"
+                    android:text="Date" />
+
+                <TextView
+                    android:id="@+id/TextView_LFT"
+                    style="@style/lf_cell_header_even"
+                    android:text="LFT (%)" />
+
+                <TextView
+                    android:id="@+id/TextView_LFPct"
+                    style="@style/lf_cell_header_odd"
+                    android:text="LF (%)" />
+
+                <TextView
+                    android:id="@+id/TextView_LF_RT"
+                    style="@style/lf_cell_header_even"
+                    android:text="RT (min)" />
+
+                <TextView
+                    android:id="@+id/TextView_LF_RTT"
+                    style="@style/lf_cell_header_odd"
+                    android:text="RTT (min)" />
+
+                <TextView
+                    android:id="@+id/TextView_LF_Delete"
+                    style="@style/lf_cell_header_even"
+                    android:text="Delete" />
+
+
+            </TableRow>
+        </TableLayout>
+            </ScrollView>
+
+        </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

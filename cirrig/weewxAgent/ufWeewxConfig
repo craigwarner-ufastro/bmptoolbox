@@ -1,0 +1,19 @@
+#!/bin/tcsh
+
+if( ! $?BMPINSTALL ) then
+  setenv BMPINSTALL "/usr/local/uf$USER"
+endif
+
+setenv BMPINSTALL "$BMPINSTALL"
+
+source $BMPINSTALL/.ufcshrc
+
+set pid = `pgrep -f Weewx.jar`
+if ("$pid" != "") then
+  pkill -f Weewx.jar
+endif
+sleep 1
+
+java -jar ${BMPINSTALL}/bin/Weewx.jar -config $argv[1-]
+
+exit

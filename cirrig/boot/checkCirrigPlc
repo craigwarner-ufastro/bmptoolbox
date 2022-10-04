@@ -1,0 +1,27 @@
+#!/bin/tcsh
+# rcsId = $Name:  $ $Id: checkCirrigPlc,v 1.8 2011/05/02 20:41:06 warner Exp $
+
+#parse args
+set INET=`$BMPINSTALL/bin/checkInternetConnection`
+if ("$INET" != "ok") then
+  echo "checkWeewxDaemon> No internet connection"
+  exit(0)
+endif
+
+sleep 10
+
+set options = "-ccrophost bmptoolbox.org"
+set logdate = `date "+%Y-%m-%d.%H:%M"`
+
+set pid = `pgrep -f ufCirrigPlc`
+if ("$pid" == "") then
+  set pid = `pgrep ntpdate`
+  if ("$pid" == "") then
+    echo  updating clock
+    sudo ntpdate -u ntp.ubuntu.com
+  endif
+
+  echo  starting  ufCirrigPlc  $options
+  $BMPINSTALL/bin/ufCirrigPlc $options -log $HOME/bmplogs/log.ufCirrigPlc.${logdate} >& $HOME/bmplogs/log.ufCirrigPlc.${logdate} &
+  sleep 3
+endif

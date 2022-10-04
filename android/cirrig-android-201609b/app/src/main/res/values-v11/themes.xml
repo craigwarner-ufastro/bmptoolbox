@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CirrigTheme"
+           parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/CirrigActionBar</item>
+        <item name="android:listChoiceIndicatorMultiple">@drawable/apptheme_btn_check_holo_dark</item>
+
+        <!-- Support library compatibility -->
+        <item name="actionBarStyle">@style/CirrigActionBar</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="CirrigActionBar"
+           parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/background</item>
+
+        <!-- Support library compatibility -->
+        <item name="background">@color/background</item>
+    </style>
+</resources>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_MainIrrig"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayout_Inputs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="@dimen/default_spacing"
+                android:paddingRight="@dimen/default_spacing"
+                android:paddingTop="@dimen/default_spacing">
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayout_Diameter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_spacing">
+
+                    <TextView
+                        android:id="@+id/TextView_Diameter"
+                        style="@style/label_title_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="Container diameter (inch)" />
+
+                    <TextView
+                        android:id="@+id/TextView_ContDiam1"
+                        style="@style/field"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayout_Spacing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/RelativeLayout_Diameter"
+                    android:layout_marginBottom="@dimen/default_spacing">
+
+                    <TextView
+                        android:id="@+id/TextView_Spacing"
+                        style="@style/label_title_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="Spacing (inch between)" />
+
+                    <TextView
+                        android:id="@+id/TextView_Spacing1"
+                        style="@style/field"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayout_SpacingArrangemt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/RelativeLayout_Spacing"
+                    android:layout_marginBottom="@dimen/default_spacing">
+
+                    <TextView
+                        android:id="@+id/TextView_SpacingArrangemt"
+                        style="@style/label_title_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="Spacing arrangement" />
+
+                    <TextView
+                        android:id="@+id/TextView_SpacingArr1"
+                        style="@style/field"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayout_PlantWidth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/RelativeLayout_SpacingArrangemt"
+                    android:layout_marginBottom="@dimen/default_spacing">
+
+                    <TextView
+                        android:id="@+id/TextView_PlantWidth"
+                        style="@style/label_title_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="Plant width (inch)" />
+
+                    <TextView
+                        android:id="@+id/TextView_PlantWid1"
+                        style="@style/field"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayout_Density"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/RelativeLayout_PlantWidth"
+                    android:layout_marginBottom="@dimen/default_spacing">
+
+                    <TextView
+                        android:id="@+id/TextView_Density"
+                        style="@style/label_title_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="Canopy density" />
+
+                    <TextView
+                        android:id="@+id/TextView_CanopyDensity1"
+                        style="@style/field"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayout_IrrigRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/RelativeLayout_Density"
+                    android:layout_marginBottom="@dimen/default_spacing">
+
+                    <TextView
+                        android:id="@+id/TextView_IrrigRate"
+                        style="@style/label_title_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="Irrigation rate (inch/hour)" />
+
+                    <TextView
+                        android:id="@+id/TextView_IrrigRate1"
+                        style="@style/field"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/TextView_IrrigCapture"
+                    style="@style/label_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/RelativeLayout_IrrigRate"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:text="Irrigation Capture Ability" />
+
+                <RadioGroup
+                    android:id="@+id/RadioGroup_IrrigCapture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TextView_IrrigCapture"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <RadioButton
+                        android:id="@+id/Button_IrrigCapture_Negative"
+                        style="@style/irrig_capture_button"
+                        android:drawableTop="@drawable/capture_negative_selector"
+                        android:text="Negative" />
+
+                    <RadioButton
+                        android:id="@+id/Button_IrrigCapture_Nil"
+                        style="@style/irrig_capture_button"
+                        android:drawableTop="@drawable/capture_nil_selector"
+                        android:text="Nil" />
+
+                    <RadioButton
+                        android:id="@+id/Button_IrrigCapture_Low"
+                        style="@style/irrig_capture_button"
+                        android:drawableTop="@drawable/capture_low_selector"
+                        android:text="Low" />
+
+                    <RadioButton
+                        android:id="@+id/Button_IrrigCapture_Medium"
+                        style="@style/irrig_capture_button"
+                        android:drawableTop="@drawable/capture_medium_selector"
+                        android:text="Medium" />
+
+                    <RadioButton
+                        android:id="@+id/Button_IrrigCapture_High"
+                        style="@style/irrig_capture_button"
+                        android:drawableTop="@drawable/capture_high_selector"
+                        android:text="High" />
+                </RadioGroup>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_RunTimes"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/RelativeLayout_MainIrrig"
+            android:background="@drawable/table_cell_bg_odd">
+
+            <TextView
+                android:id="@+id/TextView_Location_Time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:textColor="@color/blue"
+                android:textSize="18dp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/TextView_Location_Time"
+                android:layout_margin="3dp"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/TextView_Run_Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center_vertical"
+                    android:text="Run time (min) "
+                    android:textColor="@color/red"
+                    android:textSize="30dp" />
+
+                <Button
+                    android:id="@+id/TextView_RunTimeNumber"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:gravity="center"
+                    android:text="36"
+                    android:textColor="@color/black"
+                    android:textSize="30dp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

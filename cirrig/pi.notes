@@ -1,0 +1,53 @@
+sudo apt-get update
+cd Downloads/
+sudo dpkg -i weewx_3.5.0-1_all.deb
+sudo apt-get install python-configobj python-cheetah python-imaging python-usb
+sudo apt-get install subversion tcsh vim vim-runtime telnet ntpdate sqlite3 mysql-common mysql-client mysql-server apache2 python-numpy python-scipy python-pyfits python-pip
+sudo apt-get install vim vim-common vim-syntax-gtk
+
+vi ~/.cshrc
+vi ~/.vimrc
+
+vi archiveIrrigHis.py
+chmod u+x archiveIrrigHis.py
+
+svn checkout svn+ssh://mybmp@bmptoolbox.org/home/mybmp/svn/bmpRCS
+
+tcsh
+cd bmpRCS
+make init
+make install
+rehash
+
+Update keyboard and timezone
+
+cd bmpRCS/scripts
+./patchWeewx.sh
+
+ufWeewxConfig
+
+sudo vi /etc/hosts
+sudo vi /etc/hostname
+sudo /etc/init.d/hostname.sh
+
+========= .cshrc ==========
+setenv BMPINSTALL /home/pi/bmpinstall
+setenv UFMMTINSTALL /home/pi/bmpinstall
+set autolist on
+
+if (-e ${BMPINSTALL}/.ufcshrc) source ${BMPINSTALL}/.ufcshrc
+set os = `/bin/uname`
+
+alias ls 'ls --color=auto'
+alias grep 'grep --color=auto'
+alias fgrep 'fgrep --color=auto'
+alias egrep 'egrep --color=auto'
+
+
+============ .vimrc ============
+syntax on
+
+============= crontab ===========
+0 0 1 * * /home/pi/archiveIrrigHis.py
+* * * * * /home/pi/bmpinstall/bin/checkCirrigPlc
+

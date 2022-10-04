@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout_Calendar_Weather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TableLayout
+            android:id="@+id/TableLayoutCalendarWeather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*">
+
+            <TableRow
+                style="@style/row"
+                android:id="@+id/TableRowCalendarWeatherHead"
+                >
+
+                <TextView
+                    style="@style/weather_cell_header"
+                    android:id="@+id/TextView_Calendar_Weather_Title"
+                    android:text="FAWN\nAlachua"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_header"
+                    android:id="@+id/TextView_Calendar_ETo"
+                    android:text="ETo\n(inch)"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_header"
+                    android:id="@+id/TextView_Calendar_SolarRad"
+                    android:text="Solar\nRad.\n(W/m2)"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_header"
+                    android:id="@+id/TextView_Calendar_TMax"
+                    android:text="Tmax\n(F)"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_header"
+                    android:id="@+id/TextView_Calendar_TMin"
+                    android:text="Tmin\n(F)"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_header"
+                    android:id="@+id/TextView_Calendar_Rain"
+                    android:text="Rain\n(inch)"
+                    />
+            </TableRow>
+
+            <TableRow
+                style="@style/row"
+                android:id="@+id/TableRowWeatherCalendarDay1"
+                >
+
+                <TextView
+                    style="@style/weather_cell_even_date"
+                    android:id="@+id/TextView_Weather_CalendarDate1"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_ETo_CalendarDay1"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_SolarRad_CalendarDay1"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_TMax_CalendarDay1"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_TMin_CalendarDay1"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_Rain_CalendarDay1"
+                    />
+            </TableRow>
+
+            <TableRow
+                style="@style/row"
+                android:id="@+id/TableRowWeatherCalendarDay2"
+                >
+
+                <TextView
+                    style="@style/weather_cell_odd_date"
+                    android:id="@+id/TextView_Weather_CalendarDate2"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_ETo_CalendarDay2"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_SolarRad_CalendarDay2"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_TMax_CalendarDay2"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_TMin_CalendarDay2"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_Rain_CalendarDay2"
+                    />
+            </TableRow>
+
+            <TableRow
+                style="@style/row"
+                android:id="@+id/TableRowWeatherCalendarDay3"
+                >
+
+                <TextView
+                    style="@style/weather_cell_even_date"
+                    android:id="@+id/TextView_Weather_CalendarDate3"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_ETo_CalendarDay3"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_SolarRad_CalendarDay3"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_TMax_CalendarDay3"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_TMin_CalendarDay3"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_Rain_CalendarDay3"
+                    />
+            </TableRow>
+
+            <TableRow
+                style="@style/row"
+                android:id="@+id/TableRowWeatherCalendarDay4"
+                >
+
+                <TextView
+                    style="@style/weather_cell_odd_date"
+                    android:id="@+id/TextView_Weather_CalendarDate4"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_ETo_CalendarDay4"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_SolarRad_CalendarDay4"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_TMax_CalendarDay4"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_TMin_CalendarDay4"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_Rain_CalendarDay4"
+                    />
+            </TableRow>
+
+            <TableRow
+                style="@style/row"
+                android:id="@+id/TableRowWeatherCalendarDay5"
+                >
+
+                <TextView
+                    style="@style/weather_cell_even_date"
+                    android:id="@+id/TextView_Weather_CalendarDate5"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_ETo_CalendarDay5"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_SolarRad_CalendarDay5"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_TMax_CalendarDay5"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_TMin_CalendarDay5"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_Rain_CalendarDay5"
+                    />
+            </TableRow>
+
+            <TableRow
+                style="@style/row"
+                android:id="@+id/TableRowWeatherCalendarDay6"
+                >
+
+                <TextView
+                    style="@style/weather_cell_odd_date"
+                    android:id="@+id/TextView_Weather_CalendarDate6"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_ETo_CalendarDay6"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_SolarRad_CalendarDay6"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_TMax_CalendarDay6"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_TMin_CalendarDay6"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_odd"
+                    android:id="@+id/TextView_Rain_CalendarDay6"
+                    />
+            </TableRow>
+
+            <TableRow
+                style="@style/row"
+                android:id="@+id/TableRowWeatherCalendarDay7"
+                >
+
+                <TextView
+                    style="@style/weather_cell_even_date"
+                    android:id="@+id/TextView_Weather_CalendarDate7"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_ETo_CalendarDay7"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_SolarRad_CalendarDay7"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_TMax_CalendarDay7"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_TMin_CalendarDay7"
+                    />
+
+                <TextView
+                    style="@style/weather_cell_even"
+                    android:id="@+id/TextView_Rain_CalendarDay7"
+                    />
+            </TableRow>
+        </TableLayout>
+        <Button
+            android:id="@+id/Button_To24HoursWeather"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_below="@+id/TableLayoutCalendarWeather"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20px"
+            android:textSize="18dp"
+            android:text="Weather - Past 24 Hours"/>
+
+    </RelativeLayout>
+
+</ScrollView>

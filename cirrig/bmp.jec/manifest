@@ -1,0 +1,2 @@
+Main-Class: bmpjec.mjec
+Class-Path: bmpjec.jar ../lib/javaUFProtocol.jar ../lib/javaUFLib.jar ../lib/javaMMTLib.jar

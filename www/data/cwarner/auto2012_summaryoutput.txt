@@ -1,0 +1,3 @@
+ Run: data/cwarner/auto2012           
+ 
+  YR DOY DAY   Rain  Irrig     ET  Drain                  Runoff Nloss  NConc    HT    TW  P_Area NupCum  Ploss  PConc      PupCum

@@ -1,0 +1,2 @@
+Main-Class: CirrigPlc.ufCirrigPlc
+Class-Path: CirrigPlc.jar ../lib/Scheduler.jar ../lib/jamod.jar ../lib/mail.jar ../lib/sqlite-jdbc-3.8.10.1.jar ../lib/javaUFProtocol.jar ../lib/javaUFLib.jar ../lib/javaMMTLib.jar ../bin/CCROP.jar

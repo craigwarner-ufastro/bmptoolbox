@@ -1,0 +1,213 @@
+--------------------------------------------------------------------------------------------
+P_Spec file
+---------------------------------------------------------------------------------------------
+*Planting and move schedule*
+PLT_DOY = plant day of year
+START_YR = start year
+END_YR = last year of multiple year run
+MOVE = move schedule (enter FIXED or LAI)
+MOVE1 = first container move (days after planting)
+MOVE2 = second container move (days after planting)
+MOVE3 = third container move (days after planting)
+MOVE_LAI = move containers when this LAI is reached (for MOVE=LAI)
+NOM = maximum number of moves (for MOVE=LAI)
+
+*Transplant detail*
+ILA = initial leaf area of transplant (cm2)
+IHT = initial height (cm)
+IWD = initial width (cm)
+Status = IN_STATUS = N status of transplant (enter LOW, OPT, or INPUT)
+ITW_Nact = N concentration in shoots (g/g)
+IRW_Nact = N concentration in roots (g/g)
+ITW_Pact = P concentration in shoots (g/g)
+IRW_Pact = P concentration in roots (g/g)
+
+*Finish detail*
+FINISH = finish criterion (enter FIXED or SIZE)
+HARVDAYS = days to finish (days after planting)
+HARV_HT = height at finish (cm)
+
+*Size check detail*
+CHK_DAY1 = frist check day to adjust size (days after planting)
+CHK_HT1 = first check height (cm)
+CHK_W1 = first check width (cm)
+CHK_DAY2 = second check day to adjust size (days after planting)
+CHK_HT2 = second check height (cm)
+CHK_W2 = second check width (cm)
+CHK_DAY3 = third check day to adjust size (days after planting)
+CHK_HT3 = third check height (cm)
+CHK_W3 = third check width (cm) 
+
+*Container detail*
+S_VOL = container substrate volume (cm3)
+POTDIAM = container top diameter (cm)
+PTA0 = area allotted to each container at start (cm2)
+PTA1 = area allotted to each container after 1st move (cm2)
+PTA2 = area allotted to each container after 2nd move (cm2)
+PTA3 = area allotted to each container after 3rd move (cm2)
+
+*Substrate water specs*
+SWLL = substrate water content at permanent wilting point (cm3 H20 / cm3 substrate)
+SWDUL = substrate water at container capacity (cm3 H20 / cm3 substrate)
+TP = total substrate porosity (cm3 pore/cm3 substrate)
+PVLF = pour volume leach factor (unitless)
+
+*Irrigation Schedule*
+    Note: If SCHED='FIXED' set IRR1, IRR2, and/or IRR3 to -99 if no changes in rate required
+SCHED = enter type of irrigation schedule (FIXED, MAD or FILE)
+RAINCUT = do not irrigate if yesterday\'s rain exceeded the daily irrigation rate (YES or NO)
+IRR1 = first change in daily irrigation rate (days after planting)
+IRR2 = second change in daily irrigation rate (days after planting)
+IRR3 = third change in daily irrigaiton rate (days after planting)
+MAD = managed allowable deficit (use to calculate % of available water that must be lost before irrigation is triggered)
+MAD_DIF = MAD irrigation deficit factor (calcualtes the target water deficit when irrigating to less than SWDUL)
+H2O_NCONC = N concentration of water (ug/cm3)
+H2O_PCONC = P concentration of water (ug/cm3)
+RAIN_EF = rain effectiveness or relative amount of rain that offsets ET
+
+*Fixed irrigation rates (for FIXED irrigation schedule)*
+D_IRR0 = daily irrigation rate at start (cm)
+D_IRR1 = daily irrigation rate for IRR1 (cm)
+D_IRR2 = daily irrigation rate for IRR2 (cm)
+D_IRR3 = daily irrigation rate for IRR3 (cm)
+ 
+*Input files*
+WFNAME = weather file name (e.g. UFEH0008) omit .wth extension
+PFNAME = plant file name (e.g. VIBUR_OD) omit .plt extension
+IFNAME = irrigation file name e.g. TESTI_1 for file TestI_1.irr
+SFFNAME = solution feed file name (e.g. SPRING09) omit .sfn extension
+
+*Fertilizer detail*
+FERT = fertilizer rate (g/container)
+PCT_CRN = percent controlled-release N of fertilizer (%)
+PCT_N = percent N of fertilizer (%)
+PCT_P = percent P of fertilizer (%)
+PCT_K = percent K of fertilzier (%)
+CRF_DAYS = longevity rating of fertilizer (day)
+APPL = method of CRF application (INC or SURF)
+
+*Supplemental topdress fertilizer detail*
+TDF = topdress fertilizer schedule (enter FIXED,TRIG,or NONE)
+TD_DAYS = days after planting to apply topdress
+TD_TF = automatically triggers a topdress application when N release drops below this threshold factor of N demand 
+FERT2 = amount of top dress fertilizer (#N/cu yd)
+PCT_CR2 = percent controlled-release nutrients of topdress CRF
+PCT_N2 = percent N of topdress fertilizer
+PCT_P2 = percent P of topdress fertilizer
+PCT_K2 = percent K of topdress fertilizer
+CRF_DAYS2 = longevity rating of topdress fertilizer
+
+*Supplemental solution fertilizer detail*
+SF = solution fertilizer schedule (enter FIXED,TRIG,FILE,or NONE)
+SF_START = day to start solution fertilizer applications (days after planting)
+SF_END = day to end solution fertilization application (days after planting)
+SF_INT = interval between solution fertilizer applications (day)
+SF_TF = solution fertilizer threshold factor (%)
+  Note: solution fertilizer is triggered when NRELEASE/NDEMAND<SF_TF
+SF_NCONC = N concentration of solution fertilizer (ug/cm3)
+SF_PCONC = P concentration of solution fertilizer (ug/cm3)
+
+*Pruning detail*
+PRUNE = pruning schedule (enter FIXED, TRIG, or NONE)
+PR1 = days after planting to 1st prune
+PR_H1 = height after 1st prune
+PR_W1 = width after 1st prune
+PR2 = days after planting to 2nd prune
+PR_H2 = height after 2nd prune
+PR_W2 = width after 2nd prune
+PR3 = days after planting to 3rd prune
+PR_H3 = height after 3rd prune
+PR_W3 = width after 3rd prune
+TPR1 = plant height before 1st triggered pruning (cm)
+TPR2 = plant height before 2nd triggered pruning (cm)
+TPR3 = plant height before 3rd triggered pruning (cm)
+CUT = plant height reduction for triggered pruning (cm)
+NOPMAX =  maximum number of prunings
+
+---------------------------------------------------------------------------------------------
+Weather file (*.wth)
+---------------------------------------------------------------------------------------------
+DATE = YEARDOY
+SOLAR = daily solar radiation (MJ/m2/day)
+TMAX = daily temperature maximum (oC)
+TMIN = daily temperature minimum (oC)
+RAIN = daily rainfall (mm)
+
+
+---------------------------------------------------------------------------------------------
+Plant spec file (VIBUROD.plt)
+---------------------------------------------------------------------------------------------
+*Plant parameters*
+CROPEC = crop evapotranspiration coefficient (MJ/kPa)
+CF_MF = coefficent for determining maximum irrigation capture factor (dimensionless)
+CF_IF = coefficient for determining inflection point for irrigation capture factor (dimensionless)
+KINPUT = coefficient for biasing temperature for incoming solar radiation (dimensionless) 
+TDMIN = thermal day minimum (oC)
+TDOPTMIN = thermal day optimal minimum (oC)
+TDOPTMAX = thermal day optimal maximum (oC)
+TDMAX = thermal day max (oC)
+SW_TF = available substrate water threshold fraction (unitless)
+
+*More plant parameters*
+RTPF = root partitioning factor
+LGC1 and LGC2 = leaf growth coefficients for sink-limited growth
+LGC3 and LGC4 = coefficients for relating biomass and LA
+LGC5 = coefficient for modifying DT (DT1) based upon actual LA 
+TC1 = coefficient for CDR temperature bias of PARB
+RUE = radiation use efficiency (g/MJ)
+CINT = solar radiation interception coefficient (unitless)
+
+*Nitrogen supply parameters*
+NSUP_MAX1 and NSUP_MAX2 = coefficients for calc NSUPPLY
+NSUP_RF = root factor for NSUPPLY
+NSUP_C1 and NSUP_C2 = coefficients used to relate SUB_NCONC to NSUPPLY
+NSUF_C1 and NSUF_C2 = coefficients used to relate shoot N conc status to NSUF
+NSUF_TF = N sufficiency threshold factor relating shoot N status (TRELN) to NSUF
+
+*Phosphorus supply parameters*
+PSUP_MAX1 and PSUP_MAX2 = coefficients for calc PSUPPLY
+PSUP_RF = root factor for PSUPPLY
+PSUP_C1 and PSUP_C2 = coefficients used to relate SUB_PCONC to PSUPPLY
+PSUF_C1 and PSUF_C2 = coefficients used to relate shoot P conc status to PSUF
+PSUF_TF = P sufficiency threshold factor relating shoot P status (TRELP) to PSUF
+
+*Nitrogen concentration parameters*
+TW_Noptmax = maximum optimum N conc in shoot (g/g)
+TW_Noptmin = minimum optimum N conc in shoot (g/g)
+DT_Nmax = DT used to determine change in TW_Nopt as DT>DT_min (DT)
+DT_Nmin = DT when TW_Nopt is max (DT)
+TW_Nmin = minimum N concentration in shoot tissue (g/g)
+RW_Nopt = optimum N concentration in root tissue (g/g)
+
+*Phosphorus concentration parameters*
+TW_Poptmax = maximum optimum P conc in shoot (g/g)
+TW_Poptmin = minimum optimum P conc in shoot (g/g)
+DT_Pmax = DT used to determine change in TW_Popt as DT>DT_min (DT)
+DT_Pmin = DT when TW_Popt is max (DT)
+TW_Pmin = minimum P concentration in shoot tissue (g/g)
+RW_Popt = optimum P concentration in root tissue (g/g)
+
+*Size parameters*
+HTC1,2 = coefficients for relating LA to height
+WDC1,2 = coefficients for relating LA to width
+SZC1,22 = coefficients for relating plant size index to LA
+
+*Photosynthesis temperature factors*
+PHOTOTEMP1 PHOTOTEMP2 PHOTOTEMP3 = coeff. for the temperature effect on photosynthesis
+
+*Pruning factors*
+PRTWF1,2 = factors relating prune ht reduction to TW reduction
+PRLAF1,2 = factors relating prune ht reduction to LA reduction
+
+---------------------------------------------------------------------------------------------
+Irrigation file (*.irr)
+---------------------------------------------------------------------------------------------
+DATE = YEARDOY
+IRRIG = irrigation (cm)
+
+---------------------------------------------------------------------------------------------
+Solution fertilizer file (*.sfn)
+---------------------------------------------------------------------------------------------
+DATE = YEARDOY
+SF_NCONC = solution fertilizer N concentration (ug/cm3)
+SF_PCONC = solution fertilizer P concentration (ug/cm3)

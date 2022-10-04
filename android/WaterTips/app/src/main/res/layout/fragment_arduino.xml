@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_Arduino"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="160dp"
+            android:paddingLeft="@dimen/default_spacing"
+            android:paddingRight="@dimen/default_spacing"
+            android:paddingTop="@dimen/default_spacing">
+
+            <Button
+                android:id="@+id/buttonScan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:text="@string/scan" />
+
+            <Button
+                android:id="@+id/buttonDownloadHist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:enabled="false"
+                android:text="Download History" />
+
+            <TextView
+                android:id="@+id/serialText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/buttonScan"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:ems="10"
+                android:text=""
+                android:visibility="gone"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/arduinoMACLabel"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/serialText"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:ems="10"
+                android:text="Unit ID:"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/arduinoMAC"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/serialText"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/arduinoMACLabel"
+                android:background="#555555"
+                android:ems="10"
+                android:text="Not Connected"
+                android:textColor="#bbbbbb"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/arduinoNameLabel"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/arduinoMACLabel"
+                android:layout_alignLeft="@+id/arduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Name:"
+                android:textSize="20sp" />
+
+
+            <EditText
+                android:id="@+id/arduinoNameInput"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/arduinoMACLabel"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/arduinoNameLabel"
+                android:background="#555555"
+                android:bufferType="editable"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="[Enter a Name]"
+                android:textColor="#bbbbbb"
+                android:textColorHint="#999999"
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/arduinoDateLabel"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/arduinoNameLabel"
+                android:layout_alignLeft="@+id/arduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Date:"
+                android:visibility="gone"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/arduinoDateField"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/arduinoNameLabel"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/arduinoDateLabel"
+                android:ems="10"
+                android:visibility="gone"
+                android:textSize="20sp" />
+
+
+            <Button
+                android:id="@+id/buttonRefresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/arduinoDateLabel"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:enabled="false"
+                android:visibility="gone"
+                android:text="@string/refresh" />
+
+            <Button
+                android:id="@+id/buttonUpdateDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/arduinoDateLabel"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:enabled="false"
+                android:visibility="gone"
+                android:text="@string/update_date" />
+
+
+            <TableLayout
+                android:id="@+id/TableLayoutTips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonRefresh"
+                android:layout_alignLeft="@+id/arduinoMACLabel"
+                android:padding="8dp"
+                android:stretchColumns="*"
+                android:shrinkColumns="*">
+
+                <TableRow
+                    android:id="@+id/TableRowTips1"
+                    android:layout_width="match_parent">
+
+
+                    <TextView
+                        android:id="@+id/tipper1CountsLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:ems="10"
+                        android:text="Tip 1:"
+                        android:textSize="20sp" />
+
+
+                    <TextView
+                        android:id="@+id/tipper2CountsLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:ems="10"
+                        android:text="Tip 2:"
+                        android:textSize="20sp" />
+
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRowTips2"
+                    android:layout_width="match_parent">
+
+
+                    <TextView
+                        android:id="@+id/tipper3CountsLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:ems="10"
+                        android:text="Tip 3:"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tipper4CountsLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:ems="10"
+                        android:text="Tip 4:"
+                        android:textSize="20sp" />
+
+                </TableRow>
+
+            </TableLayout>
+
+            <!-- description -->
+            <TextView
+                android:id="@+id/arduinoDescLabel"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/TableLayoutTips"
+                android:layout_alignLeft="@+id/arduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Desc:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/arduinoDescInput"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/TableLayoutTips"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/arduinoDescLabel"
+                android:background="#555555"
+                android:bufferType="editable"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="[Enter Description]"
+                android:textColor="#bbbbbb"
+                android:textColorHint="#999999"
+                android:textSize="20dip" />
+            <!-- unit settings -->
+
+            <TextView
+                android:id="@+id/arduinoUnitTypeLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/arduinoDescLabel"
+                android:layout_alignLeft="@+id/arduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Unit Type:"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/arduinoUnitType"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/arduinoDescLabel"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/arduinoUnitTypeLabel"
+                android:key="unitType"
+                android:defaultValue="0"
+                android:entries="@array/unitTypeStrings"
+                android:entryValues="@array/unitTypeVals" />
+
+            <TextView
+                android:id="@+id/arduinoIrrigRateLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/arduinoUnitTypeLabel"
+                android:layout_alignLeft="@+id/arduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Irrig Rate:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/arduinoIrrigRate"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/arduinoUnitTypeLabel"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/arduinoIrrigRateLabel"
+                android:background="#555555"
+                android:bufferType="editable"
+                android:ems="10"
+                android:inputType="text"
+                android:text=""
+                android:textColor="#bbbbbb"
+                android:digits="0123456789."
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/arduinoTargetLFLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/arduinoIrrigRateLabel"
+                android:layout_alignLeft="@+id/arduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Target LF:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/arduinoTargetLF"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/arduinoIrrigRateLabel"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/arduinoTargetLFLabel"
+                android:background="#555555"
+                android:bufferType="editable"
+                android:ems="10"
+                android:inputType="text"
+                android:text=""
+                android:textColor="#bbbbbb"
+                android:digits="0123456789."
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/arduinoRuntimeLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/arduinoTargetLFLabel"
+                android:layout_alignLeft="@+id/arduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Runtime:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/arduinoRuntime"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/arduinoTargetLFLabel"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/arduinoRuntimeLabel"
+                android:background="#555555"
+                android:bufferType="editable"
+                android:ems="10"
+                android:inputType="text"
+                android:text=""
+                android:textColor="#bbbbbb"
+                android:digits="0123456789."
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/arduinoContDiamLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/arduinoRuntimeLabel"
+                android:layout_alignLeft="@+id/arduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Cont Diam:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/arduinoContDiam"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/arduinoRuntimeLabel"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/arduinoContDiamLabel"
+                android:background="#555555"
+                android:bufferType="editable"
+                android:ems="10"
+                android:inputType="text"
+                android:text=""
+                android:textColor="#bbbbbb"
+                android:digits="0123456789."
+                android:textSize="20dip" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+</LinearLayout>

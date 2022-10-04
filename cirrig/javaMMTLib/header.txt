@@ -1,0 +1,78 @@
+ short ByteSwap; // LSB is first if 0x0000, MSB is first if 0xffff
+ short Xsize; // number of pixels in a line (# of columns)
+ short Ysize; // number of lines (# of rows)
+ short SampleSize; // # of bytes/pixel
+ short RowColOrder; // 0000 if column major, ffff if row major
+ short Yorigin; // 0000 if lower left, ffff if upper left
+ short Year; // Date and time of start of capture
+ short Month;
+ short Day;
+ short Hour;
+ short Minute;
+ short Second;
+ short IntensityCold; // Average ADC at low flux (rounded to nearest integer)
+ float TemperatureCold; // Temperature entered by user for low flux
+ short IntensityHot; // Average ADC at high flux (rounded to nearest integer)
+ float TemperatureHot; // Temperature entered by user for high flux
+ float TargetGain; // Target gain setting (normally 1.0)
+ short Revision; // Image header revision number, Rev 12 after TBD 2006
+ short Reserved1; // was # of image frames in file in Rev 10 or earlier, now 0
+ short UL_Row; // Upper left point row# for where data was extracted from frame
+ short UL_Col; // Upper left point col# for where data was extracted from frame
+ short LR_Row; // Lower right point row# for where data was extracted from frame
+ short LR_Col; // Lower right point col# for where data was extracted from frame
+ short NumFramesSummed; // # frames summed in each image
+ float FrameRate; // Frame rate of sensor
+ float IntegrationTime; // Integration time for Tint 1 (if valid)
+ float IntegrationTime2; // Integration time for Tint 2 (if used)
+ float IntegrationTime3; // Integration time for Tint 3 (if used)
+ float IntegrationTime4; // Integration time for Tint 4 (if used)
+ short UserField[18]; // User defined field
+ short DataMin; // minimum valid integer for pixel value
+ short DataMax; // maximum valid integer for pixel value
+  // for frame sum data multiply these numbers
+  // by the number of frames summed
+ short Gain1; // Global gain setting channel 1
+ short Offset1; // Global offset channel 1
+ short Gain2; // Global gain setting channel 2
+ short Offset2; // Global offset channel 2
+ short PixelType;// data type for pixel
+  //0, 16 bit signed integer
+  //1, 8 bit unsigned integer
+  //2, 32 bit signed integer
+  //3, 32 bit float
+  //4, 64 bit float
+ // These entries are used for radiometry calculations
+ float CalIntensity1; // average ADC for low flux
+ float CalIntenisty2; // average ADC for high flux
+ float Photon1; // Photons/cm^2sec at low flux
+ float Photon2; // Photons/cm^2sec at high flux
+ float Power1; // Watts/cm^2 at low flux
+ float Power2; // Watts/cm^2 at high flux
+ short LinearFlag; //0, response calibration invalid
+  //1, detector response linear to photons
+  //2, detector response linear to power
+ short PxlSubst; // 0- no pixel substitution
+ short UserField2[100]; //User defined field
+ char Comment[80]; // User comment
+ short Gain3; // Global gain setting channel 3
+ short Offset3; // Global offset channel 3
+ short Gain4; // Global gain setting channel 4
+ short Offset4; // Global offset channel 4
+ short FPAGain; // FPA gain setting in video setup
+  // actual FPA gain setting is setup dependent
+ short FileType; // 0 – binary image file
+ short NUCflag; // non-zero if 2 pt correction loaded
+ short NoDigCor; // non-zero if uniformity gain/offset is loaded
+ float MinVolt; // Input referred voltage for Datamin
+ float MaxVolt; // Input referred voltage for Datamax
+ INT32 NumFramesEx; // has number of frames in Version, Rev 11 and later
+ // Rev 12 and Later – Extended Format
+ short ExtendedFormat; // 0 = 512 Hdr followed by frame data,
+  // 1 = 512 byte hdr followed by frame data and 512 byte gps record per frame
+  // i.e. Offset to frame N is 512 hdr + (framesize + 512) * N (where N = 0, 1…)
+ short IntEveryNframes; // Number of streaming frames between FB40 interrupts for sequential save.
+  // This affects the tagging of the high performance clock data in the FB40 driver
+ short SkipEveryNframes; // Number of frames between FB40 frames for “sequential” save, which effectively
+  // reduces the data rate saved into the resulting file. Value of -1 means not used.
+ Short EmptyBuffer[HEADER_SIZE-233];

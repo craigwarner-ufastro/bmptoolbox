@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color
+        name="logo_color">#000000</color>
+    <color
+        name="version_color">#f0f0f0</color>
+    <color
+        name="version_bkgrd">#1a1a48</color>
+    <color
+        name="title_color">#f0f0f0</color>
+    <color
+        name="title_glow">#F00</color>
+    <color
+        name="menu_color">#FFFF0F</color>
+    <color
+        name="menu_glow">#F00</color>
+    <color
+        name="error_color">#F00</color>
+    <!--<color name="blue">#5555ff</color>-->
+
+    <!-- New color palette -->
+    <color name="background">@color/dark_grey</color>
+    <color name="widget_background">@color/grey</color>
+    <color name="text_color_highlighted">@color/blue</color>
+    <color name="table_cell_odd_bg">@color/white</color>
+    <color name="table_cell_even_bg">@color/very_light_grey</color>
+
+    <color name="white">#fff</color>
+    <color name="very_light_grey">#f6f5f5</color>
+    <color name="light_grey">#d0d1d2</color>
+    <color name="medium_light_grey">#929292</color>
+    <color name="medium_grey">#58585c</color>
+    <color name="grey">#3d3d41</color>
+    <color name="dark_grey">#232328</color>
+    <color name="black">#000</color>
+    <color name="blue">#0000ff</color>
+    <color name="pink">#ff0053</color>
+    <color name="red">#FF0000</color>
+
+
+</resources>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ConstraintLayoutTipHistory"
+    tools:context=".ui.home.HomeFragment">
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_TipHistory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            tools:context=".MainActivity">
+
+            <TextView
+                android:id="@+id/tipHistoryLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Tip History"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_very_large"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:id="@+id/tipHistoryLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tipHistoryLabel"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/tipHistoryLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingRight="24dp">
+
+                    <TextView
+                        android:id="@+id/TextView_Tips_ID_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:text="ID"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/font_size_medium" />
+
+                    <TextView
+                        android:id="@+id/TextView_Tips_ID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/float_cell_bg"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tipHistoryLayout3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingRight="24dp">
+
+                    <TextView
+                        android:id="@+id/TextView_Tips_Name_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:text="Name"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/font_size_medium" />
+
+                    <TextView
+                        android:id="@+id/TextView_Tips_Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/float_cell_bg"
+                        android:text="Test Unit"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_large" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/tipHistoryLayout4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/TextView_Tips_Desc_Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:text="Description"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/font_size_medium" />
+
+                    <TextView
+                        android:id="@+id/TextView_Tips_Desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/float_cell_bg"
+                        android:text="This is a description"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_small" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/tipHistoryLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tipHistoryLayout1">
+
+                <Button
+                    android:id="@+id/buttonAddTips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Add Manual Tips" />
+
+            </RelativeLayout>
+
+            <ScrollView
+                android:id="@+id/ScrollView_TipHistory"
+                android:layout_below="@id/tipHistoryLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TableLayout
+                android:id="@+id/tableTipsHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:id="@+id/TableRowTipsHead"
+                    style="@style/row"
+                    android:layout_width="match_parent">
+
+                    <TextView
+                        android:id="@+id/TextView_Tips_Date"
+                        style="@style/tips_cell_header"
+                        android:text="Date" />
+
+                    <TextView
+                        android:id="@+id/TextView_Tips_Counter1"
+                        style="@style/tips_cell_header"
+                        android:text="1" />
+
+                    <TextView
+                        android:id="@+id/TextView_Tips_Counter2"
+                        style="@style/tips_cell_header"
+                        android:text="2" />
+
+                    <TextView
+                        android:id="@+id/TextView_Tips_Counter3"
+                        style="@style/tips_cell_header"
+                        android:text="3" />
+
+                    <TextView
+                        android:id="@+id/TextView_Tips_Counter4"
+                        style="@style/tips_cell_header"
+                        android:text="4" />
+
+                    <TextView
+                        android:id="@+id/TextView_Tips_Delete"
+                        style="@style/tips_cell_header"
+                        android:text="Delete" />
+
+
+                </TableRow>
+            </TableLayout>
+            </ScrollView>
+        </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

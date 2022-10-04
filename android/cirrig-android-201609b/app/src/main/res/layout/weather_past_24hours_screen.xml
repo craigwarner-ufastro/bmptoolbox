@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/TopBarOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:background="@color/dark_grey">
+
+            <Switch
+                android:id="@+id/Switch_Use_GPS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                android:checked="false" />
+
+            <TextView
+                android:id="@+id/GpsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/Switch_Use_GPS"
+                android:textSize="@dimen/title_size"
+                android:text="Use GPS"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:id="@+id/Button_FAWN"
+                android:layout_width="40dp"
+                android:layout_height="@dimen/icon_height"
+                android:layout_gravity="center_vertical"
+                android:layout_toRightOf="@+id/GpsText"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/fawn_icon" />
+
+            <TextView
+                android:id="@+id/TextView_Settings_FAWN"
+                android:layout_width="180dp"
+                android:layout_height="@dimen/icon_height"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/grey"
+                android:layout_toRightOf="@+id/Button_FAWN"
+                android:text="Alachua"
+                android:gravity="center"
+                android:textSize="9pt"
+                android:textColor="@color/white"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/TopBarTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TopBarOne"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/dark_grey">
+
+            <Switch
+                android:id="@+id/OverrideSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                android:checked="false" />
+
+            <TextView
+                android:id="@+id/OverrideText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:paddingBottom="5dp"
+                android:layout_toRightOf="@+id/OverrideSwitch"
+                android:textSize="@dimen/title_size"
+                android:text="Override FAWN weather"
+                android:textColor="@color/white"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_Weather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TopBarTwo"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/Location_Time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:paddingBottom="4dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TableLayout
+                android:id="@+id/TableLayoutWeather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Location_Time"
+                android:stretchColumns="*"
+                android:shrinkColumns="*">
+
+                <TableRow
+                    android:id="@+id/TableRowWeatherHead"
+                    style="@style/row"
+                    android:layout_width="match_parent">
+
+                    <TextView
+                        style="@style/weather_cell_header"
+                        android:id="@+id/TextView_Weather_Title"
+                        android:text="FAWN\nAlachua"
+                        />
+
+                    <TextView
+                        android:id="@+id/TextView_ETo"
+                        style="@style/weather_cell_header"
+                        android:text="ETo\n(inch)" />
+
+                    <TextView
+                        android:id="@+id/TextView_SolarRad"
+                        style="@style/weather_cell_header"
+                        android:text="Solar\nRad.\n(W/m2)" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMax"
+                        style="@style/weather_cell_header"
+                        android:text="Tmax\n(F)" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMin"
+                        style="@style/weather_cell_header"
+                        android:text="Tmin\n(F)" />
+
+                    <TextView
+                        android:id="@+id/TextView_Rain"
+                        style="@style/weather_cell_header"
+                        android:text="Rain\n(inch)" />
+
+                    <TextView
+                        android:id="@+id/TextView_RunTime"
+                        style="@style/weather_cell_header_runtime"
+                        android:text="Run\nTime\n(min)" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/OverrideRow"
+                    style="@style/row">
+
+                    <TextView
+                        android:id="@+id/TextView_Weather_Override"
+                        style="@style/weather_cell_override"
+                        android:layout_height="match_parent"
+                        android:text="Override" />
+
+                    <TextView
+                        android:id="@+id/TextView_ETo_Override"
+                        android:background="@color/medium_grey"
+                        style="@style/weather_cell_override" />
+
+                    <TextView
+                        android:id="@+id/TextView_SolarRad_Override"
+                        style="@style/weather_cell_override" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMax_Override"
+                        style="@style/weather_cell_override" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMin_Override"
+                        style="@style/weather_cell_override" />
+
+                    <TextView
+                        android:id="@+id/TextView_Rain_Override"
+                        style="@style/weather_cell_override" />
+
+                    <TextView
+                        android:id="@+id/TextView_RunTime_Override"
+                        style="@style/weather_cell_override_runtime"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRowWeatherPast24"
+                    style="@style/row">
+
+                    <TextView
+                        android:id="@+id/TextView_Weather_Past24"
+                        style="@style/weather_cell_24hrs"
+                        android:layout_height="match_parent"
+                        android:text="Past\n24 Hours" />
+
+                    <TextView
+                        android:id="@+id/TextView_ETo_Past24"
+                        style="@style/weather_cell_24hrs" />
+
+                    <TextView
+                        android:id="@+id/TextView_SolarRad_Past24"
+                        style="@style/weather_cell_24hrs" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMax_Past24"
+                        style="@style/weather_cell_24hrs" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMin_Past24"
+                        style="@style/weather_cell_24hrs" />
+
+                    <TextView
+                        android:id="@+id/TextView_Rain_Past24"
+                        style="@style/weather_cell_24hrs" />
+
+                    <TextView
+                        android:id="@+id/TextView_RunTime_Zone1"
+                        style="@style/weather_cell_24hrs_runtime" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRowWeatherDay1"
+                    style="@style/row">
+
+                    <TextView
+                        android:id="@+id/TextView_Weather_Date1"
+                        style="@style/weather_cell_even_date" />
+
+                    <TextView
+                        android:id="@+id/TextView_ETo_Day1"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_SolarRad_Day1"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMax_Day1"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMin_Day1"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_Rain_Day1"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_RunTime_Zone2"
+                        style="@style/weather_cell_even_runtime"/>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRowWeatherDay2"
+                    style="@style/row">
+
+                    <TextView
+                        android:id="@+id/TextView_Weather_Date2"
+                        style="@style/weather_cell_odd_date" />
+
+                    <TextView
+                        android:id="@+id/TextView_ETo_Day2"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_SolarRad_Day2"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMax_Day2"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMin_Day2"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_Rain_Day2"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_RunTime_Zone3"
+                        style="@style/weather_cell_odd_runtime"/>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRowWeatherDay3"
+                    style="@style/row">
+
+                    <TextView
+                        android:id="@+id/TextView_Weather_Date3"
+                        style="@style/weather_cell_even_date" />
+
+                    <TextView
+                        android:id="@+id/TextView_ETo_Day3"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_SolarRad_Day3"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMax_Day3"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMin_Day3"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_Rain_Day3"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_RunTime_Zone4"
+                        style="@style/weather_cell_even_runtime" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRowWeatherDay4"
+                    style="@style/row">
+
+                    <TextView
+                        android:id="@+id/TextView_Weather_Date4"
+                        style="@style/weather_cell_odd_date" />
+
+                    <TextView
+                        android:id="@+id/TextView_ETo_Day4"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_SolarRad_Day4"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMax_Day4"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMin_Day4"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_Rain_Day4"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_RunTime_Zone5"
+                        style="@style/weather_cell_odd_runtime"/>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRowWeatherDay5"
+                    style="@style/row">
+
+                    <TextView
+                        android:id="@+id/TextView_Weather_Date5"
+                        style="@style/weather_cell_even_date" />
+
+                    <TextView
+                        android:id="@+id/TextView_ETo_Day5"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_SolarRad_Day5"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMax_Day5"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMin_Day5"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_Rain_Day5"
+                        style="@style/weather_cell_even" />
+
+                    <TextView
+                        android:id="@+id/TextView_RunTime_Zone6"
+                        style="@style/weather_cell_even_runtime" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRowWeatherDay6"
+                    style="@style/row">
+
+                    <TextView
+                        android:id="@+id/TextView_Weather_Date6"
+                        style="@style/weather_cell_odd_date" />
+
+                    <TextView
+                        android:id="@+id/TextView_ETo_Day6"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_SolarRad_Day6"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMax_Day6"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_TMin_Day6"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_Rain_Day6"
+                        style="@style/weather_cell_odd" />
+
+                    <TextView
+                        android:id="@+id/TextView_RunTime_Zone7"
+                        style="@style/weather_cell_odd_runtime"/>
+                </TableRow>
+
+                <!--<TableRow-->
+                    <!--android:id="@+id/TableRowWeatherDay7"-->
+                    <!--style="@style/row">-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/TextView_Weather_Date7"-->
+                        <!--style="@style/weather_cell_even_date" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/TextView_ETo_Day7"-->
+                        <!--style="@style/weather_cell_even" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/TextView_SolarRad_Day7"-->
+                        <!--style="@style/weather_cell_even" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/TextView_TMax_Day7"-->
+                        <!--style="@style/weather_cell_even" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/TextView_TMin_Day7"-->
+                        <!--style="@style/weather_cell_even" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/TextView_Rain_Day7"-->
+                        <!--style="@style/weather_cell_even" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/TextView_RunTime_Zone8"-->
+                        <!--style="@style/weather_cell_even_runtime" />-->
+                <!--</TableRow>-->
+            </TableLayout>
+
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout_Coords"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RelativeLayout_Weather"
+        android:background="@color/dark_grey">
+
+        <TableLayout
+            android:id="@+id/TableLayoutCoords"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            android:shrinkColumns="*">
+
+        <TableRow
+            android:id="@+id/TableRowCoordsHead"
+            android:background="@color/white"
+            android:layout_width="match_parent">
+
+            <TextView
+                style="@style/coords_cell_header"
+                android:id="@+id/TextView_LongitudeHeader"
+                android:text="Longitude"
+                android:visibility="visible"
+                />
+
+            <TextView
+                android:id="@+id/TextView_LatitudeHeader"
+                style="@style/coords_cell_header"
+                android:text="Latitude"
+                android:visibility="visible"
+                />
+
+            <TextView
+                android:id="@+id/TextView_ElevationHeader"
+                style="@style/coords_cell_header"
+                android:text="Elevation"
+                android:visibility="visible"
+                />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/CoordsRow"
+            style="@style/row">
+
+            <TextView
+                android:id="@+id/TextView_Longitude"
+                style="@style/coords_cell"
+                android:layout_height="match_parent"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/TextView_Latitude"
+                style="@style/coords_cell"
+                android:text=""/>
+
+            <TextView
+                android:id="@+id/TextView_Elevation"
+                style="@style/coords_cell"
+                android:text=""/>
+
+        </TableRow>
+
+        </TableLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout_Update_Location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RelativeLayout_Coords"
+        android:background="@color/dark_grey">
+
+    <Button
+        android:id="@+id/Button_Update_Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:layout_marginTop="18dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/settings_cell_margin"
+        android:layout_marginRight="@dimen/settings_cell_margin"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:background="@color/grey"
+        android:text="Update Location"/>
+
+    </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</ScrollView>

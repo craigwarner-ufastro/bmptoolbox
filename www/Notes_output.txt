@@ -1,0 +1,226 @@
+--------------------------------------------------------------------------------------------
+*.dailyoutput.txt
+--------------------------------------------------------------------------------------------
+YR = year planted
+DOY = day of year
+DAY = days after planting
+LA = leaf area per plant (cm2)
+LAI = leaf area index (cm2/cm2)
+TW = plant top dry weight (g)
+RW = plant root dry weight (g)
+DT = development time (day)
+SRad = SOLAR = solar radiation (MJ/m2/day)
+TMIN = daily temperature minimum (oC)
+TMAX = daily temperature maximum (oC)
+Ra = RAIN_cm = rainfall in production area (cm)
+Ir = IRRIG_cm = irrigation in production area (cm)
+CF = IRR_CF = irrigation capture factor (unitless)
+P_Ra = POT_RAIN_cm = rain entering container (cm)
+P_Ir = POT_IRRIG_cm = irrigation entering pot (cm)
+Sw = SW_cm = water content in container at start of day (cm)
+P_Dr = POT_DRAIN_cm = drainage from container  (cm)
+Ro = RUNOFF_cm = runoff in production area (cm)
+P_Et = POT_ET_cm = evapotranspiration from container (cm)
+Ht = HT = plant height (cm)
+Et = ET_cm = evapotranspiration from production area
+P_Ar = PTA = production area alloted to each container (cm2)
+
+***Note: Difference between P_Ra and Ra and between P_Ir and Ir are due to EF
+
+--------------------------------------------------------------------------------------------
+*.Nplantoutput.txt
+--------------------------------------------------------------------------------------------
+YR = year planted
+DOY = day of year
+DAY = days after planting
+d_TW = daily incremental change in shoot biomass (g)
+d_RW = daily incremental change in root biomass (g)
+TW = top biomass (g)
+RW = root biomass (g) 
+N_TOP = N content of tops (g)
+N_ROOT = N content of roots (g)
+Tact = TW_Nact = actual N concentration in shoot biomass (%)
+Ract = RW_Nact = actual N concentration in root biomass (%)
+Topt = TW_Nopt = optimal N concentration in shoot biomass (%)
+Ropt = RW_Nopt = optimal N concentration in root biomass (%)
+NDemand	= NDEMAND = N demand of plant (g)
+NUptake = NUPTAKE = N taken up by plant (g)
+NSupply	= NSUPPLY = substrate N available for plant uptake (g)
+NSUF = nitrogen sufficiency factor (0-1)
+WSUF = water sufficiency factor (0-1)
+NupCum = NUPTAKE_CUM = cumulative plant N uptake (g/plant)
+
+--------------------------------------------------------------------------------------------
+*.Nleachoutput.txt
+--------------------------------------------------------------------------------------------
+YR = year planted
+DOY = day of year
+DAY = days after planting
+SubN = SUB_N = available N in substrate (g/container)
+DrCm3 = POT_DRAIN_cm3 = volume of drainage (cm3/container)
+DrNconc = DRAIN_NCONC = N concentration in drainage water (g/cm3)
+DrainN = DRAIN_N  = N content of drainage water (g/container)
+NRelease = NRELEASE = N released from CRF (g/container)
+NUptake = NUPTAKE = N taken up by whole plant (g/plant)
+CumDr = DRAIN_CUM_cm3 = cumulative volume of drainage (cm3/container)
+CumDrN = CUMDRAIN_N = cumulative N lost in drainage (g/container)
+ROcm3 = RUNOFF_cm3 = runoff volume (cm3/container)
+RO_Nconc = R_OFF_NCONC = N concentration of runoff (g/cm3)
+Ro_N = RUNOFF_N = N in runoff (g/container) 
+CumRoN = CUMRUNOFF_N = cumulative N in runoff (g/container)
+THRU_N = N in irrigation water falling between containers (g/container)
+IrN = POT_IRR_N = N supplied in irrigation water (g/container)
+CumIrN = POT_IRR_N_CUM = cumulative N supplied in irrigation water (g/container)
+
+Note: for Dr_Nconc and RO_Nconc,  g/cm3 * 1,000,000 = mg/L = ppm
+
+--------------------------------------------------------------------------------------------
+*.NReloutput.txt
+--------------------------------------------------------------------------------------------
+YR = year planted (year)
+DOY = day of year (Julian day of year)
+DAY = days after planting (day)
+TMean = TMEAN = average daily temperature (oC)
+VP = vapor pressure (kPa)
+TFac = CRF_TFAC = temperature factor for modifying N release from CRF (unitless)
+Rate = RELEASERATE = daily fractional release rate for CRF (g/g)
+NRel = NRELEASE = N released from CRF (g/container)
+CumNRel = CUMNRELEASE = cumulative N released from CRF (g/container)
+CRF_N = CRF_N_BAL = CRF N remaining (g/container)
+NDemand = NDEMAND = N demand of plant (g) 
+NFD = NFERTDAYS = actual CRF longevity rating (day)
+AvT = AVGTEMP = running average of mean daily temperatures (oC)
+AvNFD =AVGNFD = running average of NFD (day)
+NRel2 = NRELEASE2 = N release from supplemental CRF application (g)
+CRF_N2 = CRF_N_BAL2 = supplemental CRF N remaining (g/container)
+AvT2 = AVGTEMP2 = running avg. of mean temp for supplemental CRF application
+NFD2 = AVGNFD2 = NFD for supplemental CRF application
+SUB_N = SUB_N = available N in substrate (g/container) 
+RD2 = REL_DAYS2 = no. of days after applying supplemental CRF
+
+--------------------------------------------------------------------------------------------
+*.tempoutput.txt
+--------------------------------------------------------------------------------------------
+YR = year finished
+DOY = day of year finished
+DAY = number of days from plant to finish
+TMIN = minimum daily temperature (oC)
+TMAX = maximum daily temperature (oC)
+TMAXB = maximum daily temp. biased for solar radiation effect (oC)
+TBIAS = mean daily temp. biased for solar radiation effect (oC)
+SRAD = SOLAR = daily solar radiation (MJ/m2)
+FCDR = fractional clear day radiation (unitless)
+DRF = direct radiation fraction (unitless)
+RDT = relative development time (day)
+DT = cumulative development time (day)
+TEMF = TEMPFACSO = temperature factor for adjusting photosynthesis
+RW = root weight (g)
+TW = shoot weight (g)
+LA = leaf area (cm2)
+LAI = leaf area index (cm2/cm2)
+
+--------------------------------------------------------------------------------------------
+*.Pplantoutput.txt
+--------------------------------------------------------------------------------------------
+YR = year planted
+DOY = day of year
+DAY = days after planting
+d_TW = daily incremental change in shoot biomass (g)
+d_RW = daily incremental change in root biomass (g)
+RW = root biomass (g) 
+TW = top biomass (g)
+P_TOP = N content of tops (g)
+P_ROOT = N content of roots (g)
+Tact = TW_Nact = actual P concentration in shoot biomass (%)
+Ract = RW_Nact = actual P concentration in root biomass (%)
+Topt = TW_Nopt = optimal P concentration in shoot biomass (%)
+Ropt = RW_Nopt = optimal P concentration in root biomass (%)
+PDemand	= PDEMAND = P demand of plant (g)
+PUptake = PUPTAKE = P taken up by plant (g)
+PSupply	= PSUPPLY = substrate P available for plant uptake (g)
+PSUF = phosphorus sufficiency factor (0-1)
+WSUF = water sufficiency factor (0-1)
+PupCum = PUPTAKE_CUM = cumulative plant P uptake (g/plant)
+
+--------------------------------------------------------------------------------------------
+*.Pleachoutput.txt
+--------------------------------------------------------------------------------------------
+YR = year planted
+DOY = day of year
+DAY = days after planting
+SubP = SUB_P = available P in substrate (g/container)
+DrCm3 = POT_DRAIN_cm3 = volume of drainage (cm3/container)
+DrPconc = DRAIN_NCONC = P concentration in drainage water (g/cm3)
+DrainP = DRAIN_P  = P content of drainage water (g/container)
+PRelease = PRELEASE = P released from CRF (g/container)
+PUptake = PUPTAKE = P taken up by whole plant (g/plant)
+CumDr = DRAIN_CUM_cm3 = cumulative volume of drainage (cm3/container)
+CumDrP = CUMDRAIN_P = cumulative P lost in drainage (g/container)
+ROcm3 = RUNOFF_cm3 = runoff volume (cm3/container)
+RO_Pconc = R_OFF_PCONC = P concentration of runoff (g/cm3)
+Ro_P = RUNOFF_P = P in runoff (g/container) 
+CumRoP = CUMRUNOFF_P = cumulative P in runoff (g/container)
+THRU_P = P in irrigation water falling between containers (g/container)
+IrP = POT_IRR_P = P supplied in irrigation water (g/container)
+CumIrP = POT_IRR_P_CUM = cumulative P supplied in irrigation water (g/container)
+
+Note: for Dr_Pconc and RO_Pconc,  g/cm3 * 1,000,000 = mg/L = ppm
+
+--------------------------------------------------------------------------------------------
+*.PReloutput.txt
+--------------------------------------------------------------------------------------------
+YR = year planted (year)
+DOY = day of year (Julian day of year)
+DAY = days after planting (day)
+TMean = TMEAN = average daily temperature (oC)
+VP = vapor pressure (kPa)
+TFac = CRF_TFAC = temperature factor for modifying N release from CRF (unitless)
+Rate = RELEASERATE = daily fractional release rate for CRF (g/g)
+PRel = PRELEASE = P released from CRF (g/container)
+CumPRel = CUMPRELEASE = cumulative P released from CRF (g/container)
+CRF_P = CRF_P_BAL = CRF P remaining (g/container)
+PDemand = PDEMAND = P demand of plant (g) 
+FD = FERTDAYS = actual CRF longevity rating (day)
+AvT = AVGTEMP = running average of mean daily temperatures (oC)
+AvFD =AVGFD = running average of FD (day)
+PRel2 = PRELEASE2 = P release from supplemental CRF application (g)
+CRF_P2 = CRF_P_BAL2 = supplemental CRF P remaining (g/container)
+AvT2 = AVGTEMP2 = running avg. of mean temp for supplemental CRF application
+FD2 = AVGFD2 = FD for supplemental CRF application
+SUB_P = SUB_P = available P in substrate (g/container) 
+RD2 = REL_DAYS2 = no. of days after applying supplemental CRF
+
+--------------------------------------------------------------------------------------------
+*.summaryoutput.txt
+--------------------------------------------------------------------------------------------
+YR = year finished
+DOY = day of year finished
+DAY = number of days to finish
+Rain = RAIN_CUM_cm3 = cumulative rain (L/container)
+Irrig = IRRIG_CUM_cm3 = cumulative irrigation water applied (L/container)
+ET = ET_CUM_cm3 = cumulative ET (L/container)
+Drain = DRAIN_CUM_cm3 = cumulative drainage volume (L/container)
+Runoff = RUNOFF_CUM_cm3 = cumulative runoff volume (L/container)
+Nloss = CUMDRAIN_N = cumulative N loss in runoff (g/container)
+NConc = CUMDRAIN_N*1000000/RUNOFF_CUM_cm3 = average N concentration in runoff (mg/L)
+HT = final height (cm)
+TW = final shoot biomass (g/plant)
+P_Area = AVG_PTA = average area alloted to a container (cm3)
+Nup_Cum = NUPTAKE_CUM = cumulative N taken up by plant (g/plant)
+Ploss = CUMDRAIN_P = cumulative P loss in runoff (g/container)
+PConc = CUMDRAIN_P*1000000/RUNOFF_CUM_cm3 = avg. P concentration in runoff (mg/L)
+PupCum = NUPTAKE_CUM = cumulative P taken up by plant (g/plant)
+
+--------------------------------------------------------------------------------------------
+*.summaryarea.txt
+--------------------------------------------------------------------------------------------
+YR = year finished
+DOY = day of year finished
+DAY = number of days from plant to finish
+Rain = RAIN_CUM_cm = cumulative rainfall (cm)
+Irr = IRR_CUM_cm = cumulative irrigation water applied (cm)
+ET = ET_CUM_cm = cumulative evapotranspiration (cm)
+Drain = DRAIN_CUM_cm = cumulative drainage (cm)
+Roff = RUNOFF_CUM_cm = cumulative runoff (cm)
+NLoad = NLOAD_CUM = cumulative N load (g/m2)
+PLoad = PLOAD_CUM = cumulative P load (g/m2)

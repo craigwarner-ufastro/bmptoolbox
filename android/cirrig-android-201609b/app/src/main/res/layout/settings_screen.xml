@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background"
+            android:fadeScrollbars="false"
+    >
+
+    <LinearLayout
+        android:id="@+id/TableLayoutSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <!-- GPS, defaults -->
+
+        <LinearLayout style="@style/settings_row" >
+
+            <CheckBox
+                style="@style/CheckBoxAppTheme"
+                android:id="@+id/Checkbox_Use_GPS"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="Use GPS"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                />
+
+            <Button
+                android:id="@+id/Button_Settings_ResetDefault"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginLeft="@dimen/settings_cell_margin"
+                android:layout_marginRight="@dimen/settings_cell_margin"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:background="@drawable/field_background_active"
+                android:text="Reset To Defaults"/>
+
+        </LinearLayout>
+
+        <!-- FAWN station -->
+
+        <LinearLayout style="@style/settings_row" >
+
+            <TextView
+                style="@style/settings_title"
+                android:id="@+id/TextView_Settings_FAWN_Head"
+                android:text="FAWN Station"
+                />
+
+            <!--<TextView-->
+                <!--style="@style/settings_field"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="2"-->
+                <!--android:id="@+id/TextView_Settings_FAWN"-->
+                <!--android:text="Alachua"-->
+                <!--/>-->
+
+        </LinearLayout>
+
+        <!-- Container Size Labels -->
+
+        <LinearLayout style="@style/settings_row" >
+
+            <View style="@style/settings_title" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginRight="16dp">
+
+                <TextView
+                    style="@style/label_title_text"
+                    android:id="@+id/TextView_Settings_Cont_Head"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="true"
+                    android:text="Container Size"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/TextView_Settings_Cont_Head"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/label_title_text"
+                        android:id="@+id/TextView_Settings_Cont1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/settings_cell_margin"
+                        android:gravity="center"
+                        android:text="#1"
+                        />
+
+                    <TextView
+                        style="@style/label_title_text"
+                        android:id="@+id/TextView_Settings_Cont3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="@dimen/settings_cell_margin"
+                        android:gravity="center"
+                        android:text="#3"
+                        />
+
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!-- Container Diameter -->
+
+        <LinearLayout style="@style/settings_row" >
+
+            <TextView
+                style="@style/settings_title"
+                android:id="@+id/TextView_Settings_ContDiam"
+                android:text="Container\nDiameter (inch)"
+                />
+
+            <TextView
+                style="@style/settings_field"
+                android:id="@+id/TextView_ContDiam1"
+                />
+
+            <TextView
+                style="@style/settings_field"
+                android:id="@+id/TextView_ContDiam3"
+                />
+
+        </LinearLayout>
+
+        <!-- Spacing -->
+
+        <LinearLayout style="@style/settings_row" >
+
+            <TextView
+                style="@style/settings_title"
+                android:id="@+id/TextView_Settings_Spacing"
+                android:text="Spacing (inch\nbetween)"
+                />
+
+            <TextView
+                style="@style/settings_field"
+                android:id="@+id/TextView_Spacing1"
+                />
+
+            <TextView
+                style="@style/settings_field"
+                android:id="@+id/TextView_Spacing3"
+                />
+
+        </LinearLayout>
+
+        <!-- Spacing Arrangement -->
+
+        <LinearLayout style="@style/settings_row" >
+
+            <TextView
+                style="@style/settings_title"
+                android:id="@+id/TextView_Settings_SpacingArr"
+                android:text="Spacing\nArrangement"
+                />
+
+            <TextView
+                style="@style/settings_field"
+                android:id="@+id/TextView_SpacingArr1"
+                />
+
+            <TextView
+                style="@style/settings_field"
+                android:id="@+id/TextView_SpacingArr3"
+                />
+
+        </LinearLayout>
+
+        <!-- Plant Canopy Density -->
+
+        <LinearLayout style="@style/settings_row" >
+
+            <TextView
+                style="@style/settings_title"
+                android:id="@+id/TextView_Settings_CanopyDensity"
+                android:text="Plant Canopy\nDensity"
+                />
+
+            <TextView
+                style="@style/settings_field"
+                android:id="@+id/TextView_CanopyDensity1"
+                />
+
+            <TextView
+                style="@style/settings_field"
+                android:id="@+id/TextView_CanopyDensity3"
+                />
+
+        </LinearLayout>
+
+        <!-- Irrigation Rate -->
+
+        <LinearLayout style="@style/settings_row" >
+
+            <TextView
+                style="@style/settings_title"
+                android:id="@+id/TextView_Settings_IrrigRate"
+                android:text="Irrigation Rate\n(inch/hr)"
+                />
+
+            <TextView
+                style="@style/settings_field"
+                android:id="@+id/TextView_IrrigRate1"
+                />
+
+            <TextView
+                style="@style/settings_field"
+                android:id="@+id/TextView_IrrigRate3"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

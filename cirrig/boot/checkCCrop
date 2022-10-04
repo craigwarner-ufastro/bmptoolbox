@@ -1,0 +1,13 @@
+#!/bin/tcsh
+# rcsId = $Name:  $ $Id: checkCcrop,v 1.8 2011/05/02 20:41:06 warner Exp $
+
+#parse args
+set options = "-sqluser mybmp"
+set logdate = `date "+%Y-%m-%d.%H:%M"`
+
+set pid = `pgrep -f ufCCrop`
+if ("$pid" == "") then
+  echo  starting  ufCCrop  $options
+  $BMPINSTALL/bin/ufCCrop $options -log $HOME/bmplogs/log.ufCCrop.${logdate} >& $HOME/bmplogs/log.ufCCrop.${logdate} &
+  sleep 3
+endif

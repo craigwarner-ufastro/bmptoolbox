@@ -1,0 +1,51 @@
+*Planting and move schedule*
+PLT_DOY START_YR END_YR MOVE  MOVE1 MOVE2 MOVE3 MOVE_LAI NOM
+91      2000     2009   LAI   -99   -99   -99   3        1
+
+*Transplant detail*
+ILA IHT IWD Status TW_Nact RW_Nact TW_Pact RW_Pact
+50  10  8   OPT    -99     -99     -99     -99
+
+*Finish detail (for FINISH enter either FIXED or SIZE)*                                  
+FINISH  HARVDAYS HARV_HT
+SIZE    126      22.86
+
+*Size adjustment check dates*
+CHK_DAY1 CHK_HT1 CHK_W1 CHK_DAY2 CHK_HT2 CHK_W2 CHK_DAY3 CHK_HT3 CHK_W3
+-99      -99     -99    -99      -99     -99    -99      -99     -99    
+
+*Container detail*
+S_VOL POTDIAM PTA0    PTA1    PTA2    PTA3    
+2400  16      221.70  886.78  -99     -99
+
+*Substrate water specs*
+SWLL  SWDUL TP   PVLF
+0.25  0.5   0.75 3.5
+
+*Irrigation schedule (for SCHED enter FIXED, MAD or FILE; for RAINCUT either YES OR NO)*
+SCHED RAINCUT IRR1  IRR2  IRR3  MAD MAD_DIF IRR_NCONC IRR_PCONC RAIN_EF
+MAD   NO      -99   -99   -99   10  0       0         0         0.5
+
+*Fixed irrigation rates (initial and after changes IRR1,IRR2 and IRR3)*
+D_IRR0  D_IRR1  D_IRR2  D_IRR3  
+1.016   0.762   1.016   1.27
+
+*Input files*
+WFNAME          PFNAME   IFNAME   SFFNAME
+"fawn/Alachua"  ILEX_VOM NONE     NONE
+
+*Fertilizer detail (for APPL enter INC or SURF)*
+FERT    PCT_CRN PCT_N PCT_P PCT_K CRF_DAYS APPL
+19.775  15      18    2.6   10    259       INC
+ 
+*Supplemental topdress fertilizer (for TDF enter FIXED,TRIG,NONE)*
+TDF    TD_DAYS TD_TF FERT2 PCT_CRN2 PCT_N2  PCT_P2 PCT_K2 CRF_DAYS2
+NONE   -99      -99  -99   -99      -99     -99    -99    259
+
+*Supplemental Solution fertilizer (for SF enter FIXED,TRIG,FILE,NONE)*
+SF     SF_START  SF_END  SF_INT  SF_TF  SF_NCONC SF_NCONC
+NONE   -99       -99     -99     -99    -99      -99
+
+*Pruning schedule (for PRUNE enter FIXED,TRIG,NONE)*
+PRUNE PR1 PR_H1 PR_W1 PR2 PR_H2 PR_W2 PR3 PR_H3 PR_W3 TPR1 TPR2 TPR3 CUT NOPMAX
+TRIG  -99 -99   -99   -99 -99   -99   -99 -99   -99   19   -99  -99  3   1

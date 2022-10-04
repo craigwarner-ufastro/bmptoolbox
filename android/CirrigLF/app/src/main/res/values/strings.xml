@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">C-Irrig LF</string>
+    <string name="splash">Splash Screen</string>
+    <string name="app_splash_title">Leaching Fraction Calculator for Container Nurseries</string>
+    <string name="menu_about">About</string>
+
+    <string name="button_label_container1">Container #1</string>
+    <string name="button_label_container3">Container #3</string>
+    <string name="cirrig_copyright">©2018 University of Florida</string>
+
+    <string name="action_settings">Settings</string>
+
+</resources>

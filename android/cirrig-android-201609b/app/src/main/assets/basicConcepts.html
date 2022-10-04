@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>CIRRIG App - Basic Concepts</TITLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" DIR="LTR">
+<DL>
+	<DT><FONT COLOR="#0070c0"><FONT SIZE=4><B>CIRRIG
+	App – </B></FONT></FONT><FONT COLOR="#00b050"><FONT SIZE=4><B>Basic
+	Concepts</B></FONT></FONT><DT>
+	<BR>
+	<DT>This CIRRIG app is an irrigation-scheduling tool for producing landscape plants in small (trade 1 and 3 gallon) containers with sprinkler irrigation.
+	The app displays irrigation run time for the amount of irrigation needed to replace the past 24 hour estimated plant water loss taking into consideration the irrigation application rate, rain,
+	and the plant’s ability to capture irrigation water.
+	<DT><BR>
+	<DT><FONT COLOR="#0070c0"><B>Estimating Evapotranspiration</B></FONT><DT>
+	CIRRIG app uses a modified Penman equation that calculates a potential ET (ETo) value based on a modified temperature function that is specific for plants grown in containers.
+	When container-grown plants are spaced to ensure adequate lighting around the plant canopy,  black,
+	non-radiating ground cloth and container surfaces can absorb solar radiation resulting in higher air temperatures around the plant than would be otherwise indicated by weather station data.
+	Higher temperatures in turn result in higher evaporation rates.  CIRRIG estimates the effect of container spacing and plant size on temperature and calculates an ETo value that is specific
+	for that particular production situation.  Actual evaporative water loss from the container (ETc) is estimated from ETo using a function that depends on plant width, plant canopy density,
+	and the ratio of production area to container top area.
+	<DT><BR>
+	<DT><FONT COLOR="#0070c0"><B>Irrigation Capture</B></FONT><DT>
+	Plants can affect the amount of sprinkler irrigation water that gets into the container.
+	Certain plant species have canopy architectures that channel water away from the container thereby reducing irrigation effectiveness.
+	In this case, irrigation rates would need to be increased accordingly.
+	Certain plant species have the opposite effect by channeling water into the container that would otherwise fall between containers and not be intercepted.
+	In this case, irrigation amounts could be reduced accordingly.
+	Besides plant architecture, irrigation capture is also affected by plant height and width relative to the container top area as well as container spacing.
+	CIRRIG estimates irrigation capture based on the user-selected irrigation capturing ability of the plant and adjusts irrigation rates accordingly.
+	In general, plants with upright, branching habit have a high water-capturing ability while plants with prostrate growth habit and droopy foliage exhibit negative or nil water-capturing ability.
+	<DT><A NAME="_GoBack"></A><BR>
+	<DT><FONT COLOR="#0070c0"><B>Rain</B></FONT><DT>
+	<DT>Rain has the capacity to replace some or all the irrigation requirement.  The CIRRIG app determines the effectiveness of the rain based on when the rain fell.
+	Any rain falling before appreciable ET occurred is considered not useful or ineffective whereas rain falling after appreciable ET would be effective.
+	The CIRRIG app uses FAWN weather which may not provide accurate rain data for the nursery site.  If the user overrides FAWN rain by inputting an observed amount of rain received at the nursery,
+	then CIRRIG assumes that 100% of the rain at nursery was effective.  In this case, the user should input the amount of rain deemed effective.
+	</DT>
+	<BR>
+	<DT><FONT COLOR="#0070c0"><B>Leaching Fraction</B></FONT><DT>
+	It is desirable in most cases to have some drainage (leachate) to prevent fertilizer salt build up in containers.
+	The leaching fraction (LF) is the volume of leachate relative to the volume of irrigation water entering the container.
+	The CIRRIG app adjusts irrigation application run times to achieve a target LF of 15%.  LF tests should be routinely performed to monitor the effectiveness of the CIRRIG app.
+	</DT>
+</DL>
+</BODY>
+</HTML>

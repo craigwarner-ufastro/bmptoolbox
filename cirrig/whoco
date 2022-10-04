@@ -1,0 +1,32 @@
+#!/bin/tcsh -f
+#unlimit
+#echo $0
+set location = $1
+if( "$location" == "" ) set location = ./RCS
+if( "$1" == "-r" ) then
+  \find . -depth -name RCS -exec $0 {} \;
+  exit
+endif
+if( ! -e $location ) then
+  echo No RCS!
+  exit
+endif
+foreach i ($location/[0-z]*,v $location/.[0-z]*,v)
+  set f = `echo $i | \sed 's^,v^^' | \sed 's^RCS/^^'`
+  set h = `rlog -h $i | \head -7 | \tail -2`
+  set h = `echo $h | \grep -v access`
+  set info = " "
+  if( "$h" != "" ) then
+    set loc = `ls -al $location | \awk '{print $11}'`
+    set loc = $loc:h
+    set loc = `ls -al $loc/*$f:t`
+    set host = `echo $loc | \awk '{print $9}'`
+    set host = $host:t
+    set host = $host:h
+    set info = `echo $loc | \awk '{print $6, $7, $8}'`
+    set info = ", $host $info"
+  endif
+  echo "$f  --  $h$info" 
+end
+exit
+

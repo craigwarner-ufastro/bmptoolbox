@@ -1,0 +1,2 @@
+Main-Class: ufWinAgent.ufWinServer
+Class-Path: ufWinAgent.jar ../lib/javaUFProtocol.jar ../lib/javaUFLib.jar ../lib/javaMMTLib.jar

@@ -1,0 +1,6 @@
+#!/bin/tcsh
+# rcsId = $Name:  $ $Id: ufbmpsim,v 1.1 2010/04/22 20:48:15 warner Exp $
+
+echo ufbmpstart $argv[1-] -sim 
+$BMPINSTALL/bin/ufbmpstart $argv[1-] -sim
+

@@ -1,0 +1,13 @@
+#!/bin/tcsh
+# rcsId = $Name:  $ $Id: checkCcrop,v 1.8 2011/05/02 20:41:06 warner Exp $
+
+#parse args
+set options = "-plchost bmpplc"
+set logdate = `date "+%Y-%m-%d.%H:%M"`
+
+set pid = `pgrep -f ufbmpPlc`
+if ("$pid" == "") then
+  echo  starting  ufbmpPlc  $options
+  $BMPINSTALL/bin/ufbmpPlc $options -log $HOME/bmplogs/log.ufbmpPlc.${logdate} >& $HOME/bmplogs/log.ufbmpPlc.${logdate} &
+  sleep 3
+endif

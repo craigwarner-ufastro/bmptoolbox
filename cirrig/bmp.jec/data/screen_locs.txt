@@ -1,0 +1,138 @@
+jeiFrame
+java.awt.Point[x=1,y=24]
+java.awt.Dimension[width=1020,height=611]
+jeiError
+java.awt.Point[x=730,y=609]
+java.awt.Dimension[width=532,height=315]
+Custom List 1
+java.awt.Point[x=544,y=110]
+java.awt.Dimension[width=600,height=361]
+Custom List 2
+java.awt.Point[x=105,y=48]
+java.awt.Dimension[width=500,height=60]
+HighLevel SectorWheel
+java.awt.Point[x=511,y=79]
+java.awt.Dimension[width=500,height=185]
+Editing ..\jei_doc.txt
+java.awt.Point[x=481,y=52]
+java.awt.Dimension[width=649,height=429]
+Editing C:\JBuilder3\jeiprojects\jei010515a\jei\mot_param.txt
+java.awt.Point[x=50,y=50]
+java.awt.Dimension[width=849,height=417]
+Editing C:\JBuilder3\jeiprojects\jei010515a\jei\apdf.txt
+java.awt.Point[x=50,y=50]
+java.awt.Dimension[width=483,height=671]
+Editing ../jei_data/jei_doc.txt
+java.awt.Point[x=232,y=32]
+java.awt.Dimension[width=1133,height=1125]
+Editing ../jei_data/apdf.txt
+java.awt.Point[x=96,y=22]
+java.awt.Dimension[width=800,height=720]
+Editing ../jei_data/
+java.awt.Point[x=112,y=74]
+java.awt.Dimension[width=400,height=438]
+Editing ../jei_data/mot_param.txt
+java.awt.Point[x=2,y=1]
+java.awt.Dimension[width=951,height=759]
+Editing ../jei_data/APDF.TXT
+java.awt.Point[x=0,y=0]
+java.awt.Dimension[width=1280,height=968]
+my status screen
+java.awt.Point[x=88,y=69]
+java.awt.Dimension[width=600,height=60]
+is - Instrument Sequencer - 0
+java.awt.Point[x=260,y=137]
+java.awt.Dimension[width=600,height=410]
+is - Instrument Sequencer - 1
+java.awt.Point[x=281,y=110]
+java.awt.Dimension[width=600,height=410]
+is - Instrument Sequencer - 2
+java.awt.Point[x=187,y=44]
+java.awt.Dimension[width=600,height=410]
+is - Instrument Sequencer - 3
+java.awt.Point[x=282,y=151]
+java.awt.Dimension[width=600,height=110]
+envCont - Environment control and monitoring - temperature and vacuum - 0
+java.awt.Point[x=319,y=312]
+java.awt.Dimension[width=600,height=335]
+envCont - Environment control and monitoring - temperature and vacuum - 1
+java.awt.Point[x=88,y=101]
+java.awt.Dimension[width=600,height=410]
+envCont - Environment control and monitoring - temperature and vacuum - 3
+java.awt.Point[x=1,y=459]
+java.awt.Dimension[width=600,height=410]
+envCont - Environment control and monitoring - temperature and vacuum - 2
+java.awt.Point[x=12,y=81]
+java.awt.Dimension[width=600,height=410]
+envCont - Environment control and monitoring - temperature and vacuum - 4
+java.awt.Point[x=616,y=342]
+java.awt.Dimension[width=600,height=410]
+envCont - Environment control and monitoring - temperature and vacuum - 5
+java.awt.Point[x=54,y=320]
+java.awt.Dimension[width=600,height=385]
+sectWhl - Sector Wheel - 0
+java.awt.Point[x=69,y=41]
+java.awt.Dimension[width=600,height=60]
+sectWhl - Sector Wheel - 1
+java.awt.Point[x=215,y=323]
+java.awt.Dimension[width=600,height=410]
+sectWhl - Sector Wheel - 2
+java.awt.Point[x=253,y=55]
+java.awt.Dimension[width=600,height=410]
+sectWhl - Sector Wheel - 3
+java.awt.Point[x=556,y=380]
+java.awt.Dimension[width=600,height=385]
+sectWhl - Sector Wheel - 4
+java.awt.Point[x=372,y=298]
+java.awt.Dimension[width=600,height=410]
+sectWhl - Sector Wheel - 5
+java.awt.Point[x=215,y=191]
+java.awt.Dimension[width=600,height=360]
+winChngr - Window Changer - 0
+java.awt.Point[x=352,y=352]
+java.awt.Dimension[width=600,height=85]
+winChngr - Window Changer - 2
+java.awt.Point[x=538,y=415]
+java.awt.Dimension[width=600,height=410]
+pplImg - Pupil Wheel - 0
+java.awt.Point[x=280,y=386]
+java.awt.Dimension[width=600,height=210]
+Detector Bias Values - 0
+java.awt.Point[x=275,y=388]
+java.awt.Dimension[width=600,height=135]
+Editing /share/home/trecs/jei_data/apdf.txt
+java.awt.Point[x=0,y=0]
+java.awt.Dimension[width=1280,height=968]
+Editing ../jei_data/jei_todo.txt
+java.awt.Point[x=38,y=6]
+java.awt.Dimension[width=806,height=600]
+Recent Command History
+java.awt.Point[x=2,y=408]
+java.awt.Dimension[width=441,height=194]
+heartbeats
+java.awt.Point[x=231,y=623]
+java.awt.Dimension[width=600,height=110]
+Editing ../jei_data/T-ReCS.tgd
+java.awt.Point[x=50,y=50]
+java.awt.Dimension[width=692,height=600]
+Editing ../jei_data/trecs.td
+java.awt.Point[x=249,y=136]
+java.awt.Dimension[width=791,height=600]
+Optical Path
+java.awt.Point[x=36,y=17]
+java.awt.Dimension[width=1120,height=399]
+Editing /home/trecs/jei_data/apdf.txt
+java.awt.Point[x=72,y=23]
+java.awt.Dimension[width=1232,height=1207]
+Editing /home/trecs/jei_data/bogusFilterLookup.txt
+java.awt.Point[x=212,y=174]
+java.awt.Dimension[width=1030,height=946]
+Editing /home/trecs/uf2001/jei/data/jei_todo.txt
+java.awt.Point[x=50,y=50]
+java.awt.Dimension[width=400,height=600]
+Editing /home/trecs/uf2001/jei/data/apdf.txt
+java.awt.Point[x=0,y=0]
+java.awt.Dimension[width=1280,height=968]
+fjecError
+java.awt.Point[x=50,y=50]
+java.awt.Dimension[width=400,height=600]

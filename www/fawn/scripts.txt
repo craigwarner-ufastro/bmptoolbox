@@ -1,0 +1,166 @@
+To rebuild weather files:
+1) ./convertFawn.py
+This script reads yearly FAWN csv files and writes out .wth files.  Yearly
+csv files contain data through the end of 2008.
+
+2) ./appendFawnReport.py FAWN_report-Jan2009.csv
+This script is used to read FAWN report .csv files and append data to existing
+weather files (that presumably were created from yearly csv files).
+Used for January 2009 only as starting on 2/1/09, we have daily csv files.
+
+3) ./updateFawnDailyData.py [days]
+The optional argument is the number of days to look back.  The default
+is 500 days.  This script looks back at the daily csv files for the
+time period specified (500 days again by default) and updates the weather
+file with any new data.  When rebuilding the weather data set, the argument
+should be >= the number of days since 2/1/09.
+
+4) ./interpolateFawnData.py [lattitude] [longitude]
+If not specified, lattitude and longitude thresholds are set to 1 degree.
+This script is used to interpolate missing historical data through Jan 31,
+2010.  It finds up to 3 stations with data on the same day within the
+specified lattitude and longitude thresholds and then uses a weighted average
+of (up to) the 3 closest by overall distance to interpolate the missing
+datapoint.  When rebuilding the dataset, this may be run more than once,
+for instance 
+./interpolateFawnData.py 1 1
+to interpolate most datapoints with lattitude and longitude thresholds of 1
+and then
+./interpolateFawnData.py 1 2
+to get the last few missing datapoints with a lattitude threshold of 1 and
+a longitude threshold of 2 degrees.
+
+
+Daily FAWN download procedure:
+Two scripts are used for the daily fawn download procedure:
+dailyFawnDownload.py and checkForMissingData.py.
+
+dailyFawnDownload.py is the daily FAWN download script used to query the
+FAWN data feed, download each day's weather data, interpolate missing
+data points if necessary, write the daily csv file out to disk, and
+update the weather files.
+
+checkForMissingData.py is the daily FAWN update script to look at csv files
+for a specified number of previous days, query the FAWN report generator
+for that time period, and update both the csv and the weather files with
+any new data.
+
+First, dailyFawnDownload.py is run at 3am every day.  It sends an HTTP
+request over a socket connection to FAWN's data feed, requesting a
+csv file of the last day's data (see
+http://fawn.ifas.ufl.edu/controller.php/lastDay/).  It reads the response
+into an array and parses the data, stripping out HTML/HTTP headers, and
+checking the date and number of observations for each station's line.  If
+all stations don't have data for the correct day with at least 80 observations
+reported (observations are every 15 minutes so 96 is a full day), it exits
+and will try again at 4am.  If the data is intact, it saves it to a daily
+csv file with a filename of the format fawn-020110.csv (for Feb 1st, 2010).
+
+At 4am, regardless of the number of stations with the correct date or
+the number of observations for each, the data is downloaded and saved
+to the daily csv file.  There are two possible issues if an incomplete
+dataset is downloaded: 1) some stations have missing lines and 2) some
+or all lines are still from a previous day.  Both of these cases are handled
+by procedures detailed below.  Seven columns saved in the csv file: station
+id, date, number of observations, total radiant flux (trf, in MJ/m^2), max
+temperature at 60cm (degrees C), min temperature at 60 cm (degrees C), and
+total rainfall (mm).
+
+Before the data is saved, the station info has to be read from the
+FAWN_STATIONS.csv file to match the station information (id, name,
+lattitude, longitude) with the line downloaded from the data feed.  It
+checks for any stations that do not have a line in the data feed (missing
+data) and temporarily adds a line with that station ID, the current date,
+and all zeros for data.  This data will be interpolated later.
+
+Now that all 35 stations have a line of data (even if its to be later replaced
+with interpolated data), the units are converted and the quantites are stored
+in arrays.  If trf (total radiant flux) is not defined but rfd_avg (average
+radiant flux in W/m^2) is, rfd_avg is converted to trf by multiplying by
+86400s/1.e+6 (joules per megajoule).
+
+Next, any data line with number of observations = 0 (the temporary line added
+above for missing data) is examined and nearby stations are used to interpolate
+the data.  The procedure is to first look at all stations that do have data
+and are within 1 degree of both lattitude and longitude of the station with
+missing data.  The overall distance between stations is calculated by
+adding lattitude difference and longitude difference in quadrature.  Up to
+the 3 closest stations by distance are then used to interpolate the data,
+weighting each datapoint by the inverse of the distance.  The interpolated
+line will have n observations = 0 to flag that it is interpolated data.
+The checkForMissingData.py script will see this and try to update it later
+(see below).  In addition, if n obervations is set to 0, in the B section
+of the realtime tool page, "Interpolated" will appear in red bold letters
+to the right of the weather data, letting the user know that this day's
+weather was interpolated.
+
+Then the date in each data line is examined.  If it does not match the correct 
+date, this line is old data.  In this case, the previous day's data is used
+for this station with the date updated to the correct date and n obervations
+set to 0 as a flag that it should be later updated by checkForMissingData.py.
+
+With all problem cases handled, the csv file is written to disk.  Then finally,
+each station's weather file is updated to append the current day's data.  The
+latestUpdate.txt file is also updated to reflect the latest date with weather
+data.  This date appears at the top of the realtime tool page.  The
+dailyFawnDownload.py keeps a logfile of all its actions in fawnData/fawn.log.
+
+
+
+The second script, checkForMissingData.py is run hourly on the half hour
+from 4:30am until 10:30pm every day.  It takes one command line argument:
+the number of previous days to examine for missing data.  During its hourly
+runs, it looks at the past 7 days.  In addition, it is run daily at 10:35pm
+to look at the past 365 days.
+
+It first reads in the station info from the FAWN_STATIONS.csv file.  Next,
+it loops over the requested number of previous days to examine and looks
+for a daily csv file with a filename of the format fawn-020110.csv
+corresponding to this day.  If the csv file exists, it is read and the
+script counts the number of rows with less than 96 observations.  This
+includes both incomplete data where just one or two observations are missing
+as well as interpolated data written by dailyFawnDownload.py, which has
+the number of observations set to 0.  If the csv file does not exist,
+something has gone wrong (perhaps the internet connection had been out or
+the server had been down) because the dailyFawnDownload.py script should have
+created this file by 4am.  In this case, checkForMissingData.py creates
+a csv file and writes a row with the station ID, the correct date, and
+all zeros for data for each station and adds each of these rows to the count
+of incomplete datapoints.
+
+Unless there are 0 incomplete datapoints, the script then formats an HTTP
+POST request and submits it to the FAWN report generator (see
+http://fawn.ifas.ufl.edu/data/reports/) asking for temperature (60 cm),
+rainfall, and solar radiation for all stations for the specified time period. 
+It reads the response into an array and parses the data, stripping out
+HTML/HTTP headers.
+
+The script then loops over the requested number of previous days a second
+time and again looks for a daily csv file corresponding to this day (which
+should now exist with all data set to 0 even if it didn't exist when the
+script started).  It reads the csv file and then looks at each individual
+row.  It looks at the station ID and the number of observations.  If the
+number of observations is less than 96, it then looks through the newly
+downloaded FAWN report and finds the line corresponding to this station and
+date.  It checks the number of observations listed in the report against the
+number listed in the csv file.  If the number in the newly downloaded report
+is greater (and also at least 48 -- because we do not want to replace
+interpolated data unless there are at least 48 of 96 observations listed)
+then it will replace the datapoint in the csv file with the newly downloaded
+data.
+
+In order to do this, it must first convert units because the FAWN report
+generator returns temperatures in degrees F, which must be converted to
+degrees C.  Rainfall is converted from inches to mm and the solar radiation
+given is rfd_avg in W/m^2 so this is converted to trf (total radiant flux)
+in MJ/m^2.
+
+After the unit conversions, a note is written to the logfile identifying
+the station and date that were updated.  The weather file for this station
+is then read and the line for this date is updated with the new data and
+written back to disk.  The daily csv file is then also updated.
+
+After every day in the specified time period has been processed in this
+manner, a message is written to the logfile, listing how many, if any,
+datapoints were updated in total.  The logfile for checkForMissingData.py
+is fawnData/fawnUpdates.log

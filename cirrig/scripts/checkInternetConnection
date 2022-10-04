@@ -1,0 +1,4 @@
+#!/bin/tcsh
+#Script to check internet connection by pinging google.  Return ok or error
+set inet = `sudo ping -q -w 1 -c 1 www.google.com > //dev/null && echo ok || echo error`
+echo "$inet"

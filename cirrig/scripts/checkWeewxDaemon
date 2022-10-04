@@ -1,0 +1,42 @@
+#!/bin/tcsh
+
+if (-f "/var/lib/weewx/updating") then
+  echo "EXISTS"
+  exit(0)
+endif
+
+set INET=`$BMPINSTALL/bin/checkInternetConnection`
+if ("$INET" != "ok") then
+  echo "checkWeewxDaemon> No internet connection"
+  exit(0)
+endif
+
+set davis=`lsusb | grep Cygnal`
+if ("$davis" == "") then
+  echo "checkWeewxDaemon> No weather station found"
+  exit(0)
+endif
+
+set pid = `pgrep -f weewxd`
+if ("$pid" == "") then
+  echo  updating clock
+  sudo ntpdate -u ntp.ubuntu.com
+  echo  stopping weewxd
+  sudo service weewx stop
+  echo  starting weewxd 
+  sudo service weewx start
+  sleep 3
+else
+  set dodump=`$BMPINSTALL/bin/checkWeewxStatus.py`
+  if ($dodump == "YES") then
+    echo dumping weewx records
+    sudo touch /var/lib/weewx/updating
+    sudo service weewx stop
+    sudo wee_device --dump -y
+    echo clearing weewx records
+    sudo wee_device --clear -y
+    sudo service weewx start
+    echo done
+    sudo rm /var/lib/weewx/updating
+  endif
+endif

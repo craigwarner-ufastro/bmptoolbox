@@ -1,0 +1,2 @@
+java.awt.Point[x=284,y=408]
+java.awt.Dimension[width=992,height=556]

@@ -1,0 +1,12 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="logo_size">32sp</dimen>
+    <dimen name="version_size">5pt</dimen>
+    <dimen name="version_spacing">3pt</dimen>
+    <dimen name="screen_title_size">16pt</dimen>
+
+    <dimen name="title_size">9pt</dimen>
+    <dimen name="row_height">44dp</dimen>
+    <dimen name="icon_height">35dp</dimen>
+</resources>

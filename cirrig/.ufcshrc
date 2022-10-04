@@ -1,0 +1,56 @@
+#!/bin/tcsh -f
+# RCS: $Name:  $ $Id: .ufcshrc,v 1.1 2010/03/03 17:46:24 warner Exp $
+
+if( ! $?BMPINSTALL ) then
+  setenv BMPINSTALL "/usr/local/uf$USER"
+endif
+
+setenv BMPINSTALL "$BMPINSTALL"
+
+set path = ( /usr/X11R6/bin /usr/ucb /usr/etc /etc )
+
+set path = ( /usr/ccs/bin /usr/ccs/lib /sbin /usr/sbin $path )
+
+set path = ( /usr/dt/bin /usr/openwin/bin /usr/xpg4/bin /bin /usr/bin /opt/bin $path )
+
+set path = ( /usr/local/java/bin /usr/java/bin $path )
+
+set path = ( /usr/local/bin /usr/local/sbin /usr/sfw/bin /sw/bin $path )
+
+set path = ( . ~/bin $BMPINSTALL/bin $BMPINSTALL/sbin $BMPINSTALL/scripts $path )
+
+rehash
+
+setenv CLASSPATH /usr/java:/usr/java/lib:/usr/java/jre:/usr/java/jre/lib:/usr/local/java
+
+setenv CLASSPATH .:${BMPINSTALL}/lib
+
+set gcclib = `which gcc| sed 's^bin/gcc^lib^'`
+
+setenv LD_LIBRARY_PATH "${BMPINSTALL}/lib:${gcclib}:/usr/local/lib:/usr/lib"
+
+if( ! $?IDL_DIR ) then
+    setenv IDL_DIR      /usr/local/rsi/idl
+endif
+
+set path = ( $path  $IDL_DIR/bin )
+
+# change this only if you know what is needed:  # setenv IDL_DLM_PATH "${BMPINSTALL}/lib"
+
+set cpu = `arch`
+
+if ( "$cpu" == "i86pc" ) then
+	setenv LD_LIBRARY_PATH "${LD_LIBRARY_PATH}:${IDL_DIR}/bin/bin.solaris2.x86"
+else
+	setenv LD_LIBRARY_PATH "${LD_LIBRARY_PATH}:${IDL_DIR}/bin/bin.solaris2.sparc"
+endif
+
+setenv LD_LIBRARY_PATH "${LD_LIBRARY_PATH}:/opt/voodoo/Voodoo/Clib/unix/lib"
+
+#env | grep CLASS
+#env | grep LD_LIB
+
+if( $?HOME ) then 
+  setenv IDL_PATH     "+$HOME/idl/rplib:+$HOME/idl/astrolib/pro:+$IDL_DIR/lib"
+  setenv IDL_STARTUP  $HOME/idl/idl_startup.pro
+endif

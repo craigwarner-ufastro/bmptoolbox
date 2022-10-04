@@ -1,0 +1,122 @@
+#!/bin/tcsh
+# rcsId = $Name:  $ $Id: ufbmpstop,v 1.4 2010/10/18 19:43:08 warner Exp $
+
+if( "$1" == "-h" || "$1" == "h" || "$1" == "help" || "$1" == "-help" ) then
+    echo " "
+    echo "usage:"
+    echo " "
+    echo "   ufbmpstop  -all [or -a]    (stop all agents)"
+    echo "or "
+    echo "   ufbmpstop  -ex  (stop all agents but executive)"
+    echo "or "
+    echo "   ufbmpstop  name"
+    echo " "
+    echo "   where name can be (lowercase or uppercase):"
+    echo " "
+    echo "      ufbmpPlc (the bmp plc agent)"
+    echo "      ufCCrop (the CCrop agent)"
+    echo "      ufWeather (the Weather agent)"
+    echo "	ufCIrrig (cirrig agent)"
+    echo "	ufWeewx (Weewx agent)"
+    echo " "
+    echo "Currently running agents and servers:"
+    ps -ef | head -1 ; ps -ef | grep $BMPINSTALL/bin | grep -v grep | grep -v /bin/tcsh | sort -n
+    exit
+endif
+
+set isargs = ""
+
+if( "$1" == "ufbmpPlc" || "$1" == "ufbmpplc" || "$1" == "UFBMPPLC") then
+    set agent = "$1"
+    set agentjar = "BMPToolbox.jar"
+
+endif
+
+if( "$1" == "ufCCrop" || "$1" == "ufccrop" || "$1" == "UFCCROP") then
+    set agent = "$1"
+    set agentjar = "CCROP.jar"
+
+endif
+
+if( "$1" == "ufCIrrig" || "$1" == "ufcirrig" || "$1" == "UFCIRRIG") then
+    set agent = "$1"
+    set agentjar = "CirrigPlc.jar"
+
+endif
+
+if( "$1" == "ufWeather" || "$1" == "ufweather" || "$1" == "UFWEATHER") then
+    set agent = "$1"
+    set agentjar = "Weather.jar"
+
+endif
+
+if( "$1" == "ufWeewx" || "$1" == "ufweewx" || "$1" == "UFWEEWX") then
+    set agent = "$1"
+    set agentjar = "Weewx.jar"
+
+endif
+
+if( $?agent ) then
+
+    if( $?agentjar ) then
+	echo stopping $agent
+	pkill -f $agentjar
+	sleep 2
+	if ( `pgrep $agentjar` != "" ) then
+	    echo killing $agent
+	    pkill -KILL -f $agentjar
+	    sleep 2
+	endif
+    else
+	echo stopping $agent
+	pkill $agent
+	sleep 2
+	if ( `pgrep $agent` != "" ) then
+	    echo killing $agent
+	    pkill -KILL $agent
+	    sleep 2
+	endif
+    endif
+
+    sleep 1
+
+    echo "Currently running agents and servers:"
+    ps -ef | head -1 ; ps -ef | grep $BMPINSTALL/bin | grep -v grep | grep -v /bin/tcsh | sort -n
+    exit
+endif
+
+if ("$1" == "-all" || "$1" == "all" || "$1" == "-a" || "$1" == "-ex") then
+
+# stop the C++ coded agents:
+
+    foreach agent ( )
+	echo stopping $agent
+	pkill $agent
+	sleep 2
+	if ( `pgrep $agent` != "" ) then
+	    echo killing $agent
+	    pkill -KILL $agent
+	    sleep 2
+	endif
+    end
+
+# stop Java coded agents:
+
+    foreach agentname ( BMPToolbox.jar CCROP.jar Weather.jar CirrigPlc.jar Weewx.jar)
+	echo stopping $agentname
+	pkill -f $agentname
+	sleep 2
+
+	if ( `pgrep $agentname` != "" ) then
+		echo killing $agentname
+		pkill -KILL -f $agentname
+		sleep 2
+	endif
+    end
+
+endif
+
+echo "Currently running agents and servers:"
+sleep 1
+ps -ef | head -1 ; ps -ef | grep $BMPINSTALL/bin | grep -v grep | grep -v /bin/tcsh | sort -n
+exit

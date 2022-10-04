@@ -1,0 +1,138 @@
+#!/bin/tcsh
+# rcsId = $Name:  $ $Id: ufbmpstart,v 1.8 2011/05/02 20:41:06 warner Exp $
+
+#parse args
+set n = 0
+set sim = "no"
+set executive = "no"
+set is = "no"
+set xml = "no"
+
+foreach i ( $argv )
+  @ n++
+  if ("$i" == "-preset") then 
+    set xml = "yes"
+    @ n++
+    set preset = $argv[$n]
+  endif
+end
+
+if ("$xml" == "yes") then
+  if ("$preset" == "list") then
+    echo "Preset list: "
+    set presets = `java -cp $BMPINSTALL/scripts/:$BMPINSTALL/lib/javaUFLib.jar parseXMLOptions $preset`
+    echo $presets
+    exit
+  endif
+  set argv = `java -cp $BMPINSTALL/scripts/:$BMPINSTALL/lib/javaUFLib.jar parseXMLOptions $preset`
+  echo "Using preset $preset = $argv"
+endif
+
+set n = 0
+foreach i ( $argv )
+  @ n++
+  if( "$i" == "-all" || "$i" == "-a") set executive = "yes"
+  if ( "$i" == "-sim") then
+    set sim = "yes"
+  endif
+  if ( "$i" == "-is") then
+    set is = "yes"
+    set argv[$n] = ""
+  endif
+end
+
+if( "$1" == "-h" || "$1" == "h" || "$1" == "help" || "$1" == "-help" ) then
+    echo " "
+    echo "usage:"
+    echo " "
+    echo "   ufbmpstart -preset preset_name (preset_name from etc/startupPresets.xml)"
+    echo "or "
+    echo "   ufbmpstart  -all [or -a]     (start all agents)"
+    echo "or "
+    echo "   ufbmpstart  agentname   (start the specified agent)"
+    echo "   where name can be (lowercase or uppercase):"
+    echo " "
+    echo "      ufbmpPlc (the bmp plc agent)"
+    echo "      ufCCrop (the CCrop agent)"
+    echo "      ufWeather (the Weather agent)"
+    echo "	ufCirrig (the Cirrig agent)"
+    echo "	ufWeewx (the Weewx agent)"
+    echo " "
+    echo "Use -sim for simulation mode and -v for verbose mode."
+    echo "Currently running agents and servers:"
+    ps -ef | head -1 ; ps -ef | grep $BMPINSTALL/bin | grep -v grep | grep -v /bin/tcsh | sort -n
+    exit
+endif
+
+if( -e $BMPINSTALL/.ufcshrc ) source $BMPINSTALL/.ufcshrc
+if ( ! -e $HOME/bmplogs) mkdir -p $HOME/bmplogs
+set logdate = `date "+%Y-%m-%d.%H:%M"`
+set options = "$argv[2-]"
+
+if( "$1" == "-all" || "$1" == "all" || "$1" == "-a" || "$1" == "ufbmpPlc" || "$1" == "ufbmpplc" || "$1" == "UFBMPPLC") then
+
+    set pid = `pgrep -f BMPToolbox`
+    if ("$pid" == "") then
+      echo  starting  ufbmpPlc  $options
+      $BMPINSTALL/bin/ufbmpPlc $options -log $HOME/bmplogs/log.ufbmpPlc.${logdate} >& $HOME/bmplogs/log.ufbmpPlc.${logdate} &
+      sleep 3
+    else
+      echo Sorry, ufbmpPlc is already running with pid "$pid".  Use ufbmpstop first.
+    endif
+endif
+
+if( "$1" == "-all" || "$1" == "all" || "$1" == "-a" || "$1" == "ufCCrop" || "$1" == "ufccrop" || "$1" == "UFCCROP") then
+
+    set pid = `pgrep -f CCROP`
+    if ("$pid" == "") then
+      echo  starting  ufCCrop  $options
+      $BMPINSTALL/bin/ufCCrop $options -log $HOME/bmplogs/log.ufCCrop.${logdate} >& $HOME/bmplogs/log.ufCCrop.${logdate} &
+      sleep 3
+    else
+      echo Sorry, ufCCrop is already running with pid "$pid".  Use ufbmpstop first.
+    endif
+
+endif
+
+if( "$1" == "-all" || "$1" == "all" || "$1" == "-a" || "$1" == "ufWeather" || "$1" == "ufweather" || "$1" == "UFWEATHER") then
+
+    set pid = `pgrep -f Weather.jar`
+    if ("$pid" == "") then
+      echo  starting  ufWeather  $options
+      $BMPINSTALL/bin/ufWeather $options -log $HOME/bmplogs/log.ufWeather.${logdate} >& $HOME/bmplogs/log.ufWeather.${logdate} &
+      sleep 3
+    else
+      echo Sorry, ufWeather is already running with pid "$pid".  Use ufbmpstop first.
+    endif
+
+endif
+
+if( "$1" == "-all" || "$1" == "all" || "$1" == "-a" || "$1" == "ufCirrig" || "$1" == "ufcirrig" || "$1" == "UFCIRRIG") then
+
+    set pid = `pgrep -f CirrigPlc.jar`
+    if ("$pid" == "") then
+      echo  starting  ufCirrigPlc $options
+      $BMPINSTALL/bin/ufCirrigPlc $options -log $HOME/bmplogs/log.ufCirrigPlc.${logdate} >& $HOME/bmplogs/log.ufCirrigPlc.${logdate} &
+      sleep 3
+    else
+      echo Sorry, ufCirrigPlc is already running with pid "$pid".  Use ufbmpstop first.
+    endif
+
+endif
+
+if( "$1" == "-all" || "$1" == "all" || "$1" == "-a" || "$1" == "ufWeewx" || "$1" == "ufweewx" || "$1" == "UFWEEWX") then
+
+    set pid = `pgrep -f Weewx.jar`
+    if ("$pid" == "") then
+      echo  starting  ufWeewx $options
+      $BMPINSTALL/bin/ufWeewx $options -log $HOME/bmplogs/log.ufWeewx.${logdate} >& $HOME/bmplogs/log.ufWeewx.${logdate} &
+      sleep 3
+    else
+      echo Sorry, ufWeewx is already running with pid "$pid".  Use ufbmpstop first.
+    endif
+
+endif
+
+echo "Currently running agents and servers:"
+ps -ef | head -1 ; ps -ef | grep $BMPINSTALL/bin | grep -v grep | grep -v /bin/tcsh | sort -n
+exit

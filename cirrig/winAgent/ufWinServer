@@ -1,0 +1,20 @@
+#!/bin/tcsh
+
+#!/bin/tcsh
+
+if( ! $?BMPINSTALL ) then
+  setenv BMPINSTALL "/usr/local/uf$USER"
+endif
+
+setenv BMPINSTALL "$BMPINSTALL"
+
+source $BMPINSTALL/.ufcshrc
+
+set pid = `pgrep -f ufWinAgent.jar`
+if ("$pid" == "") then
+  java -jar ${BMPINSTALL}/bin/ufWinAgent.jar $argv[1-]
+else
+  echo Sorry, ufWinAgent is already running with pid "$pid".  Use ufstop first.
+endif
+
+exit

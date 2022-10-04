@@ -1,0 +1,50 @@
+ -> 1 x PLC class with many PLCOutlet objects
+ -> Zone class contains PLCOutlet index
+ -> Group class contains PLC class and Zones 
+
+ -> Apply settings to global, group, or zone
+ -> Add group feature
+
+
+BMPJEC connects to CCropAgent, reads zone info
+ZoneRow panel class within GroupPanels
+AddGroupPanel, EditGroupPanel
+
+Zones added to ArrayDeque for irrigation
+
+Group class contains scheduler and is set to hour/minute
+But can have multiple start times so multiple schedulerers?
+
+ZoneGroup has a toXML() method and can be created from XML node
+After every change to a ZoneGroup or add/delete of one, XML is updated
+
+PLC -> ArrayList of ZoneGroups
+PLC -> Array of Outlets
+PLC -> LinkedHashMap? Outlets->Zones
+ZoneGroup -> ArrayList of Zones
+PLC -> GetFreeOutlets?
+Convert outlet number to name, e.g. Y00
+
+Commands:
+ADD_ZONE_GROUP::groupName
+DELETE_ZONE_GROUP::groupName
+
+ADD_OUTLET_TO_ZONE_GROUP::groupName::outletNum
+REMOVE_OUTLET_FROM_ZONE_GROUP::groupName::outletNum
+GET_FREE_OUTLETS::plc => double loop over outlets and zonegroup.isOutletInUse
+
+SET_ZONE::groupName::outletNum
+
+
+ZoneGroup => ArrayList of ZoneOutlets!  Each ZoneOutlet contains CirrigOutlet, Zone, priority, irrig value
+
+ZoneGroup has ncycles cycles and ncycles start times.  Sorted by time.
+TaskScheduler runs ncycles tasks.
+
+At each time to irrigate, readyToIrrigate=True and cycleNumber incremented.
+This is seen by CirrigPlcAgent IrrigPollingThread and added to ArrayDeque
+(synchronize).  First cycle of the day, task downloads irrig values from
+CCropAgent and updates Zone.  If that fails, it tries localhost for weather
+with current Zone info.
+
+On SET_ZONE, current Zone also downloaded. 

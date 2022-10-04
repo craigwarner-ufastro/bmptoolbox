@@ -1,0 +1,9 @@
+ RUN:  data/cwarner/test_mar11b        
+ 
+YR	DOY	DAY	Rain	Irr	ET	Drain	Roff	NLoad
+2011	67	61	21.6	11.4	11.1	19.0	22.0	6.9
+Min	67	61	21.6	11.4	11.1	19.0	22.0	6.9
+Mean	67	61	21.6	11.4	11.1	19	22	6.9
+Median	67	61	21.6	11.4	11.1	19.0	22.0	6.9
+StdDev	0	0	0	0	0	0	0	0
+Max	67	61	21.6	11.4	11.1	19.0	22.0	6.9

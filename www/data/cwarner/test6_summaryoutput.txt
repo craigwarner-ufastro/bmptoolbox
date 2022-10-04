@@ -1,0 +1,4 @@
+ Run: data/cwarner/test6              
+ 
+  YR DOY DAY   Rain  Irrig     ET  Drain Runoff Nloss  NConc    HT    TW  P_Area NupCum
+2010  51 366  22.94  22.82  23.04  21.57  22.83  1.42  62.23  58.6 102.7   221.7  1.641

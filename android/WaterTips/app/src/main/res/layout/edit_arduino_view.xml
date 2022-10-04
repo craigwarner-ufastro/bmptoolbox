@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <ScrollView
+        android:id="@+id/ScrollView_EditArduino"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_EditArduino"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="60dp"
+            android:paddingLeft="@dimen/default_spacing"
+            android:paddingRight="@dimen/default_spacing"
+            android:paddingTop="@dimen/default_spacing">
+
+
+            <TextView
+                android:id="@+id/editArduinoLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_very_large"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:text="Edit Arduino"
+                />
+
+            <TextView
+                android:id="@+id/editArduinoMACLabel"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/editArduinoLabel"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:ems="10"
+                android:text="Unit ID:"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/editArduinoMAC"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editArduinoLabel"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/editArduinoMACLabel"
+                android:background="#555555"
+                android:ems="10"
+                android:text=""
+                android:textColor="#bbbbbb"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/editArduinoNameLabel"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editArduinoMACLabel"
+                android:layout_alignLeft="@+id/editArduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Name:"
+                android:textSize="20sp" />
+
+
+            <EditText
+                android:id="@+id/editArduinoNameInput"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editArduinoMACLabel"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/editArduinoNameLabel"
+                android:background="#555555"
+                android:bufferType="editable"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="[Enter a Name]"
+                android:textColor="#bbbbbb"
+                android:textColorHint="#999999"
+                android:textSize="20dip" />
+
+
+            <TextView
+                android:id="@+id/editArduinoDescLabel"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editArduinoNameLabel"
+                android:layout_alignLeft="@+id/editArduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Desc:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editArduinoDescInput"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editArduinoNameLabel"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/editArduinoDescLabel"
+                android:background="#555555"
+                android:bufferType="editable"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="[Enter Description]"
+                android:textColor="#bbbbbb"
+                android:textColorHint="#999999"
+                android:textSize="20dip" />
+            <!-- unit settings -->
+
+            <TextView
+                android:id="@+id/editArduinoUnitTypeLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editArduinoDescLabel"
+                android:layout_alignLeft="@+id/editArduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Unit Type:"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/editArduinoUnitType"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editArduinoDescLabel"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/editArduinoUnitTypeLabel"
+                android:key="unitType"
+                android:defaultValue="0"
+                android:entries="@array/unitTypeStrings"
+                android:entryValues="@array/unitTypeVals" />
+
+            <TextView
+                android:id="@+id/editArduinoIrrigRateLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editArduinoUnitTypeLabel"
+                android:layout_alignLeft="@+id/editArduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Irrig Rate:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editArduinoIrrigRate"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editArduinoUnitTypeLabel"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/editArduinoIrrigRateLabel"
+                android:background="#555555"
+                android:bufferType="editable"
+                android:ems="10"
+                android:inputType="text"
+                android:text=""
+                android:textColor="#bbbbbb"
+                android:digits="0123456789."
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/editArduinoTargetLFLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editArduinoIrrigRateLabel"
+                android:layout_alignLeft="@+id/editArduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Target LF:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editArduinoTargetLF"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editArduinoIrrigRateLabel"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/editArduinoTargetLFLabel"
+                android:background="#555555"
+                android:bufferType="editable"
+                android:ems="10"
+                android:inputType="text"
+                android:text=""
+                android:textColor="#bbbbbb"
+                android:digits="0123456789."
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/editArduinoRuntimeLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editArduinoTargetLFLabel"
+                android:layout_alignLeft="@+id/editArduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Runtime:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editArduinoRuntime"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editArduinoTargetLFLabel"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/editArduinoRuntimeLabel"
+                android:background="#555555"
+                android:bufferType="editable"
+                android:ems="10"
+                android:inputType="text"
+                android:text=""
+                android:textColor="#bbbbbb"
+                android:digits="0123456789."
+                android:textSize="20dip" />
+
+            <TextView
+                android:id="@+id/editArduinoContDiamLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editArduinoRuntimeLabel"
+                android:layout_alignLeft="@+id/editArduinoMACLabel"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:text="Cont Diam:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editArduinoContDiam"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editArduinoRuntimeLabel"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/editArduinoContDiamLabel"
+                android:background="#555555"
+                android:bufferType="editable"
+                android:ems="10"
+                android:inputType="text"
+                android:text=""
+                android:textColor="#bbbbbb"
+                android:digits="0123456789."
+                android:textSize="20dip" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_below="@+id/editArduinoContDiamLabel">
+
+
+                <Button
+                    android:id="@+id/buttonEditSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/editArduinoContDiamLabel"
+                    android:layout_marginTop="40dp"
+                    android:layout_weight="1"
+                    android:text="Save" />
+
+                <Button
+                    android:id="@+id/buttonEditCancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editArduinoContDiamLabel"
+                    android:layout_toRightOf="@id/buttonEditSave"
+                    android:layout_toLeftOf="@id/buttonEditDelete"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_weight="1"
+                    android:text="Cancel" />
+
+                <Button
+                    android:id="@+id/buttonEditDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editArduinoContDiamLabel"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:text="Delete" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

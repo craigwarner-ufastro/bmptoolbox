@@ -1,0 +1,11 @@
+ -> 1 x PLC class with many PLCOutlet objects
+ -> Zone class contains PLCOutlet index
+ -> Group class contains PLC class and Zones 
+
+ -> Apply settings to global, group, or zone
+ -> Add group feature
+
+
+BMPJEC connects to CCropAgent, reads zone info
+ZoneRow panel class within GroupPanels
+AddGroupPanel, EditGroupPanel

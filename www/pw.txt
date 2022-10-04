@@ -1,0 +1,3 @@
+bmp/mybmp
+source/mybmpsource
+bmpadmin/4@dm!n

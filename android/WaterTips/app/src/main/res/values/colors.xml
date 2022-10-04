@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- New color palette -->
+    <color name="background">@color/dark_grey</color>
+    <color name="widget_background">@color/grey</color>
+    <color name="text_color_highlighted">@color/blue</color>
+    <color name="table_cell_odd_bg">@color/white</color>
+    <color name="table_cell_even_bg">@color/very_light_grey</color>
+    <color name="table_cell_header_bg">@color/white</color>
+
+    <color name="very_light_grey">#f6f5f5</color>
+    <color name="light_grey">#d0d1d2</color>
+    <color name="medium_light_grey">#929292</color>
+    <color name="medium_grey">#58585c</color>
+    <color name="grey">#3d3d41</color>
+    <color name="dark_grey">#232328</color>
+    <color name="blue">#0000ff</color>
+    <color name="pink">#ff0053</color>
+    <color name="red">#FF0000</color>
+
+    <color name="cell_bg_odd">#eeccaa</color>
+    <color name="cell_bg_even">#aaccee</color>
+    <color name="cell_bg_header_odd">#e0e0f0</color>
+    <color name="cell_bg_header_even">#f0f0c0</color>
+    <color name="float_cell_bg">#e5ffff</color>
+</resources>

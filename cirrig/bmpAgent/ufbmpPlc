@@ -1,0 +1,18 @@
+#!/bin/tcsh
+
+if( ! $?BMPINSTALL ) then
+  setenv BMPINSTALL "/usr/local/uf$USER"
+endif
+
+setenv BMPINSTALL "$BMPINSTALL"
+
+source $BMPINSTALL/.ufcshrc
+
+set pid = `pgrep -f BMPToolbox.jar`
+if ("$pid" == "") then
+  java -Xms64m -Xmx512m -jar ${BMPINSTALL}/bin/BMPToolbox.jar $argv[1-]
+else
+  echo Sorry, ufbmpPlc is already running with pid "$pid".  Use ufstop first.
+endif
+
+exit

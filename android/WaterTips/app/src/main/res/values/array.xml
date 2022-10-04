@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string-array name="unitTypeStrings">
+        <item>Sprinkler</item>
+        <item>Micro</item>
+    </string-array>
+    <string-array name="unitTypeVals">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="dateStrings">
+        <item>2021-01-01</item>
+    </string-array>
+    <string-array name="sortStrings">
+        <item>By Name</item>
+        <item>By ID#</item>
+    </string-array>
+    <string-array name="sortVals">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="rtStrings">
+        <item>Most Recent Saved RTT</item>
+        <item>Unit Default</item>
+        <item>Override</item>
+    </string-array>
+    <string-array name="rtVals">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>

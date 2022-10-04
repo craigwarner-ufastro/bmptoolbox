@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>FAWN : Report Generator</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<link rel="stylesheet" type="text/css" media="screen" href="/min/g=css" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/min/f=style/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/min/f=style/ie7.css" /><![endif]-->
+<link rel="stylesheet" type="text/css" media="handheld" href="/min/f=style/fawn-mobile.css" />
+<link rel="stylesheet" type="text/css" media="print" href="/min/f=style/print.css" />
+<script src="/min/g=js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/min/f=data/reports/form.css" /></head>
+
+<body>
+<div id="ifasHeader"><span><a href="http://solutionsforyourlife.ifas.ufl.edu/" target="_blank">ifas extension</a></span></div>
+
+<!--The head tag begins (wraps the logo, NWS forecast and main navigation)-->
+<div id="head">
+<!--Logo/link to home page begins-->
+	<div id="branding">
+		<h1>
+			<a href="/" title="Florida Automated Weather Network">Florida Automated Weather Network</a>
+		</h1>
+	</div>
+<!--Logo/link to home page end-->
+
+<!--Main Navigation Begins-->
+	<div id="navcontainer">
+		<ul id="navlist">
+			<li><a href="/" title="FAWN Home">Home</a></li>
+			<li><a href="/data/" title="FAWN Database">Database</a></li>
+			<li><a href="/tools/" title="FAWN tools">FAWN Tools</a>
+				<ul id="DDNav">
+					<li><a href="/tools/coldp/" title="Cold Protection Toolkit">Cold Protection Toolkit</a></li>
+					<li><a href="/tools/et/" title="Evapotranspiration">Evapotranspiration (ET)</a></li>
+					<li><a href="/tools/irrigation/citrus/" title="Citrus Irrigation">Citrus Irrigation</a></li>
+					<li><a href="/tools/temperature_threshold/" title="Air Temperature Threshold">Air Temperature Threshold</a></li>
+					<li><a href="/tools/urban_irrigation/" title="Urban Irrigation Scheduler">Urban Irrigation Scheduler</a></li>
+					<li><a href="/tools/disease_control/alter_rater/" title="Alter-Rater">Alter-Rater</a></li>
+					<li><a href="/tools/widget/" title="FAWN Desktop Widgets">FAWN Desktop Widgets (NEW)</a></li>
+					<li><a href="/tools/factsheets/" title="Alter-Rater">Fact Sheets</a></li>
+
+				</ul>
+			</li>
+			<li><a href="/climate.php" title="Southeastern Climate Consortium">Climate Tools</a></li>
+			<li><a href="/news.php" title="FAWN News">News</a>
+				<ul id="DDNav3">
+					<li><a href="/news/newsletter" title="Technical Info">eNewsletter</a></li>
+				</ul>
+			</li>
+			<li><a href="/tour.php" title="Tour the FAWN Website">Tour</a>
+				<ul id="DDNav2">
+					<li><a href="/tour/tech_info.php" title="Cold Protection Toolkit">Technical Info</a></li>
+					<li><a href="/tour/sites.php" title="Evapotranspiration">Sites</a></li>
+					<li><a href="/news.php" title="Citrus Irrigation">News</a></li>
+					<li><a href="/links.php" title="Air Temperature Threshold">Links</a></li>
+					<li><a href="/tour/sponsors/sponsors.php" title="Urban Irrigation Scheduler">Sponsors</a></li>
+					<li><a href="/tour/location_info.php" title="Alter-Rater">Location information</a></li>
+					<li><a href="/about.php" title="Alter-Rater">The FAWN Team</a></li>
+				</ul>
+			</li>
+			<li><a href="/donate.php" title="Tour the FAWN Website" id="donateButt">Donate</a></li>
+		</ul>
+	</div>
+<!--Main Navigation Ends-->
+
+<!-- sponsor -->
+<div id="sponMov">
+<div id="noflashwarning1">
+<strong>You need to enable Javascript or upgrade your Flash Player</strong>
+<p><a href="http://get.adobe.com/flashplayer/">Get Latest Flash Player here</a></p>
+</div>
+<script type="text/javascript">
+// <![CDATA[
+var so = new SWFObject("/flash/Sponsors/sponsors.swf", "sponsors", "200", "112", "8", "transparent");
+so.addParam("quality", "best");
+so.addParam("wmode", "transparent");
+so.addParam("base",".");
+so.write("noflashwarning1");
+// ]]>
+</script>
+</div>
+<!--Sponsor Movie Ends-->
+</div>
+<!--Head area Ends-->
+<!--Main Begins--><div id="alpha2">
+<div id="beta">
+<div id="main2">
+
+
+
+
+<p id="breadcrumb"><a href="../">Archived Weather Data</a> &raquo;</p>
+
+<h2>Report Generator</h2>
+
+<p><strong class="Alert">Please Note:</strong> This tool is designed for 
+ data summaries and limited samples of 15 min data. Please visit our 
+ <a href="ftp://if-fwn-prdw01.osg.ufl.edu/fawnpub/data/">FTP site</a> for full
+ yearly data sets you can open in Excel.</p>
+
+<p>Please choose from all four sections</p>
+<form action="?res" id="reportGeneratorForm" method="post">
+<div id="set_Locations">
+	<h3>Locations <span style="font-size:.9em;">(check all that apply)</span></h3>
+	<div class="nextDoor">
+		<em class='error'>Please select at least one<br /></em>
+<div><label><input name="locs__260" id="locs__260" type="checkbox" /> Alachua</label></div><div><label><input name="locs__320" id="locs__320" type="checkbox" /> Apopka</label></div><div><label><input name="locs__490" id="locs__490" type="checkbox" /> Arcadia</label></div><div><label><input name="locs__304" id="locs__304" type="checkbox" /> Avalon</label></div><div><label><input name="locs__350" id="locs__350" type="checkbox" /> Balm</label></div><div><label><input name="locs__410" id="locs__410" type="checkbox" /> Belle Glade</label></div><div><label><input name="locs__230" id="locs__230" type="checkbox" /> Bronson</label></div><div><label><input name="locs__310" id="locs__310" type="checkbox" /> Brooksville</label></div><div><label><input name="locs__150" id="locs__150" type="checkbox" /> Carrabelle</label></div>	</div>
+	<div class="nextDoor">
+		<div><label><input name="locs__250" id="locs__250" type="checkbox" /> Citra</label></div><div><label><input name="locs__405" id="locs__405" type="checkbox" /> Clewiston</label></div><div><label><input name="locs__360" id="locs__360" type="checkbox" /> Dover</label></div><div><label><input name="locs__420" id="locs__420" type="checkbox" /> Fort Lauderdale</label></div><div><label><input name="locs__390" id="locs__390" type="checkbox" /> Frostproof</label></div><div><label><input name="locs__430" id="locs__430" type="checkbox" /> Fort Pierce</label></div><div><label><input name="locs__270" id="locs__270" type="checkbox" /> Hastings</label></div><div><label><input name="locs__440" id="locs__440" type="checkbox" /> Homestead</label></div><div><label><input name="locs__450" id="locs__450" type="checkbox" /> Immokalee</label></div>	</div>
+	<div class="nextDoor">
+		<div><label><input name="locs__371" id="locs__371" type="checkbox" /> Indian River</label></div><div><label><input name="locs__110" id="locs__110" type="checkbox" /> Jay</label></div><div><label><input name="locs__340" id="locs__340" type="checkbox" /> Kenansville</label></div><div><label><input name="locs__330" id="locs__330" type="checkbox" /> Lake Alfred</label></div><div><label><input name="locs__170" id="locs__170" type="checkbox" /> Live Oak</label></div><div><label><input name="locs__180" id="locs__180" type="checkbox" /> Macclenny</label></div><div><label><input name="locs__130" id="locs__130" type="checkbox" /> Marianna</label></div><div><label><input name="locs__160" id="locs__160" type="checkbox" /> Monticello</label></div><div><label><input name="locs__480" id="locs__480" type="checkbox" /> North Port</label></div>	</div>
+	<div class="nextDoor">
+		<div><label><input name="locs__280" id="locs__280" type="checkbox" /> Ocklawaha</label></div><div><label><input name="locs__303" id="locs__303" type="checkbox" /> Okahumpka</label></div><div><label><input name="locs__380" id="locs__380" type="checkbox" /> Ona</label></div><div><label><input name="locs__460" id="locs__460" type="checkbox" /> Palmdale</label></div><div><label><input name="locs__290" id="locs__290" type="checkbox" /> Pierson</label></div><div><label><input name="locs__240" id="locs__240" type="checkbox" /> Putnam Hall</label></div><div><label><input name="locs__140" id="locs__140" type="checkbox" /> Quincy</label></div><div><label><input name="locs__470" id="locs__470" type="checkbox" /> Sebring</label></div><div><label><input name="locs__302" id="locs__302" type="checkbox" /> Umatilla</label></div>	</div>
+	<div class="boxout"></div>
+</div>
+
+<div id="set_ReportType">
+	<h3>Report Type</h3>
+	<div>
+        <div><div><label><input value="all" type="radio" name="reportType" /> All observations (15 min)</label></div><div><label><input value="hourly" type="radio" name="reportType" /> Hourly Avgs</label></div><div><label><input value="daily" type="radio" name="reportType" checked="checked" /> Daily Avgs</label></div><div><label><input value="monthly" type="radio" name="reportType" /> Monthly Avgs</label></div><div><label><input value="entire" type="radio" name="reportType" /> Avg Entire Period</label></div></div>    </div>
+    <div class="boxout"></div>
+</div>
+
+<div id="set_DateRange">
+	<h3>Date Range</h3>
+	<div id="set_presetRanges">
+        <div><div><label><input value="3" type="radio" name="presetRange" /> 3 Days</label></div><div><label><input value="7" type="radio" name="presetRange" /> 7 Days</label></div><div><label><input value="14" type="radio" name="presetRange" /> 14 Days</label></div><div><label><input value="30" type="radio" name="presetRange" /> 30 Days</label></div><div><label><input value="dates" type="radio" name="presetRange" checked="checked" /> Specify Dates</label></div></div>    </div>
+	<div id="set_specDates">
+        <div>From <select name="fromDate_m" id="fromDate_m"><option value="">-month-</option><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9" selected="selected">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option></select><select name="fromDate_d" id="fromDate_d"><option value="">-day-</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option selected="selected">14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option></select><select name="fromDate_y" id="fromDate_y"><option value="">-year-</option><option>1998</option><option>1999</option><option>2000</option><option>2001</option><option>2002</option><option>2003</option><option>2004</option><option>2005</option><option>2006</option><option>2007</option><option>2008</option><option>2009</option><option selected="selected">2010</option></select></div><div>To <select name="toDate_m" id="toDate_m"><option value="">-month-</option><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9" selected="selected">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option></select><select name="toDate_d" id="toDate_d"><option value="">-day-</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option selected="selected">21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option></select><select name="toDate_y" id="toDate_y"><option value="">-year-</option><option>1998</option><option>1999</option><option>2000</option><option>2001</option><option>2002</option><option>2003</option><option>2004</option><option>2005</option><option>2006</option><option>2007</option><option>2008</option><option>2009</option><option selected="selected">2010</option></select></div>    </div>
+	<div class="boxout"></div>
+</div>
+
+<div id="set_Measurements">
+	<h3>Measurements</h3>
+	<div class="nextDoor first">
+		<div><label><input name="vars__AirTemp1" id="vars__AirTemp1" type="checkbox" checked="checked" /> Temperature (60cm)</label></div><div><label><input name="vars__AirTemp9" id="vars__AirTemp9" type="checkbox" /> Temperature (2m)</label></div><div><label><input name="vars__AirTemp15" id="vars__AirTemp15" type="checkbox" /> Temperature (10m)</label></div><div><label><input name="vars__SoilTempAvg" id="vars__SoilTempAvg" type="checkbox" /> Soil Temperature (-10cm)</label></div>	</div>
+	<div class="nextDoor">
+		<div><label><input name="vars__DewPoint" id="vars__DewPoint" type="checkbox" /> Dewpoint (2m)</label></div><div><label><input name="vars__WetBulb" id="vars__WetBulb" type="checkbox" /> WetBulb Temp</label></div><div><label><input name="vars__RelHumAvg" id="vars__RelHumAvg" type="checkbox" /> Relative Humidity</label></div><div><label><input name="vars__Rainfall" id="vars__Rainfall" type="checkbox" checked="checked" /> Rainfall</label></div>	</div>
+	<div class="nextDoor">
+		<div><label><input name="vars__TotalRad" id="vars__TotalRad" type="checkbox" checked="checked" /> Solar Radiation</label></div><div><label><input name="vars__WindSpeed" id="vars__WindSpeed" type="checkbox" /> Wind Speed (10m)</label></div><div><label><input name="vars__WindDir" id="vars__WindDir" type="checkbox" /> Wind Direction (10m) (all obs)</label></div><div><label><input name="vars__ET" id="vars__ET" type="checkbox" /> ET (daily/monthly only)</label></div>	</div>
+	<div class="boxout"></div>
+</div>
+
+
+<p id="sizeNotice"><strong>Notice:</strong> If you request a large amount of data (many
+    locations, all/hourly data, long date range) your report may silently fail.
+    If this occurs, please try fewer locations, measurements, etc., or visit our
+    <a href="ftp://if-fwn-prdw01.osg.ufl.edu/fawnpub/data/">FTP site</a> for full
+    year data sets in CSV format.</p>
+
+<div id="submitButtons">
+    <h3>Generate report as: </h3>
+    <input name="format" value="HTML table" type="submit" /> &nbsp;<input name="format" value=".CSV (Excel)" type="submit" /> &nbsp;    <div class="boxout"></div>
+</div>
+</form>
+
+
+<div id="selfLink"></div>
+
+<script type="text/javascript" src="/min/f=js/jquery.formVal.js,js/LocationHash.js,js/jquery.cookie.js,data/reports/form.js">
+
+</div>
+</div>
+</div>
+<!--Main ends-->
+
+<!--boxout clears rightmain-->
+
+<div class="boxout">&nbsp;</div>
+
+<!--Main Area ends-->
+ 
+<!--Footer Begins-->
+<div id="footer">
+<ul>
+	<li><a href="/" title="home">Home</a></li>
+	<li><a href="/data/" title="database">Database</a></li>
+	<li><a href="/climate.php" title="climate">Climate</a></li>
+	<li><a href="/tools/" title="tools">Tools</a></li>
+	<li><a href="/focus/" title="Focus">Focus</a></li>
+	<li><a href="/news.php" title="news">News</a></li>
+	<li><a href="/4h/" title="4H Weather and Cliamte Home Page" style="color:green;">4H</a></li>
+	<li><a href="/contact/" title="contact">Contact</a></li>
+</ul>
+<p>&copy; <a href="http://www.ufl.edu/" id="footerHome" title="University of Florida">University of Florida<span>&nbsp;</span></a>, Gainesville, FL 32611; (352) 392-3261.</p>
+<ul>
+	<li><a href="/about.php" title="home">About This site</a></li>
+	<li><a href="http://www.ufl.edu/disability/" title="database">Disability Service</a></li>
+	<li><a href="http://privacy.ufl.edu/privacystatement.html" title="climate">Privacy Policy</a></li>
+	<li><a href="/search.php" title="tools">Search this site</a></li>
+</ul></div>
+<script type="text/javascript" src="http://www.google-analytics.com/ga.js"></script>
+<script type="text/javascript">
+if (window._gat) {
+    var pageTracker = _gat._getTracker("UA-3977705-1");
+    pageTracker._initData();
+    pageTracker._trackPageview();    
+}
+</script>
+<script type="text/javascript" src="/controller.php/checkMssql/"></script>
+</body>
+</html>
+

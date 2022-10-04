@@ -1,0 +1,9 @@
+ RUN:  data/cwarner/test6b             
+ 
+YR	DOY	DAY	Rain	Irr	ET	Drain	Roff	NLoad
+2010	111	60	8.5	26.8	25.2	7.3	10.6	9.0
+Min	111	60	8.5	26.8	25.2	7.3	10.6	9.0
+Mean	111	60	8.5	26.8	25.2	7.3	10.6	9
+Median	111	60	8.5	26.8	25.2	7.3	10.6	9.0
+StdDev	0	0	0	0	0	0	0	0
+Max	111	60	8.5	26.8	25.2	7.3	10.6	9.0
