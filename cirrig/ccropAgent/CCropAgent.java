@@ -422,6 +422,17 @@ public class CCropAgent extends UFMMTThreadedAgent {
 		    }
 		  }
 		}
+                if (defIrrig == null) {
+                  defIrrig = "-1";
+                  System.out.println(_mainClass+"::action> ERROR: default irrigation is null for zone "+id);
+                } else {
+                  try {
+                    float ndef = Float.parseFloat(defIrrig);
+                  } catch(NumberFormatException nfe) {
+                    defIrrig = "-1";
+                    System.out.println(_mainClass+"::action> ERROR: default irrigation is null for zone "+id);
+                  }
+                }
 		if (success) responses.add("SUCCESS "+irrig+" "+irrigMin+" "+irrigRate+" "+defIrrig+" "+histTime);
               } catch(SQLException e) {
                 e.printStackTrace();
