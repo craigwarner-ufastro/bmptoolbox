@@ -1,0 +1,17 @@
+#!/bin/tcsh
+#Script to check when time change occurs 
+if (! -e ${BMPINSTALL}/etc/tz) then 
+  echo "A"
+  date +"%Z" > ${BMPINSTALL}/etc/tz
+endif
+
+set tz = `date +"%Z"`
+set tzold = `cat ${BMPINSTALL}/etc/tz`
+if ("$tz" != "$tzold") then
+  echo "TIMECHANGE"
+  date +"%Z" > ${BMPINSTALL}/etc/tz
+  ufbmpstop -a
+  exit(0)
+endif
+
+echo "SAME"

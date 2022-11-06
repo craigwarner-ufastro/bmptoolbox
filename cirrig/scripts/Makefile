@@ -13,7 +13,7 @@ endif
 
 CONFIG := .cshrc
 
-SCRIPTS :=  archiveIrrigHis.py checkInternetConnection  checkWeewxDaemon  checkWeewxStatus.py
+SCRIPTS :=  archiveIrrigHis.py checkInternetConnection  checkWeewxDaemon  checkWeewxStatus.py  checkDST
 
 RCSLIST := Makefile $(SCRIPTS) $(CONFIG) 
 
