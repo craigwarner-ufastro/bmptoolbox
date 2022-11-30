@@ -2,7 +2,7 @@
 # rcsId = $Name:  $ $Id: checkCcrop,v 1.8 2011/05/02 20:41:06 warner Exp $
 
 #parse args
-set options = "-plchost bmpplc"
+set options = "-ccrophost localhost"
 set logdate = `date "+%Y-%m-%d.%H:%M"`
 
 set pid = `pgrep -f ufbmpPlc`

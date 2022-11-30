@@ -1,5 +1,5 @@
 <?php
-   $mysqli_db = mysqli_connect("localhost", "cwarner", "", "mybmp");
+   $mysqli_db = mysqli_connect("localhost", "mybmpmysqluser", "mybmpmysqlpass", "mybmp");
    if (!$mysqli_db) {
      die("Could not connect: " . mysqli_connect_errno()); 
    }

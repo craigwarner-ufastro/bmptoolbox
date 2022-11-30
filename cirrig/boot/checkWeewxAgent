@@ -2,7 +2,7 @@
 # rcsId = $Name:  $ $Id: checkWeewxAgent,v 1.8 2011/05/02 20:41:06 warner Exp $
 
 #parse args
-set options = ""
+set options = "-host localhost"
 set logdate = `date "+%Y-%m-%d.%H:%M"`
 
 sleep 20
