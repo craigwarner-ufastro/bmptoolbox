@@ -1,0 +1,10 @@
+#!/bin/tcsh
+
+set user = `whoami`
+set rootdir = `dirname $0`
+
+if ("$user" == "pi") then
+  if (-e "$rootdir/../cirrig/scripts/.cshrc") then
+    cp -f "$rootdir/../cirrig/scripts/.cshrc" $HOME
+  endif
+endif

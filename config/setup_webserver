@@ -1,0 +1,16 @@
+#!/bin/tcsh
+
+set rootdir = `dirname $0`
+set fulldir = `realpath -s "$rootdir/../www"`
+
+if (-e /var/www/html) then
+  sudo mv /var/www/html /var/www/html_old
+endif
+
+sudo ln -s "$fulldir" /var/www/html
+
+if (-e /var/www/html_old/weewx) then
+  if (! -e /var/www/html/weewx) then
+    sudo ln -s /var/www/html_old/weewx /var/www/html/weewx
+  endif
+endif

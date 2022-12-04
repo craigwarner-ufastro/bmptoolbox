@@ -1,0 +1,9 @@
+#!/bin/tcsh
+
+sudo rm /var/www/html
+
+if (! -e /var/www/html) then
+  if (-e /var/www/html_old) then
+    sudo mv /var/www/html_old /var/www/html
+  endif
+endif
