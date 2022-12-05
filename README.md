@@ -124,43 +124,45 @@ alias egrep 'egrep –color=auto'
    - At this point it is a good idea to reboot again.
 
 ### 6. After reboot, install BMPToolbox software:
-        ◦ > tcsh
-            ▪ Enter tcsh mode.  You’ll see the prompt change.  You can type 
-                • > echo $BMPINSTALL
-            ▪ and you should see it reply /home/pi/bmpinstall.  If so, you have your .cshrc file correct.
-        ◦ > git clone https://github.com/craigwarner-ufastro/bmptoolbox.git
-            ▪ This will check out the BMPToolbox software to the directory /home/pi/bmptoolbox
-        ◦ > cd bmptoolbox/cirrig
-            ▪ Change into the bmptoolbox/cirrig directory
-        ◦ > make init
-            ▪ Perform setup for install
-        ◦ > make install
-            ▪ Perform the actual install.  This will take a few minutes.
-        ◦ > source .ufcshrc
-        ◦ > rehash
-            ▪ Make Linux see all the new software that has been installed
-        ◦ > ufbmpstop -l
-            ▪ Test if everything installed properly.  If so, you will get “Currently running agents and servers: UID        PID  PPID  C STIME TTY          TIME CMD” spread across 2 lines.  If not, you will get “ufbmpstop: Command not found.”
-    5. Configure BMPToolbox software
-        ◦ > cd /home/pi/bmptoolbox/cirrig/scripts/
-        ◦ > ./patchWeewx.sh
-            ▪ These two command will change directories and then run the script that patches the weewx startup script to only start if the internet is connected.
-        ◦ > mkdir /home/pi/bmplogs
-            ▪ Create directory for log files
+- `> tcsh`
+   - Enter tcsh mode.  You’ll see the prompt change.  You can type `> echo $BMPINSTALL` and you should see it reply `/home/pi/bmpinstall`.  If so, you have your .cshrc file correct.
+- `> git clone https://github.com/craigwarner-ufastro/bmptoolbox.git`
+   - This will check out the BMPToolbox software to the directory /home/pi/bmptoolbox
+- `> cd bmptoolbox/cirrig`
+   - Change into the bmptoolbox/cirrig directory
+- `> make init`
+   - Perform setup for install
+- `> make install`
+   - Perform the actual install.  This will take a few minutes.
+- `> source .ufcshrc`
+- `> rehash'
+   - Make Linux see all the new software that has been installed
+- `> ufbmpstop -l`
+   - Test if everything installed properly.  If so, you will get `Currently running agents and servers: UID        PID  PPID  C STIME TTY          TIME CMD` spread across 2 lines.  If not, you will get `ufbmpstop: Command not found.`
 
-    7. Set up a weather station
-        ◦ If starting a new weather station config on an existing pi, make sure you are using tcsh as your shell and stop any currently running weewx by typing
-            ▪ > tcsh
-            ▪ > sudo service weewx stop
-        ◦ If configuring a new weather station on an existing pi, run the weewx config tool.  Note: this can be skipped if you entered the station name, longitude, latitude, type, etc when installing weewx in section 2.
-            ▪ > sudo wee_config --reconfigure
-You will be prompted for a name for the weather station (e.g. CLTF), then an altitude (number then a comma then units, e.g. 30, meter).  Then you'll be asked for longitude and latitude, us or metric units (us), and finally the driver to use. Select the number next to Vantage.  You will also select the default port - /dev/usb0.
-            ▪ > sudo wee_device --set-interval=300 will set the default interval to 300 seconds (5 minutes) if it is set to a different value.
-        ◦ Start weewx:
-            ▪ > sudo service weewx start
-Then wait until the next 5 minute interval has finished and check that it is working:
-            ▪ > sudo service weewx status
-If its working, the message should have the status as running and should list “manager: added record” at the most recent 5 minute interval:
+
+### 7. Configure BMPToolbox software
+- `> cd /home/pi/bmptoolbox/cirrig/scripts/`
+- `> ./patchWeewx.sh`
+   - These two command will change directories and then run the script that patches the weewx startup script to only start if the internet is connected.
+- `> mkdir /home/pi/bmplogs`
+   - Create directory for log files
+
+### 8. Set up a weather station (optional)
+- If starting a new weather station config on an existing pi, make sure you are using tcsh as your shell and stop any currently running weewx by typing
+  - `> tcsh`
+  - `> sudo service weewx stop`
+- If configuring a new weather station on an existing pi, run the weewx config tool.  Note: this can be skipped if you entered the station name, longitude, latitude, type, etc when installing weewx in section 2.
+- `> sudo wee_config --reconfigure`
+   - You will be prompted for a name for the weather station (e.g. CLTF), then an altitude (number then a comma then units, e.g. 30, meter).  Then you'll be asked for longitude and latitude, us or metric units (us), and finally the driver to use. Select the number next to Vantage.  You will also select the default port - /dev/usb0.
+- `> sudo wee_device --set-interval=300`
+   - Will set the default interval to 300 seconds (5 minutes) if it is set to a different value.
+- Start weewx:
+  - `> sudo service weewx start`
+  - Then wait until the next 5 minute interval has finished and check that it is working:
+  - `> sudo service weewx status`
+  - If its working, the message should have the status as running and should list `manager: added record` at the most recent 5 minute interval:
+```
 pi@pi-uf:~ $ sudo service weewx status
 ● weewx.service - LSB: weewx weather system
  Loaded: loaded (/etc/init.d/weewx)
@@ -171,22 +173,27 @@ pi@pi-uf:~ $ sudo service weewx status
 
 Jul 26 00:25:16 pi-uf weewx[1638]: manager: added record 2018-07-26 00:25:0...b'
 Jul 26 00:25:16 pi-uf weewx[1638]: manager: added record 2018-07-26 00:25:0...b'
-        ◦ If it is running but you don’t see any messages about adding records, its possible there’s a clock discrepancy between the weather station unit and the weewx software.  In this case, you want to dump all the memory of the weather station and then clear it and everything should then restart normally.
-            ▪ > sudo service weewx stop
-            ▪ > sudo wee_device --dump
-            ▪ > sudo wee_device --clear
-            ▪ > sudo service weewx start
-        ◦ Once weewx is running, you’ll want to configure the weewx agent:
-            ▪ > ufWeewxConfig
-Enter your username, password, and either a weather station name or id to configure the weewx agent.
-    8. Set up scheduled tasks
-        ◦ > crontab -e
-            ▪ Edit the “crontab”, which is the automatic task scheduler.  Press 1 (or whatever number is next to nano) and enter to use nano as your text editor for setting up the crontab.  Scroll down to the bottom of the file and paste the following 4 lines:
+```
+  - If it is running but you don’t see any messages about adding records, its possible there’s a clock discrepancy between the weather station unit and the weewx software.  In this case, you want to dump all the memory of the weather station and then clear it and everything should then restart normally.
+    - `> sudo service weewx stop`
+    - `> sudo wee_device --dump`
+    - `> sudo wee_device --clear`
+    - `> sudo service weewx start`
+- Once weewx is running, you’ll want to configure the weewx agent:
+  - `> ufWeewxConfig`
+  - Enter your username, password, and either a weather station name or id to configure the weewx agent.
+
+
+### 9. Set up scheduled tasks
+- `> crontab -e`
+   - Edit the “crontab”, which is the automatic task scheduler.  Press 1 (or whatever number is next to nano) and enter to use nano as your text editor for setting up the crontab.  Scroll down to the bottom of the file and paste the following 4 lines:
+```
 0 0 1 * * /home/pi/bmpinstall/bin/archiveIrrigHis.py
 * * * * * /home/pi/bmpinstall/bin/checkCirrigPlc
 * * * * * /home/pi/bmpinstall/bin/checkWeewxAgent
 * * * * * /home/pi/bmpinstall/bin/checkWeewxDaemon
-            ▪ Hit CTRL+x to save, hit ‘y’ and enter to accept changes and hit enter to accept the filename given.
-        ◦ > crontab -l
-            ▪ You should see the same 4 lines you just entered at the bottom of the response to confirm that you properly saved the crontab.  The lines mean that on the 1st day of every month at midnight (hour = 0, minute = 0), archiveIrrigHis.py will run – this archives the irrigHistory logs.  And at every minute of every day, it will run scripts to check the status of the cirrigAgent, weewxAgent, and weewx program itself and make sure they are all running.
-        ◦ Reboot the pi and you are good to go!
+```
+   - Hit CTRL+x to save, hit ‘y’ and enter to accept changes and hit enter to accept the filename given.
+- `> crontab -l`
+   - You should see the same 4 lines you just entered at the bottom of the response to confirm that you properly saved the crontab.  The lines mean that on the 1st day of every month at midnight (hour = 0, minute = 0), archiveIrrigHis.py will run – this archives the irrigHistory logs.  And at every minute of every day, it will run scripts to check the status of the cirrigAgent, weewxAgent, and weewx program itself and make sure they are all running.
+   - Reboot the pi and you are good to go!
