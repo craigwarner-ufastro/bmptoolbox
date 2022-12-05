@@ -135,7 +135,7 @@ alias egrep 'egrep –color=auto'
 - `> make install`
    - Perform the actual install.  This will take a few minutes.
 - `> source .ufcshrc`
-- `> rehash'
+- `> rehash`
    - Make Linux see all the new software that has been installed
 - `> ufbmpstop -l`
    - Test if everything installed properly.  If so, you will get `Currently running agents and servers: UID        PID  PPID  C STIME TTY          TIME CMD` spread across 2 lines.  If not, you will get `ufbmpstop: Command not found.`
