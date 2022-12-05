@@ -84,7 +84,9 @@ quit
 - You should then be able to: `> mysql -u pi -p` and enter the password you set up to get to a mysql prompt (type `quit` to exit).
 
 
-### 4. Use config to initialize database and webserver
+### 4. Download BMPToolbox software and use config to initialize database and webserver
+- `> git clone https://github.com/craigwarner-ufastro/bmptoolbox.git`
+   - This will check out the BMPToolbox software to the directory /home/pi/bmptoolbox
 - `> cd /home/pi/bmptoolbox/config`
 - `> ./setup_cshrc`
    - This will copy the default .cshrc file into your home directory
@@ -93,7 +95,6 @@ quit
 - `> ./setup_webserver`
    - This will link the built-in webpages to your apache webserver in the folder /var/www/html (and backup anything existing as /var/www/html_old).
    - To undo this, run `> ./unset_webserver` at any time.
-
 
 ### 5. Setup config files
 - (Optional) Setup `.cshrc` file - if for some reason the `./setup_cshrc` above does not work, you can manually set up that file:
@@ -126,8 +127,6 @@ alias egrep 'egrep –color=auto'
 ### 6. After reboot, install BMPToolbox software:
 - `> tcsh`
    - Enter tcsh mode.  You’ll see the prompt change.  You can type `> echo $BMPINSTALL` and you should see it reply `/home/pi/bmpinstall`.  If so, you have your .cshrc file correct.
-- `> git clone https://github.com/craigwarner-ufastro/bmptoolbox.git`
-   - This will check out the BMPToolbox software to the directory /home/pi/bmptoolbox
 - `> cd bmptoolbox/cirrig`
    - Change into the bmptoolbox/cirrig directory
 - `> make init`
