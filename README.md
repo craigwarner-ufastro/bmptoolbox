@@ -83,24 +83,30 @@ quit
 - The last command (quit) will exit mysql back to a command prompt.  You may use any user other than pi if you desire.  Enter the actual password you want instead of ‘password’.
 - You should then be able to: `> mysql -u pi -p` and enter the password you set up to get to a mysql prompt (type `quit` to exit).
 
+### 4. (Optional) Change host name
+- If you prefer to change the host name of the raspberry pi, perform the following commands.  All of these are optional.
+- `> sudo nano /etc/hosts`
+   - Use the nano editor to edit the file `/etc/hosts`.  Change raspberrypi in the line starting 127.0.0.1 to whatever you want the host name to be, e.g. pi-uf, pi-battery, pi-ctlf.
+   - Hit CTRL+x to save, then confirm and accept the filename as `/etc/hosts`.
+- `> sudo nano /etc/hostname`
+   - Again use the nano editor, this time to edit the file `/etc/hostname`.  Change raspberrypi to the same hostname you selected in the previous step.
+   - Hit CTRL+x to save, then confirm and accept the filename as `/etc/hostname`.
+- `> sudo /etc/init.d/hostname.sh`
+   - This causes the changes you just made to take effect.  Don’t worry if you see the message “sudo: unable to resolve host raspberrypi”
+- At this point it is a good idea to reboot again.
 
-### 4. Download BMPToolbox software and use config to initialize database and webserver
-- `> git clone https://github.com/craigwarner-ufastro/bmptoolbox.git`
+### 5. Download, configure, and install BMPToolbox software
+- **Download:**
+  - `> git clone https://github.com/craigwarner-ufastro/bmptoolbox.git`
    - This will check out the BMPToolbox software to the directory /home/pi/bmptoolbox
-- `> cd /home/pi/bmptoolbox/config`
-- `> ./setup_cshrc`
-   - This will copy the default .cshrc file into your home directory
-- `> ./setup_database.py`
-   - Enter your MYSQL username and password and the database shell will be created and all scheduled scripts will be updated with the correct database information and installed.
-- `> ./setup_webserver`
-   - This will link the built-in webpages to your apache webserver in the folder /var/www/html (and backup anything existing as /var/www/html_old).
-   - To undo this, run `> ./unset_webserver` at any time.
-
-### 5. Setup config files
-- (Optional) Setup `.cshrc` file - if for some reason the `./setup_cshrc` above does not work, you can manually set up that file:
-  - `> cd`
-  - `> nano .cshrc`
-  - This changes to your home directory uses the “nano” editor to create a file .cshrc which is a global configuration file. Paste the following into the file and then hit CTRL+x to save.  Hit ‘y’ and enter to confirm and then enter again to accept the filename as .cshrc.
+- **Configuration File:**
+  - `> cd /home/pi/bmptoolbox/config`
+  - `> ./setup_cshrc`
+     - This will copy the default .cshrc file into your home directory and set your install directory as `/home/pi/bmpinstall`
+  - OR alternatively if you have any problems doing this or want to define a custom location for your install directory, you can use the "nano" editor to create a file .cshrc, which is a global configuration file
+     - `> cd`
+     - `> nano .cshrc`
+     - Paste the following into the file and then hit CTRL+x to save. Hit 'y' and enter to confirm and then enter again to accept the filename as `.cshrc`.
 ```
 setenv BMPINSTALL /home/pi/bmpinstall
 setenv UFMMTINSTALL /home/pi/bmpinstall
@@ -114,40 +120,37 @@ alias grep 'grep --color=auto'
 alias fgrep 'fgrep --color=auto'
 alias egrep 'egrep –color=auto'
 ```
-- `> sudo nano /etc/hosts`
-   - Again use the nano editor, this time to edit the file /etc/hosts.  Change raspberrypi in the line starting 127.0.0.1 to whatever you want the host name to be, e.g. pi-uf, pi-battery, pi-ctlf.
-   - Hit CTRL+x to save, then confirm and accept the filename as /etc/hosts.
-- `> sudo nano /etc/hostname`
-   - Again use the nano editor, this time to edit the file /etc/hostname.  Change raspberrypi to the same hostname you selected in the previous step.
-   - Hit CTRL+x to save, then confirm and accept the filename as /etc/hostname.
-- `> sudo /etc/init.d/hostname.sh`
-   - This causes the changes you just made to take effect.  Don’t worry if you see the message “sudo: unable to resolve host raspberrypi”
-   - At this point it is a good idea to reboot again.
+- **Setup database and webserver:**
+  - `> ./setup_database.py`
+     - Enter your MYSQL username and password and the database shell will be created and all scheduled scripts will be updated with the correct database information and installed.
+  - `> ./setup_webserver`
+     - This will link the built-in webpages to your apache webserver in the folder /var/www/html (and backup anything existing as /var/www/html_old).
+     - To undo this, run `> ./unset_webserver` at any time.
+     - To test that the webserver and database have been installed, open a web browser and point it to `http://localhost/` (or `http://127.0.0.1` which is always the numerical representation of any local machine).  If the webserver and database have been properly installed, you'll see the BMPToolbox website.  You can click on *Register* to register an account and begin using the webpage.  If *either* the webserver or database was not properly installed, then the website will not display.
+- **Install BMPToolbox software:**
+  - `> tcsh`
+    - Enter tcsh mode.  You’ll see the prompt change.  You can type `> echo $BMPINSTALL` and you should see it reply `/home/pi/bmpinstall`.  If so, you have your `.cshrc` file correct.  *Note: You will need to ALWAYS run `tcsh` before running BMPToolbox software unless you change your default shell.*
+     - To change your default shell, use the command `> chsh`, enter your password, and then enter `/bin/tcsh` when prompted and hit enter.  If you do this, you do not need to enter `tcsh` at any future point as you will always be in tcsh mode.
+  - `> cd bmptoolbox/cirrig`
+    - Change into the bmptoolbox/cirrig directory
+  - `> make init`
+    - Perform setup for install - this will create your output directories
+  - `> make install`
+    - Perform the actual install.  This will build Java software and take a few minutes.
+  - `> source .ufcshrc`
+  - `> rehash`
+    - Make Linux see all the new software that has been installed
+  - `> ufbmpstop -l`
+    - Test if everything installed properly.  If so, you will get `Currently running agents and servers: UID        PID  PPID  C STIME TTY          TIME CMD` spread across 2 lines.  If not, you will get `ufbmpstop: Command not found.`
 
-### 6. After reboot, install BMPToolbox software:
-- `> tcsh`
-   - Enter tcsh mode.  You’ll see the prompt change.  You can type `> echo $BMPINSTALL` and you should see it reply `/home/pi/bmpinstall`.  If so, you have your .cshrc file correct.
-- `> cd bmptoolbox/cirrig`
-   - Change into the bmptoolbox/cirrig directory
-- `> make init`
-   - Perform setup for install
-- `> make install`
-   - Perform the actual install.  This will take a few minutes.
-- `> source .ufcshrc`
-- `> rehash`
-   - Make Linux see all the new software that has been installed
-- `> ufbmpstop -l`
-   - Test if everything installed properly.  If so, you will get `Currently running agents and servers: UID        PID  PPID  C STIME TTY          TIME CMD` spread across 2 lines.  If not, you will get `ufbmpstop: Command not found.`
-
-
-### 7. Configure BMPToolbox software
+### 6. Configure BMPToolbox software
 - `> cd /home/pi/bmptoolbox/cirrig/scripts/`
 - `> ./patchWeewx.sh`
    - These two command will change directories and then run the script that patches the weewx startup script to only start if the internet is connected.
 - `> mkdir /home/pi/bmplogs`
    - Create directory for log files
 
-### 8. Set up a weather station (optional)
+### 7. Set up a weather station (optional)
 - If starting a new weather station config on an existing pi, make sure you are using tcsh as your shell and stop any currently running weewx by typing
   - `> tcsh`
   - `> sudo service weewx stop`
