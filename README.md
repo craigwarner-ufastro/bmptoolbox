@@ -142,18 +142,17 @@ alias egrep 'egrep –color=auto'
     - Make Linux see all the new software that has been installed
   - `> ufbmpstop -l`
     - Test if everything installed properly.  If so, you will get `Currently running agents and servers: UID        PID  PPID  C STIME TTY          TIME CMD` spread across 2 lines.  If not, you will get `ufbmpstop: Command not found.`
+- **Make Log Directory:**
+  - `> mkdir /home/pi/bmplogs`
+    - Create directory for log files
 
-### 6. Configure BMPToolbox software
-- `> cd /home/pi/bmptoolbox/cirrig/scripts/`
-- `> ./patchWeewx.sh`
-   - These two command will change directories and then run the script that patches the weewx startup script to only start if the internet is connected.
-- `> mkdir /home/pi/bmplogs`
-   - Create directory for log files
-
-### 7. Set up a weather station (optional)
+### 6. Set up a weather station (optional)
 - If starting a new weather station config on an existing pi, make sure you are using tcsh as your shell and stop any currently running weewx by typing
   - `> tcsh`
   - `> sudo service weewx stop`
+- Run a patch to the weewx startup script to only start if the internet is connected:
+  - `> cd /home/pi/bmptoolbox/cirrig/scripts/`
+  - `> ./patchWeewx.sh`
 - If configuring a new weather station on an existing pi, run the weewx config tool.  Note: this can be skipped if you entered the station name, longitude, latitude, type, etc when installing weewx in section 2.
 - `> sudo wee_config --reconfigure`
    - You will be prompted for a name for the weather station (e.g. CLTF), then an altitude (number then a comma then units, e.g. 30, meter).  Then you'll be asked for longitude and latitude, us or metric units (us), and finally the driver to use. Select the number next to Vantage.  You will also select the default port - /dev/usb0.
@@ -186,7 +185,7 @@ Jul 26 00:25:16 pi-uf weewx[1638]: manager: added record 2018-07-26 00:25:0...b'
   - Enter your username, password, and either a weather station name or id to configure the weewx agent.
 
 
-### 9. Set up scheduled tasks
+### 7. Set up scheduled tasks
 - `> crontab -e`
    - Edit the “crontab”, which is the automatic task scheduler.  Press 1 (or whatever number is next to nano) and enter to use nano as your text editor for setting up the crontab.  Scroll down to the bottom of the file and paste the following 4 lines:
 ```
