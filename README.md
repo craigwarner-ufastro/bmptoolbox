@@ -103,7 +103,7 @@ quit
   - `> cd /home/pi/bmptoolbox/config`
   - `> ./setup_cshrc`
      - This will copy the default .cshrc file into your home directory and set your install directory as `/home/pi/bmpinstall`
-  - OR alternatively if you have any problems doing this or want to define a custom location for your install directory, you can use the "nano" editor to create a file .cshrc, which is a global configuration file
+  - (Optional) OR alternatively if you have any problems doing this or want to define a custom location for your install directory, you can use the "nano" editor to create a file .cshrc, which is a global configuration file
      - `> cd`
      - `> nano .cshrc`
      - Paste the following into the file and then hit CTRL+x to save. Hit 'y' and enter to confirm and then enter again to accept the filename as `.cshrc`.
