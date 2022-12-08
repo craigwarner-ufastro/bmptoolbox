@@ -50,5 +50,6 @@ for fn in filesToUpdate:
     f.close()
 
 print ("Installing new scripts...")
+os.system('cd '+file_root+'/cirrig; '+file_root+'/config/init.sh')
 os.system('cd '+file_root+'/cirrig/boot; '+file_root+'/config/install.sh') 
 os.system('cd '+file_root+'/cirrig/scripts; '+file_root+'/config/install.sh')
