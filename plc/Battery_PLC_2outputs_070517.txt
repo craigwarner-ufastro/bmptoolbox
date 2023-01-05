@@ -1,0 +1,33 @@
+PLC 06
+
+// Rung 1
+// Address 0
+STR B2100.0
+OUT Y3
+OUT Y6
+
+// Rung 2
+// Address 4
+STR B2100.1
+OUT Y0
+OUT Y5
+
+// Rung 3
+// Address 8
+STR B2110.0
+OUT Y13
+OUT Y16
+
+// Rung 4
+// Address 12
+STR B2110.1
+OUT Y10
+OUT Y15
+
+// Rung 5
+// Address 16
+END
+
+// Rung 6
+// Address 17
+NOP

@@ -1,0 +1,45 @@
+PLC 06
+
+// Rung 1
+// Address 0
+STR SP0
+RST B2100.0
+RST B2100.1
+
+// Rung 2
+// Address 5
+STR B2100.1
+ANDN T0
+OR B2100.0
+OUT Y1
+
+// Rung 3
+// Address 11
+STR B2100.1
+STR B2100.2
+TMRA T0 V2101
+
+// Rung 4
+// Address 17
+STRE V7770 K0
+ANDE V7767 K0
+ANDE V2103 K1
+RST B2103.0
+
+// Rung 5
+// Address 25
+STRE V7770 K8
+ANDE V7767 K30
+ANDE V2103 K0
+SET B2103.0
+SET B2100.2
+RST B2100.2
+SET B2100.1
+
+// Rung 6
+// Address 39
+END
+
+// Rung 7
+// Address 40
+NOP

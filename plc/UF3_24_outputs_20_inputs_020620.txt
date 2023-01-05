@@ -1,0 +1,585 @@
+PLC 06
+
+// Rung 1
+// Address 0
+STR SP0
+RST B2100.0
+RST B2100.1
+
+// Rung 2
+// Address 5
+STR SP0
+RST B2110.0
+RST B2110.1
+
+// Rung 3
+// Address 10
+STR SP0
+RST B2120.0
+RST B2120.1
+
+// Rung 4
+// Address 15
+STR SP0
+RST B2130.0
+RST B2130.1
+
+// Rung 5
+// Address 20
+STR SP0
+RST B2140.0
+RST B2140.1
+
+// Rung 6
+// Address 25
+STR SP0
+RST B2150.0
+RST B2150.1
+
+// Rung 7
+// Address 30
+STR SP0
+RST B2160.0
+RST B2160.1
+
+// Rung 8
+// Address 35
+STR SP0
+RST B2170.0
+RST B2170.1
+
+// Rung 9
+// Address 40
+STR SP0
+RST B2200.0
+RST B2200.1
+
+// Rung 10
+// Address 45
+STR SP0
+RST B2210.0
+RST B2210.1
+
+// Rung 11
+// Address 50
+STR SP0
+RST B2220.0
+RST B2220.1
+
+// Rung 12
+// Address 55
+STR SP0
+RST B2230.0
+RST B2230.1
+
+// Rung 13
+// Address 60
+STR SP0
+RST B2240.0
+RST B2240.1
+
+// Rung 14
+// Address 65
+STR SP0
+RST B2250.0
+RST B2250.1
+
+// Rung 15
+// Address 70
+STR SP0
+RST B2260.0
+RST B2260.1
+
+// Rung 16
+// Address 75
+STR SP0
+RST B2270.0
+RST B2270.1
+
+// Rung 17
+// Address 80
+STR SP0
+RST B2300.0
+RST B2300.1
+
+// Rung 18
+// Address 85
+STR SP0
+RST B2310.0
+RST B2310.1
+
+// Rung 19
+// Address 90
+STR SP0
+RST B2320.0
+RST B2320.1
+
+// Rung 20
+// Address 95
+STR SP0
+RST B2330.0
+RST B2330.1
+
+// Rung 21
+// Address 100
+STR SP0
+RST B2340.0
+RST B2340.1
+
+// Rung 22
+// Address 105
+STR SP0
+RST B2350.0
+RST B2350.1
+
+// Rung 23
+// Address 110
+STR SP0
+RST B2360.0
+RST B2360.1
+
+// Rung 24
+// Address 115
+STR SP0
+RST B2370.0
+RST B2370.1
+
+// Rung 25
+// Address 120
+STR B2100.1
+ANDN T0
+OR B2100.0
+OUT Y0
+
+// Rung 26
+// Address 126
+STR B2110.1
+ANDN T2
+OR B2110.0
+OUT Y1
+
+// Rung 27
+// Address 132
+STR B2120.1
+ANDN T4
+OR B2120.0
+OUT Y2
+
+// Rung 28
+// Address 138
+STR B2130.1
+ANDN T6
+OR B2130.0
+OUT Y3
+
+// Rung 29
+// Address 144
+STR B2140.1
+ANDN T10
+OR B2140.0
+OUT Y4
+
+// Rung 30
+// Address 150
+STR B2150.1
+ANDN T12
+OR B2150.0
+OUT Y5
+
+// Rung 31
+// Address 156
+STR B2160.1
+ANDN T14
+OR B2160.0
+OUT Y6
+
+// Rung 32
+// Address 162
+STR B2170.1
+ANDN T16
+OR B2170.0
+OUT Y7
+
+// Rung 33
+// Address 168
+STR B2200.1
+ANDN T20
+OR B2200.0
+OUT Y10
+
+// Rung 34
+// Address 174
+STR B2210.1
+ANDN T22
+OR B2210.0
+OUT Y11
+
+// Rung 35
+// Address 180
+STR B2220.1
+ANDN T24
+OR B2220.0
+OUT Y12
+
+// Rung 36
+// Address 186
+STR B2230.1
+ANDN T26
+OR B2230.0
+OUT Y13
+
+// Rung 37
+// Address 192
+STR B2240.1
+ANDN T30
+OR B2240.0
+OUT Y14
+
+// Rung 38
+// Address 198
+STR B2250.1
+ANDN T32
+OR B2250.0
+OUT Y15
+
+// Rung 39
+// Address 204
+STR B2260.1
+ANDN T34
+OR B2260.0
+OUT Y16
+
+// Rung 40
+// Address 210
+STR B2270.1
+ANDN T36
+OR B2270.0
+OUT Y17
+
+// Rung 41
+// Address 216
+STR B2300.1
+ANDN T40
+OR B2300.0
+OUT Y100
+
+// Rung 42
+// Address 222
+STR B2310.1
+ANDN T42
+OR B2310.0
+OUT Y101
+
+// Rung 43
+// Address 228
+STR B2320.1
+ANDN T44
+OR B2320.0
+OUT Y102
+
+// Rung 44
+// Address 234
+STR B2330.1
+ANDN T46
+OR B2330.0
+OUT Y103
+
+// Rung 45
+// Address 240
+STR B2340.1
+ANDN T50
+OR B2340.0
+OUT Y104
+
+// Rung 46
+// Address 246
+STR B2350.1
+ANDN T52
+OR B2350.0
+OUT Y105
+
+// Rung 47
+// Address 252
+STR B2360.1
+ANDN T54
+OR B2360.0
+OUT Y106
+
+// Rung 48
+// Address 258
+STR B2370.1
+ANDN T56
+OR B2370.0
+OUT Y107
+
+// Rung 49
+// Address 264
+STR B2100.1
+STR B2100.2
+TMRA T0 V2101
+
+// Rung 50
+// Address 270
+STR B2110.1
+STR B2110.2
+TMRA T2 V2111
+
+// Rung 51
+// Address 276
+STR B2120.1
+STR B2120.2
+TMRA T4 V2121
+
+// Rung 52
+// Address 282
+STR B2130.1
+STR B2130.2
+TMRA T6 V2131
+
+// Rung 53
+// Address 288
+STR B2140.1
+STR B2140.2
+TMRA T10 V2141
+
+// Rung 54
+// Address 294
+STR B2150.1
+STR B2150.2
+TMRA T12 V2151
+
+// Rung 55
+// Address 300
+STR B2160.1
+STR B2160.2
+TMRA T14 V2161
+
+// Rung 56
+// Address 306
+STR B2170.1
+STR B2170.2
+TMRA T16 V2171
+
+// Rung 57
+// Address 312
+STR B2200.1
+STR B2200.2
+TMRA T20 V2201
+
+// Rung 58
+// Address 318
+STR B2210.1
+STR B2210.2
+TMRA T22 V2211
+
+// Rung 59
+// Address 324
+STR B2220.1
+STR B2220.2
+TMRA T24 V2221
+
+// Rung 60
+// Address 330
+STR B2230.1
+STR B2230.2
+TMRA T26 V2231
+
+// Rung 61
+// Address 336
+STR B2240.1
+STR B2240.2
+TMRA T30 V2241
+
+// Rung 62
+// Address 342
+STR B2250.1
+STR B2250.2
+TMRA T32 V2251
+
+// Rung 63
+// Address 348
+STR B2260.1
+STR B2260.2
+TMRA T34 V2261
+
+// Rung 64
+// Address 354
+STR B2270.1
+STR B2270.2
+TMRA T36 V2271
+
+// Rung 65
+// Address 360
+STR B2300.1
+STR B2300.2
+TMRA T40 V2301
+
+// Rung 66
+// Address 366
+STR B2310.1
+STR B2310.2
+TMRA T42 V2311
+
+// Rung 67
+// Address 372
+STR B2320.1
+STR B2320.2
+TMRA T44 V2321
+
+// Rung 68
+// Address 378
+STR B2330.1
+STR B2330.2
+TMRA T46 V2331
+
+// Rung 69
+// Address 384
+STR B2340.1
+STR B2340.2
+TMRA T50 V2341
+
+// Rung 70
+// Address 390
+STR B2350.1
+STR B2350.2
+TMRA T52 V2351
+
+// Rung 71
+// Address 396
+STR B2360.1
+STR B2360.2
+TMRA T54 V2361
+
+// Rung 72
+// Address 402
+STR B2370.1
+STR B2370.2
+TMRA T56 V2371
+
+// Rung 73
+// Address 408
+STR X0
+STR B2105.0
+CNT CT0 V2106
+
+// Rung 74
+// Address 413
+STR X1
+STR B2115.0
+CNT CT1 V2116
+
+// Rung 75
+// Address 418
+STR X2
+STR B2125.0
+CNT CT2 V2126
+
+// Rung 76
+// Address 423
+STR X3
+STR B2135.0
+CNT CT3 V2136
+
+// Rung 77
+// Address 428
+STR X4
+STR B2145.0
+CNT CT4 V2146
+
+// Rung 78
+// Address 433
+STR X5
+STR B2155.0
+CNT CT5 V2156
+
+// Rung 79
+// Address 438
+STR X6
+STR B2165.0
+CNT CT6 V2166
+
+// Rung 80
+// Address 443
+STR X7
+STR B2175.0
+CNT CT7 V2176
+
+// Rung 81
+// Address 448
+STR X10
+STR B2225.0
+CNT CT10 V2226
+
+// Rung 82
+// Address 453
+STR X11
+STR B2235.0
+CNT CT11 V2236
+
+// Rung 83
+// Address 458
+STR X12
+STR B2245.0
+CNT CT12 V2246
+
+// Rung 84
+// Address 463
+STR X13
+STR B2255.0
+CNT CT13 V2256
+
+// Rung 85
+// Address 468
+STR X14
+STR B2265.0
+CNT CT14 V2266
+
+// Rung 86
+// Address 473
+STR X15
+STR B2275.0
+CNT CT15 V2276
+
+// Rung 87
+// Address 478
+STR X16
+STR B2305.0
+CNT CT16 V2306
+
+// Rung 88
+// Address 483
+STR X17
+STR B2315.0
+CNT CT17 V2316
+
+// Rung 89
+// Address 488
+STR X20
+STR B2345.0
+CNT CT20 V2346
+
+// Rung 90
+// Address 493
+STR X21
+STR B2355.0
+CNT CT21 V2356
+
+// Rung 91
+// Address 498
+STR X22
+STR B2365.0
+CNT CT22 V2366
+
+// Rung 92
+// Address 503
+STR X23
+STR B2375.0
+CNT CT23 V2376
+
+// Rung 93
+// Address 508
+END
+
+// Rung 94
+// Address 509
+NOP
