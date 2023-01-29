@@ -4,7 +4,7 @@ C-Irrig and CCROP toolkits, webpages, android apps, and arduino programs
 BMPToolbox is a collection of Java software, webpages with backend database, android apps, an arduino program all loosely connected and developed by Tom Yeager, Jeff Million, and Craig Warner at the Univeristy of Florida IFAS for crop irrigation modeling.
 
 ## Table of contents:
-This github contains 7 subfolders:
+This github contains 8 subfolders:
 
 - android - this contains 3 apps: C-Irrig, C-IrrigLF, and WaterTips
   - CirrigLF - the CirrigLF app
@@ -35,6 +35,7 @@ This github contains 7 subfolders:
 - config - contains the database template and configuration scripts to set up the environment, database, and webserver
 - docs - several PDFs with documentation
 - driver - the original driver fortran program that we ran in 2007
+- plc - Ladder logic programs for AutomationDirect DL06 PLCs as text files that can be imported
 - www - the entire collection of webpages from our server - this includes both the original pages and the cirrig pages, which are in the cirrig folder.  This requires mysql databases to exist to be able to run which I will describe in my documentation but can be used to set up a stand-alone system on any Linux machine with a webserver, including a pi, and that is exactly what we're doing with Saunders.
   - admin - admin pages for managing users
   - capturefactor - I think this was informational pages that you put together
@@ -58,19 +59,20 @@ Below follows a guide to installing the basics of the cirrig software on a raspb
 - Power on the pi - it will boot into a Windows-like desktop environment.
 - Click the Start Menu – Preferences – Raspberry Pi Configuration to set up localization and time zone and reboot.
 - Optionally change the password - Start Menu - Accessories - Terminal and then type: ```> passwd``` to change password using the passwd command.  It will ask you to confirm the current (default) password of raspberry then will ask you to enter a new password and confirm it.
+- _It is suggested to open this README.md file in a browser so that the commands below can be copied/pasted into the terminal_
 - ```>  sudo apt-get update```
      - update repositories using this command 
 - Download weewx – open the web browser, goto www.weewx.com or do a search for “weewx” and click on the Weewx home page.  Click on Download and then Released Versions and download the latest .deb file listed.  Current version (Nov 2022) is 4.9.1.  It will be saved to your Downloads directory.
 - ```> sudo dpkg -i Downloads/python3-weewx_4.9.1-1_all.deb```
-     - You will have a blue screen pop up to ask you for a location name (default Santa’s Workshop, North Pole), longitude and latitude, elevation, and weather station type (use Simulation if not hooked up to anything at the moment, Vantage otherwise).
-     - It will then fail to install due to dependency issues but these will be resolved momentarily.
+     - You will have a blue screen pop up to ask you for a location name (default Santa’s Workshop, North Pole), longitude and latitude, elevation, and weather station type (use Simulator if not hooked up to anything at the moment, Vantage otherwise).  Press Enter to move through the prompts.
+     - It will then **fail** to install due to dependency issues but these will be resolved momentarily.
 - ```>  sudo apt-get install python3-configobj python3-cheetah python3-pil python3-usb```
-     - This will install the listed packages and weewx
+     - This will install the listed packages and weewx.  You may have to answer Y at a Y/N prompt.
 - ```> sudo apt-get install git subversion tcsh vim vim-common vim-runtime vim-syntax-gtk telnet ntpdate sqlite3 mysql-common mariadb-client mariadb-server apache2 python3-pip default-jdk php php-gd php-mysql```
      - Hit ‘y’ and enter to confirm.  This will install numerous packages.
 
 ### 3. Setup mysql
-- https://pimylifeup.com/raspberry-pi-mysql/
+- For reference: https://pimylifeup.com/raspberry-pi-mysql/
 - ```> sudo mysql_secure_installation```
      - Hit ‘Y’ for all prompts.
 - ```> sudo mysql -u root -p```
@@ -80,7 +82,7 @@ CREATE USER 'pi'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON *.* TO 'pi'@'localhost';
 quit
 ```
-- The last command (quit) will exit mysql back to a command prompt.  You may use any user other than pi if you desire.  Enter the actual password you want instead of ‘password’.
+- The last command (quit) will exit mysql back to a command prompt.  You may use any user other than pi if you desire.  **Enter the actual password you want instead of ‘password’** in the query above.
 - You should then be able to: `> mysql -u pi -p` and enter the password you set up to get to a mysql prompt (type `quit` to exit).
 
 ### 4. (Optional) Change host name
@@ -130,7 +132,7 @@ alias egrep 'egrep –color=auto'
 - **Install BMPToolbox software:**
   - `> tcsh`
     - Enter tcsh mode.  You’ll see the prompt change.  You can type `> echo $BMPINSTALL` and you should see it reply `/home/pi/bmpinstall`.  If so, you have your `.cshrc` file correct.  *Note: You will need to ALWAYS run `tcsh` before running BMPToolbox software unless you change your default shell.*
-     - To change your default shell, use the command `> chsh`, enter your password, and then enter `/bin/tcsh` when prompted and hit enter.  If you do this, you do not need to enter `tcsh` at any future point as you will always be in tcsh mode.
+     - _To change your default shell, use the command `> chsh`, enter your password, and then enter `/bin/tcsh` when prompted and hit enter.  If you do this, you do not need to enter `tcsh` at any future point as you will always be in tcsh mode._
   - `> cd bmptoolbox/cirrig`
     - Change into the bmptoolbox/cirrig directory
   - `> make init`
