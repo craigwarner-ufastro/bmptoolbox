@@ -422,7 +422,7 @@ public class CCropAgent extends UFMMTThreadedAgent {
 		    }
 		  }
 		}
-                if (defIrrig == null) {
+                if (defIrrig == null || defIrrig.toLowerCase().equals("null")) {
                   defIrrig = "-1";
                   System.out.println(_mainClass+"::action> ERROR: default irrigation is null for zone "+id);
                 } else {
@@ -1352,15 +1352,19 @@ public class CCropAgent extends UFMMTThreadedAgent {
 
     @Override
     protected void checkAncillaryThread() {
-        /* Kill if heartbeat is 15 sec behind. AND NOT _initializing */
-        if (_ancillaryRunning && _heartbeat < System.currentTimeMillis()/1000 - 15 && !_initializing) {
-          System.out.println(_mainClass + "::checkAncillaryThread> Heartbeat is lagging 15 sec behind.  Killing ancillary thread at "+ctime());
+        /* Kill if heartbeat is 45 sec behind. AND NOT _initializing */
+        if (_ancillaryRunning && _heartbeat < System.currentTimeMillis()/1000 - 45 && !_initializing) {
+          System.out.println(_mainClass + "::checkAncillaryThread> Heartbeat is lagging 45 sec behind.  Killing ancillary thread at "+ctime());
           _ancillaryRunning = false;
           _ancillary.forceShutdown();
+	  hibernate(5000);
+          _startupAncillaryThread();
         }
         if (!_ancillary.isAlive()) {
           System.out.println(_mainClass + "::checkAncillaryThread> AncillaryThread "+_ancillary.getId()+" died!");
+          _ancillaryRunning = false;
           _ancillary.shutdownLoops();
+          hibernate(5000);
           _startupAncillaryThread();
           System.out.println(_mainClass + "::checkAncillaryThread> Starting new AncillaryThread: "+_ancillary.getId()+" at "+ctime());
         }
@@ -1377,6 +1381,8 @@ public class CCropAgent extends UFMMTThreadedAgent {
 
         public void run() {
           int n = 15;
+          System.out.println(_className+"::run> Starting up Ancillary Threada at "+ctime());
+          heartbeat();
           while(true) {
             while (_isRunning) {
               if (_shutdown) return;

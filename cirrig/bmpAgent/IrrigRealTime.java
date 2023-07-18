@@ -142,6 +142,7 @@ public class IrrigRealTime {
                           day = getReplyToken(reply, 5);
 			  try {
                             /* convert irrigation to cm!! ** 8/20/13 Only if not -1 ** */
+                            int nc = 1;
                             irrig = Float.parseFloat(getReplyToken(reply, 1));
 			    if (irrig >= 0) irrig *= 2.54f;
                             irrigMin = Float.parseFloat(getReplyToken(reply, 2));
@@ -153,22 +154,24 @@ public class IrrigRealTime {
 			      defIrrig = Float.parseFloat(getReplyToken(reply, 4));
 			      if (defIrrig >= 0) defIrrig *= 2.54f;
 			      irrigMin = defIrrig/irrigRate*60.0f; 
-			      int nc = 1;
 			      try {
 				nc = Integer.parseInt(ncycles[j]);
 				irrigMin /= nc;
 			      } catch(NumberFormatException nfe) {
 				System.out.println(_mainClass+"::getIrrig> Invalid ncycles: "+ncycles[j]);
 			      }
+                              //set flag -1
+                              if (irrig < 0) nc = -1;
 			      irrigStrings.add("\""+externals[j]+"\","+defIrrig+","+irrigMin+","+nc);
 			    } else {
-                              int nc = 1;
                               try {
                                 nc = Integer.parseInt(ncycles[j]);
                                 irrigMin /= nc;
                               } catch(NumberFormatException nfe) {
                                 System.out.println(_mainClass+"::getIrrig> Invalid ncycles: "+ncycles[j]);
                               }
+                              //set flag -1
+                              if (irrig < 0) nc = -1;
 			      irrigStrings.add("\""+externals[j]+"\","+irrig+","+irrigMin+","+nc);
 			    }
                           } catch (NumberFormatException nfe) {
@@ -178,19 +181,22 @@ public class IrrigRealTime {
                             irrigRate = -1;
                             defIrrig = -1;
                             updated = false;
-			    error = true;
+			    //error = true;
 			    errMsg = "Invalid irrigation value: "+getReplyToken(reply, 1); 
-			    break;
+                            //Do not break out of loop, just add a line with -1 for error flags
+                            irrigStrings.add("\""+externals[j]+"\","+irrig+","+irrigMin+",-1");
                           }
                           System.out.println(_mainClass+"::getIrrig> date = "+day+"; Irrig = "+irrig+" cm; minutes = "+irrigMin+"; rate = "+irrigRate+"; default = "+defIrrig);
 			} else {
 			  System.out.println(_mainClass+"::getIrrig> Error: "+reply.stringAt(0));
 			  irrig = -1;
+                          irrigMin = -1;
 			  defIrrig = -1;
                           updated = false;
-                          error = true;
+                          //error = true;
                           errMsg = reply.stringAt(0);
-			  break;
+                          //Do not break out of loop, just add a line with -1 for error flags
+                          irrigStrings.add("\""+externals[j]+"\","+irrig+","+irrigMin+",-1");
                         }
 		      }
 		      if (!error) updated = true;
