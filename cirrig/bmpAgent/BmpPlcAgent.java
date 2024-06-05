@@ -1826,7 +1826,8 @@ public class BmpPlcAgent extends UFMMTThreadedAgent {
 	    }
 	    int ncycles = getMMTIntValue(_mainClass+":"+irrigIP+".ncycles");
 	    if (ncycles != 1) irrigMin /= ncycles;
-	    irrigStrings.add("\""+rt.getExternal()+"\","+irrig+","+irrigMin+","+ncycles);
+            irrigStrings.add("\""+rt.getExternal()+"\","+roundVal(irrig, 3)+","+roundVal(irrigMin, 3)+","+ncycles);
+	    //irrigStrings.add("\""+rt.getExternal()+"\","+irrig+","+irrigMin+","+ncycles);
 	  }
 	  //Check for mix/max values
 	  float maxIrr = getMMTFloatValue(_mainClass+":"+irrigIP+".maxIrrig");

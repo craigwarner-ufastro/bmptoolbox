@@ -54,6 +54,15 @@ public class IrrigRealTime {
       ccropPort = port;
     }
 
+    public String roundVal(float val, int dec) {
+      String outVal = ""+val;
+      int n = outVal.indexOf(".");
+      if (n != -1 && n+3 < outVal.length()) {
+        outVal = outVal.substring(0, n+3);
+      }
+      return outVal;
+    }
+
     public void start() {
 	task = new SchedulerTask() {
             public void run() {
@@ -162,7 +171,8 @@ public class IrrigRealTime {
 			      }
                               //set flag -1
                               if (irrig < 0) nc = -1;
-			      irrigStrings.add("\""+externals[j]+"\","+defIrrig+","+irrigMin+","+nc);
+			      //irrigStrings.add("\""+externals[j]+"\","+defIrrig+","+irrigMin+","+nc);
+                              irrigStrings.add("\""+externals[j]+"\","+roundVal(defIrrig, 3)+","+roundVal(irrigMin, 3)+","+nc);
 			    } else {
                               try {
                                 nc = Integer.parseInt(ncycles[j]);
@@ -172,7 +182,8 @@ public class IrrigRealTime {
                               }
                               //set flag -1
                               if (irrig < 0) nc = -1;
-			      irrigStrings.add("\""+externals[j]+"\","+irrig+","+irrigMin+","+nc);
+			      //irrigStrings.add("\""+externals[j]+"\","+irrig+","+irrigMin+","+nc);
+                              irrigStrings.add("\""+externals[j]+"\","+roundVal(irrig, 3)+","+roundVal(irrigMin, 3)+","+nc);
 			    }
                           } catch (NumberFormatException nfe) {
                             System.out.println(_mainClass+"::getIrrig> Invalid irrigation value: "+getReplyToken(reply, 1));
